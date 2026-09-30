@@ -1,0 +1,6 @@
+node_modules/
+out/
+*.log
+pipelines/pantallas-celulares/work/
+__pycache__/
+.DS_Store
