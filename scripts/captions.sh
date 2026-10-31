@@ -49,11 +49,11 @@ echo "OK -> $BASE.vtt"
 if [[ -n "$QUEMAR" ]]; then
   mkdir -p "$(dirname "$QUEMAR")"
   ABS_OUT="$(cd "$(dirname "$QUEMAR")" && pwd)/$(basename "$QUEMAR")"
-  # Quemado rápido con Arial: los TTF de Glacial tienen la tabla de nombres dañada y libass no los encuentra.
-  # Para subtítulos con tipografía de marca usar la prop "srt" de las composiciones Landing* en Remotion.
-  STYLE="FontName=Arial,Bold=1,FontSize=15,PrimaryColour=&H00FFFFFF,OutlineColour=&H00140702,BorderStyle=1,Outline=1.6,Shadow=0,MarginV=40"
+  # Glacial Indifference del manual. Se usa la copia de brand/fonts/ffmpeg ("Glacial KEI"): los TTF originales
+  # son webfonts sin nombre interno y libass no los encuentra (ver scripts/fix_font_names.py).
+  STYLE="FontName=Glacial KEI,Bold=1,FontSize=15,PrimaryColour=&H00FFFFFF,OutlineColour=&H00140702,BorderStyle=1,Outline=1.6,Shadow=0,MarginV=40"
   ffmpeg -v error -stats -stats_period 5 -y -i "$ABS_IN" \
-    -vf "subtitles=$REL_SRT:fontsdir=brand/fonts:force_style='$STYLE'" \
+    -vf "subtitles=$REL_SRT:fontsdir=brand/fonts/ffmpeg:force_style='$STYLE'" \
     -c:v libx264 -preset slow -crf 12 -pix_fmt yuv420p -c:a copy -movflags +faststart "$ABS_OUT"
   echo "OK -> $QUEMAR"
 fi

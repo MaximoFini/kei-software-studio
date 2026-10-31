@@ -159,7 +159,8 @@ scripts/
   render.sh               Render de Remotion: master H.264 (cuadros PNG, bt709), --prores, --draft
   ingest.sh               Material de cámara: HDR→SDR, fps fijo, rotación, estabilizar, recortar
   enhance.sh              Mejora de calidad: --perfil ia | camara, limpieza de voz, loudness -14 LUFS
-  captions.sh             Subtítulos automáticos con Whisper (.srt/.vtt)
+  captions.sh             Subtítulos automáticos con Whisper (.srt/.vtt), quemado con Glacial Indifference
+  fix_font_names.py       Genera brand/fonts/ffmpeg/ (Glacial con nombre interno, para FFmpeg)
   web_export.sh           Export para landing: H.264 + AV1, 1080/720, poster, snippet <video>, loop
   vmaf.sh                 Mide la calidad de un export contra el master
   logo_swap.py            Reemplaza un logo fijo por el de KEI, cuadro a cuadro
@@ -189,7 +190,7 @@ GUIA.md           Cómo se hizo cada video y qué tocar para hacer uno nuevo
 | El video del iPhone se ve lavado o gris | Es HDR: pasarlo antes por `scripts/ingest.sh` |
 | `ingest.sh` da colores raros en HDR | Probar `--tonemap cpu` (no usa la GPU) |
 | `No such filter: 'whisper'` / `'libplacebo'` | FFmpeg viejo o build "essentials": instalar FFmpeg 8 full (`winget install Gyan.FFmpeg`) |
-| Subtítulos quemados con `captions.sh --quemar` salen en Arial | Es a propósito (libass no lee los TTF de Glacial); para tipografía de marca usar `LandingHero` con `srt` |
+| Subtítulos quemados con `captions.sh --quemar` salen en otra fuente | Falta `brand/fonts/ffmpeg/`: regenerarla con `.venv/Scripts/python scripts/fix_font_names.py` |
 | En Windows los `.sh` no corren | Correrlos desde **Git Bash** |
 | Remotion tarda la 1ª vez | Está descargando su navegador interno; es una sola vez |
 

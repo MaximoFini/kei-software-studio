@@ -76,6 +76,7 @@ texto en español y esperá las definiciones antes de renderizar.
 1. Material crudo en `input/` (gitignored). Siempre empezar con `bash scripts/ingest.sh input/X.MOV --report`.
 2. `bash scripts/ingest.sh input/X.MOV work/x.mp4 [--fit WxH] [--stab] [--fps N]`: tone mapping HDR→SDR (libplacebo BT.2390 en GPU; `--tonemap cpu` si falla), fps fijo, rotación aplicada. NUNCA meter HEVC HDR del iPhone directo en Remotion.
 3. Subtítulos: `bash scripts/captions.sh work/x.mp4` (Whisper small, español) → revisar el `.srt` con la persona antes de usarlo.
+   Quemado directo con FFmpeg (`--quemar`) ya usa Glacial Indifference vía `brand/fonts/ffmpeg/` (familia interna "Glacial KEI"; los TTF originales son webfonts sin nombre y libass no los encuentra). En cualquier `subtitles`/`drawtext` de FFmpeg usar esa carpeta, nunca Arial.
 4. Composición: copiar video y `.srt` a `remotion/public/` y usar `LandingHero` (16:9) / `LandingVertical` / `LandingFeed` / `LandingSquare` con props `video`, `srt`, `cierre`, `marca`, `linea1`, `linea2`, `fps`. La duración sale del video. Si hace falta algo más que clip + subtítulos + cierre, escribir una composición nueva reutilizando `Landing.tsx`.
 5. Master: `bash scripts/render.sh LandingHero out/x.mov --prores --props='{...}'` (previews con `--draft`).
 6. Web: `bash scripts/web_export.sh out/x.mov nombre [--mute] [--loop S] --check` → `out/web/nombre/` con H.264 + AV1, 1080/720, poster y `snippet.html`. Objetivo VMAF ≥ 95 en 1080p.
