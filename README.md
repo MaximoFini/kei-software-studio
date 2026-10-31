@@ -197,4 +197,4 @@ GUIA.md           Cómo se hizo cada video y qué tocar para hacer uno nuevo
 
 - **Remotion**: gratis para individuos y equipos de hasta 3 personas. Si Kei pasa de 3, hace falta la Company License (remotion.pro).
 - **Glacial Indifference** y **Montserrat**: SIL Open Font License, uso comercial OK.
-- Los videos de referencia de otras marcas **no se suben** a este repo. La música que está en `remotion/public` es de los reels originales y se usa con permiso: el repo tiene que seguir **privado**.
+- Los videos de referencia de otras marcas **no se suben** a este repo. El repo es **público**: no subir material crudo ni de clientes (`input/`, `work/` y `out/` ya están ignorados).
