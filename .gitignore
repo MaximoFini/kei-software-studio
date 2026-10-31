@@ -11,3 +11,9 @@ input/*
 work/
 .venv/
 models/
+
+# Credenciales locales (token de Instagram)
+.env
+
+# Assets temporales de los reels de landings (material de clientes)
+remotion/public/lr_*

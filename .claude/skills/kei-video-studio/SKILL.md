@@ -83,6 +83,13 @@ texto en español y esperá las definiciones antes de renderizar.
 - Hardware de la PC actual: Ryzen 3 3200G + Vega 8, 14 GB. Upscalers con IA locales no son viables; no usar encoders por hardware (AMF) para finales.
 - Assets de clientes o crudos no se commitean en `remotion/public/`: borrarlos después del render (el repo es público).
 
+### I. Reels de landings filmadas (KEI × cliente)
+- Pipeline: `ingest.sh --fit 1440x2560 --fps 30` (NUNCA `--stab` ni acelerar: la persona quiere el movimiento literalmente original; la estabilización hizo vibrar el monitor) → config en `scripts/landing_reels.json` → `python scripts/landing_reels.py [id] [--draft|--solo-cuerpo]` → `out/reels/<id>.mp4`. Composición: `remotion/src/LandingReel.tsx`.
+- Reglas de la persona: SIN oraciones ni textos en el medio del reel; sólo lockup isotipo KEI × logo cliente (reels propios: isotipo + wordmark). Cierre KEI siempre. Por ahora sin música: la suma en Instagram (pista silenciosa).
+- Logos de clientes en `logos_clientes/` (no se commitean al repo si son de terceros; los assets `remotion/public/lr_*` están en .gitignore).
+- Música de Pixabay: muchos temas tienen "Content ID Registered" (generan reclamos en IG): verificar en la ficha antes de usar uno. La persona prefiere trap/phonk antes que épica orquestal.
+- Python llama a `bash` de WSL en Windows: `landing_reels.py` ya usa el bash de Git; replicarlo en scripts nuevos.
+
 ### G. Planos generativos
 - Guion, storyboard y prompts por plano para Kling/Veo/Sora pidiendo sólo la escena (sin texto ni logo); textos, logo y cierre se agregan en Remotion.
 

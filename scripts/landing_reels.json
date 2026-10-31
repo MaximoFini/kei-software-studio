@@ -1,0 +1,109 @@
+{
+  "_doc": "Reels de landings filmadas. tramos = [inicio, fin] en segundos del video ingerido (work/reels/<fuente>.mp4); velocidad = factor de aceleración (1.0 = velocidad original; acelerar resalta el pulso de la cámara en mano); foco = punto [x, y] del último cuadro (en 1080x1920) hacia donde va el push-in; cliente = logo en logos_clientes/ (null = reel propio de KEI).",
+  "reels": [
+    {
+      "id": "og-circle",
+      "fuente": "IMG_5421",
+      "cliente": "logo-ogcircle.png",
+      "velocidad": 1.0,
+      "tramos": [
+        [
+          1.6,
+          10.0
+        ],
+        [
+          12.0,
+          16.6
+        ],
+        [
+          19.0,
+          24.8
+        ],
+        [
+          27.0,
+          29.9
+        ]
+      ],
+      "foco": [
+        500,
+        1100
+      ]
+    },
+    {
+      "id": "agrosync",
+      "fuente": "IMG_5431",
+      "cliente": "logo-agrosync.png",
+      "velocidad": 1.0,
+      "tramos": [
+        [
+          0.8,
+          6.6
+        ],
+        [
+          9.6,
+          17.0
+        ]
+      ],
+      "foco": [
+        540,
+        1140
+      ]
+    },
+    {
+      "id": "kei-claro",
+      "fuente": "IMG_5425",
+      "cliente": null,
+      "velocidad": 1.0,
+      "tramos": [
+        [
+          1.6,
+          15.3
+        ]
+      ],
+      "foco": [
+        405,
+        1155
+      ]
+    },
+    {
+      "id": "kei-oscuro",
+      "fuente": "IMG_5427",
+      "cliente": null,
+      "velocidad": 1.0,
+      "tramos": [
+        [
+          1.0,
+          16.3
+        ]
+      ],
+      "foco": [
+        392,
+        1155
+      ]
+    },
+    {
+      "id": "kei-claro-oscuro",
+      "fuente": "IMG_5428",
+      "cliente": null,
+      "velocidad": 1.0,
+      "tramos": [
+        [
+          1.6,
+          10.2
+        ],
+        [
+          11.0,
+          15.8
+        ],
+        [
+          16.9,
+          21.3
+        ]
+      ],
+      "foco": [
+        392,
+        1155
+      ]
+    }
+  ]
+}

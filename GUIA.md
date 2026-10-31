@@ -110,3 +110,47 @@ Referencia de la prueba (clip 1080p de 7,6 s): H.264 3,9 MB / AV1 1,9 MB, ambos 
 - [ ] Hero/fondo: `--mute` (el autoplay sólo funciona sin audio) y `--loop` si se repite
 - [ ] Poster = primer cuadro (no hay salto al empezar)
 - [ ] Subtítulos revisados (nombres propios, términos técnicos)
+
+---
+
+## 5 · "Una web linda no alcanza" (reel de ventas, FFmpeg)
+
+**Técnica:** montaje de 5 tomas de landings filmadas (OG Circle, AgroSync, web de KEI) con titulares
+en el espacio negro arriba del monitor, push-in suave y cortes en los acentos de la música; sin Remotion
+salvo el cierre. Script: `scripts/reel_ventas.sh` → `entregables/04-tu-web-vende.mp4`.
+
+| s | Toma | Titular |
+|---|---|---|
+| 0–3,2 | OG Circle, hero | Una web linda / **no alcanza.** |
+| 3,2–6,4 | OG Circle, precio "Pago único" | Landings que convierten / **visitas en ventas.** |
+| 6,4–9,6 | AgroSync, hero con celulares | Apps y sistemas / **a medida.** |
+| 9,6–12,8 | Web KEI, Proyectos | Diseño y desarrollo, / **de punta a punta.** |
+| 12,8–15,8 | Web KEI, contacto → KEI Software | Contanos tu proyecto. / **Escribinos por DM.** + @keisoftware |
+| 15,8 → | Fundido al cierre (+ whoosh) | — |
+
+- Música: `epic-motivation_kulakovka.mp3` (150 BPM, acentos cada 8 tiempos = 3,2 s); -14 LUFS en dos pasadas.
+- Tomas: `work/reels/IMG_*.mp4` (ingeridas con `ingest.sh`), cierre: `render.sh KeiCierre work/vt/cierre.mp4`.
+- **Glacial Indifference no tiene "¿" ni "¡"**: en titulares con esta fuente, escribir afirmaciones.
+- Publicación automática: `publicar/cola.json` + `scripts/publish_reel.py` (ver el docstring) y el workflow
+  `.github/workflows/publicar-reel.yml`.
+
+---
+
+## 5 · Reels de landings filmadas (KEI × cliente)
+
+**Técnica:** monitor filmado con el iPhone en un cuarto oscuro → cuerpo acelerado sin pausas → `LandingReel`.
+Regla: **sin oraciones en el medio**, sólo el lockup de logos. Sin música (se agrega en el editor de Instagram).
+
+| Elemento | Detalle |
+|---|---|
+| Lockup | Isotipo KEI × logo del cliente (o isotipo + wordmark en reels propios), centrado en y=520, entra en 0,1–0,6 s y queda fijo |
+| Cuerpo | Tramos en `scripts/landing_reels.json`, a velocidad original (1×): sólo se sacan pausas y scroll hacia atrás |
+| Final | Push-in 2,6× con motion blur al `foco` del último cuadro (en reels de KEI: el "KEI Software" del footer) → cierre KEI |
+| Audio | Pista silenciosa |
+
+Para un reel nuevo:
+1. Video a `input/`, logo del cliente (PNG sin fondo, ≥ 500 px) a `logos_clientes/`.
+2. `bash scripts/ingest.sh input/X.MOV work/reels/X.mp4 --fit 1440x2560 --fps 30` (**sin `--stab`**: en tomas casi quietas vidstab hace "temblar" el monitor; la persona quiere la imagen original)
+3. Medir pausas: ver el movimiento por segundo (o tira de cuadros) y cargar `tramos`, `velocidad` y `cliente` en el JSON.
+4. `python scripts/landing_reels.py <id> --solo-cuerpo` → mirar el último cuadro y fijar `foco`.
+5. `python scripts/landing_reels.py <id> --draft` (preview) y después sin `--draft` → `out/reels/<id>.mp4`.

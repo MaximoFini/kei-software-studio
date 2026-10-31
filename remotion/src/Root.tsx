@@ -5,6 +5,7 @@ import { ReelConCierre, TOTAL_FRAMES } from "./ReelConCierre";
 import { GameReel, GAME_TOTAL } from "./GameReel";
 import { OfficeReel, OFFICE_TOTAL } from "./OfficeReel";
 import { Landing, calculateLandingMetadata, landingDefaults } from "./Landing";
+import { LandingReel, calculateLandingReelMetadata, landingReelDefaults } from "./LandingReel";
 
 // Formatos para landing: la duración y los fps salen del video (calculateMetadata)
 const LANDING_FORMATS = [
@@ -53,6 +54,17 @@ export const RemotionRoot: React.FC = () => (
     />
     <Composition id="GameReel" component={GameReel} durationInFrames={GAME_TOTAL} fps={60} width={1080} height={1920} />
     <Composition id="OfficeReel" component={OfficeReel} durationInFrames={OFFICE_TOTAL} fps={60} width={1080} height={1920} />
+    {/* Reels de landings filmadas (scripts/landing_reels.py) */}
+    <Composition
+      id="LandingReel"
+      component={LandingReel}
+      durationInFrames={600}
+      fps={60}
+      width={1080}
+      height={1920}
+      defaultProps={landingReelDefaults}
+      calculateMetadata={calculateLandingReelMetadata}
+    />
     {LANDING_FORMATS.map((f) => (
       <Composition
         key={f.id}
