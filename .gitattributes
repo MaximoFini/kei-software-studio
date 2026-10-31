@@ -1,0 +1,17 @@
+# Texto siempre con LF (los .sh tienen que correr en Git Bash/Linux/macOS)
+* text=auto eol=lf
+*.ps1 text eol=crlf
+
+# Binarios: nunca convertir saltos de línea
+*.pdf binary
+*.png binary
+*.jpg binary
+*.webp binary
+*.mp4 binary
+*.mov binary
+*.webm binary
+*.wav binary
+*.m4a binary
+*.woff2 binary
+*.ttf binary
+*.bin binary

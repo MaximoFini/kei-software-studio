@@ -86,3 +86,27 @@ Busca un punto del tema que suene igual y empalma ahí (sin corte audible), limi
 - [ ] Revisar cuadro a cuadro los bordes de manos/logos
 - [ ] Audio sin cortes, sin silencio al final, whoosh en la entrada del cierre
 - [ ] Exportar MP4 H.264, 1080×1920, audio AAC 320k
+
+---
+
+## 4 · Videos para landing (material de iPhone)
+
+**Técnica:** ingesta del material de cámara → composición `Landing*` en Remotion → export web.
+Paso a paso con comandos en el README (sección "Videos para landing con material del iPhone").
+
+| Etapa | Script | Qué resuelve |
+|---|---|---|
+| Ingesta | `ingest.sh` | HDR/Dolby Vision del iPhone → SDR bt709 (si no, se ve lavado), fps fijo, rotación, estabilización, recorte al formato |
+| Limpieza | `enhance.sh --perfil camara` | Nitidez suave en 10 bits, voz sin ruido, -14 LUFS |
+| Subtítulos | `captions.sh` | Whisper en español → `.srt` / `.vtt` (revisar a mano) |
+| Composición | `Landing.tsx` | Subtítulos con Glacial Indifference, isotipo opcional, cierre (KeiCierre en 9:16, placa adaptable en el resto) |
+| Master | `render.sh --prores` | ProRes 422 HQ 10-bit, cuadros PNG |
+| Web | `web_export.sh` | H.264 + AV1 10-bit, 1080p/720p, poster, `<video>` listo, loop sin corte, VMAF |
+
+Referencia de la prueba (clip 1080p de 7,6 s): H.264 3,9 MB / AV1 1,9 MB, ambos con VMAF ≈ 98.
+
+**Checklist web**
+- [ ] VMAF ≥ 95 en 1080p (`--check`)
+- [ ] Hero/fondo: `--mute` (el autoplay sólo funciona sin audio) y `--loop` si se repite
+- [ ] Poster = primer cuadro (no hay salto al empezar)
+- [ ] Subtítulos revisados (nombres propios, términos técnicos)

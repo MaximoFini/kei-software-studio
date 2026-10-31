@@ -4,3 +4,10 @@ out/
 pipelines/pantallas-celulares/work/
 __pycache__/
 .DS_Store
+
+# Material crudo y temporales (no se suben: pesan mucho y pueden ser de clientes)
+input/*
+!input/.gitkeep
+work/
+.venv/
+models/

@@ -19,7 +19,7 @@ export const BRAND = {
   azulHielo: "#DFE8FD",
 };
 
-const fontFace = `
+export const fontFace = `
 @font-face {
   font-family: 'Glacial Indifference';
   src: url('${staticFile("glacial-indifference-400.woff2")}') format('woff2');

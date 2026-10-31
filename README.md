@@ -11,7 +11,7 @@ la skill de Claude y los videos ya hechos.
 |---|---|---|
 | **Git** | Descargar y actualizar el repo | cualquiera |
 | **Node.js** | Remotion (motion graphics y render) | 22 LTS (mínimo 18) |
-| **FFmpeg** | Cortes, audio, mezclas, conversiones | 6 o superior |
+| **FFmpeg** | Cortes, audio, mezclas, conversiones, subtítulos | **8 o superior, build "full"** (trae whisper, libplacebo, SVT-AV1, VMAF) |
 | **Python** | Scripts de logo, música y calidad | 3.10 o superior |
 | **Claude Code** | Hacer videos nuevos pidiéndoselo a Claude | última |
 | VS Code *(opcional)* | Editar textos y tiempos | — |
@@ -60,9 +60,11 @@ git --version && node --version && ffmpeg -version | head -1 && python3 --versio
 git clone https://github.com/MaximoFini/kei-software-studio.git
 cd kei-software-studio
 
-pip install opencv-python numpy pillow scipy        # librerías de Python
+python -m venv .venv                                # entorno de Python propio del repo
+.venv/Scripts/python -m pip install -r requirements.txt   # Windows (en macOS/Linux: .venv/bin/python)
 cd remotion && npm install && cd ..                 # Remotion (descarga su propio Chrome la 1ª vez que renderiza)
 ```
+Los scripts de Python se corren con ese entorno: `.venv/Scripts/python scripts/logo_swap.py ...`
 
 Probar que todo anda (renderiza el cierre animado en ~1 min):
 
@@ -100,6 +102,39 @@ bash scripts/build_all.sh 2          # sólo el video 2
 bash scripts/render.sh KeiCierre out/cierre.mp4
 ```
 
+### Videos para landing con material del iPhone
+
+1. **Pasar los videos sin recomprimir.** En el iPhone: Ajustes → Fotos → "Transferir a Mac o PC" → **Mantener originales**.
+   Copiar los `.MOV` por cable (o Drive / iCloud "Original sin modificar") a `input/` (no se sube al repo).
+2. **Preparar** (HDR → SDR, fps fijo, rotación, opcional estabilizar y recortar al formato):
+   ```bash
+   bash scripts/ingest.sh input/IMG_1234.MOV --report                 # sólo ver qué es
+   bash scripts/ingest.sh input/IMG_1234.MOV work/hero.mp4 --fit 1920x1080 --stab
+   ```
+3. **(Opcional) mejorar y subtitular:**
+   ```bash
+   bash scripts/enhance.sh work/hero.mp4 work/hero_ok.mp4 --perfil camara --voz
+   bash scripts/captions.sh work/hero_ok.mp4            # -> work/hero_ok.srt / .vtt (revisar el texto)
+   ```
+4. **Armar en Remotion** (subtítulos con la tipografía de marca + cierre): copiar el video y el `.srt` a
+   `remotion/public/` y renderizar el master en ProRes:
+   ```bash
+   bash scripts/render.sh LandingHero out/hero.mov --prores --props='{"video":"hero_ok.mp4","srt":"hero_ok.srt"}'
+   ```
+   Formatos: `LandingHero` 16:9 · `LandingVertical` 9:16 · `LandingFeed` 4:5 · `LandingSquare` 1:1.
+   Props: `cierre` (true/false), `marca` (isotipo en la esquina), `linea1`/`linea2`, `fps`.
+   Preview rápido: `--draft` en lugar de `--prores`.
+5. **Exportar para la web** (H.264 + AV1, 1080p y 720p, poster y `<video>` listo para pegar):
+   ```bash
+   bash scripts/web_export.sh out/hero.mov hero --mute --check     # video de fondo, mide calidad con VMAF
+   bash scripts/web_export.sh out/hero.mov hero --loop 0.5         # loop sin corte para el hero
+   ```
+   Queda todo en `out/web/hero/`. Subir esa carpeta al hosting de la landing y pegar `snippet.html`.
+
+**Para grabar mejor:** 4K a 30 fps; bloquear exposición y foco (mantener apretado en la pantalla);
+buena luz de frente. Si la idea es mostrar una web o una app, **grabar la pantalla en la PC** (OBS) en lugar
+de filmar el monitor.
+
 ---
 
 ## 4. Qué hay en el repo
@@ -112,15 +147,23 @@ remotion/         Proyecto de Remotion (React)
   src/ReelConCierre.tsx   Video 1: logo reveal + push-in al cartel + cierre
   src/GameReel.tsx        Video 2: "Llegamos a Instagram" (motion graphics)
   src/OfficeReel.tsx      Video 3: celulares + push-in a la pantalla "IA" + cierre
+  src/Landing.tsx         Videos de landing (16:9, 9:16, 4:5, 1:1): clip + subtítulos de marca + cierre
   public/                 Assets de las composiciones (fuentes, logos, SFX, videos intermedios, música)
 entregables/      Videos finales listos para publicar
 examples/         Cierre animado de muestra
+input/            Material crudo (iPhone, etc.). No se sube al repo
+work/  out/       Intermedios y renders. No se suben al repo
+models/           Modelos de Whisper (se bajan solos). No se suben al repo
 scripts/
   build_all.sh            Vuelve a renderizar los 4 videos
-  render.sh               Render de una composición de Remotion
+  render.sh               Render de Remotion: master H.264 (cuadros PNG, bt709), --prores, --draft
+  ingest.sh               Material de cámara: HDR→SDR, fps fijo, rotación, estabilizar, recortar
+  enhance.sh              Mejora de calidad: --perfil ia | camara, limpieza de voz, loudness -14 LUFS
+  captions.sh             Subtítulos automáticos con Whisper (.srt/.vtt)
+  web_export.sh           Export para landing: H.264 + AV1, 1080/720, poster, snippet <video>, loop
+  vmaf.sh                 Mide la calidad de un export contra el master
   logo_swap.py            Reemplaza un logo fijo por el de KEI, cuadro a cuadro
   extend_music.py         Extiende la música para que siga durante el cierre
-  enhance.sh              Mejora de calidad con FFmpeg
   whoosh.py               Genera el SFX de transición (propio, sin derechos)
 GUIA.md           Cómo se hizo cada video y qué tocar para hacer uno nuevo
 ```
@@ -142,7 +185,11 @@ GUIA.md           Cómo se hizo cada video y qué tocar para hacer uno nuevo
 |---|---|
 | `ffmpeg: command not found` | No está instalado o no está en el PATH: reinstalar y abrir una terminal nueva |
 | El render falla en Linux con errores de librerías | Instalar las librerías del paso 1 (Linux) |
-| `ModuleNotFoundError: cv2` | `pip install opencv-python numpy pillow scipy` |
+| `ModuleNotFoundError: cv2` | Usar el Python del repo: `.venv/Scripts/python` (ver paso 2) |
+| El video del iPhone se ve lavado o gris | Es HDR: pasarlo antes por `scripts/ingest.sh` |
+| `ingest.sh` da colores raros en HDR | Probar `--tonemap cpu` (no usa la GPU) |
+| `No such filter: 'whisper'` / `'libplacebo'` | FFmpeg viejo o build "essentials": instalar FFmpeg 8 full (`winget install Gyan.FFmpeg`) |
+| Subtítulos quemados con `captions.sh --quemar` salen en Arial | Es a propósito (libass no lee los TTF de Glacial); para tipografía de marca usar `LandingHero` con `srt` |
 | En Windows los `.sh` no corren | Correrlos desde **Git Bash** |
 | Remotion tarda la 1ª vez | Está descargando su navegador interno; es una sola vez |
 

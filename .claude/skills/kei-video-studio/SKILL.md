@@ -17,7 +17,8 @@ Respondé en español rioplatense (vos), con listas limpias y sin paredes de tex
    `git clone https://github.com/MaximoFini/kei-software-studio.git`
    (en una sesión en la nube: `add_repo` owner `MaximoFini`, repo `kei-software-studio`, clon con timeout largo).
 2. `cd remotion && npm install` (si no existe `remotion/node_modules`).
-3. Chequeá herramientas: `ffmpeg -version`, `python3 -c "import cv2, numpy, PIL, scipy"`.
+3. Chequeá herramientas: `ffmpeg -version` (tiene que ser 8+ full), y el Python del repo:
+   `.venv/Scripts/python -c "import cv2, numpy, PIL, scipy"` en Windows (`.venv/bin/python` en macOS/Linux; si no existe `.venv`, crearla con `requirements.txt`).
    Si falta algo, instalalo (ver README) o pedile a la persona que lo instale.
 4. Render SIEMPRE con `bash scripts/render.sh <Comp> <salida> [flags]` (desde la raíz del repo).
    Stills: `bash scripts/render.sh KeiCierre out/x.png --still --frame=N`.
@@ -68,7 +69,18 @@ texto en español y esperá las definiciones antes de renderizar.
 - Mezclá con ffmpeg: música extendida + whoosh en la entrada del cierre (volume 0.75), `amix normalize=0` (ver `scripts/build_all.sh`). Verificá correlación ~1.0 del tramo original y que no haya picos.
 
 ### F. Mejorar calidad
-- `bash scripts/enhance.sh in.mp4 out.mp4`. No inventa detalle: para fondos deformes de video IA, upscaler generativo (Topaz Starlight, Krea) sobre el ORIGINAL, o regenerar.
+- `bash scripts/enhance.sh in.mp4 out.mp4` (perfil `ia`, por defecto). No inventa detalle: para fondos deformes de video IA, upscaler generativo (Topaz Starlight, Krea) sobre el ORIGINAL, o regenerar.
+- Material de cámara limpio: `--perfil camara` (sólo nitidez suave; `--denoise` con poca luz). `--voz` limpia la voz. Audio siempre a -14 LUFS en dos pasadas.
+
+### H. Videos para landing con material de iPhone / cámara
+1. Material crudo en `input/` (gitignored). Siempre empezar con `bash scripts/ingest.sh input/X.MOV --report`.
+2. `bash scripts/ingest.sh input/X.MOV work/x.mp4 [--fit WxH] [--stab] [--fps N]`: tone mapping HDR→SDR (libplacebo BT.2390 en GPU; `--tonemap cpu` si falla), fps fijo, rotación aplicada. NUNCA meter HEVC HDR del iPhone directo en Remotion.
+3. Subtítulos: `bash scripts/captions.sh work/x.mp4` (Whisper small, español) → revisar el `.srt` con la persona antes de usarlo.
+4. Composición: copiar video y `.srt` a `remotion/public/` y usar `LandingHero` (16:9) / `LandingVertical` / `LandingFeed` / `LandingSquare` con props `video`, `srt`, `cierre`, `marca`, `linea1`, `linea2`, `fps`. La duración sale del video. Si hace falta algo más que clip + subtítulos + cierre, escribir una composición nueva reutilizando `Landing.tsx`.
+5. Master: `bash scripts/render.sh LandingHero out/x.mov --prores --props='{...}'` (previews con `--draft`).
+6. Web: `bash scripts/web_export.sh out/x.mov nombre [--mute] [--loop S] --check` → `out/web/nombre/` con H.264 + AV1, 1080/720, poster y `snippet.html`. Objetivo VMAF ≥ 95 en 1080p.
+- Hardware de la PC actual: Ryzen 3 3200G + Vega 8, 14 GB. Upscalers con IA locales no son viables; no usar encoders por hardware (AMF) para finales.
+- Assets de clientes o crudos no se commitean en `remotion/public/`: borrarlos después del render (el repo es público).
 
 ### G. Planos generativos
 - Guion, storyboard y prompts por plano para Kling/Veo/Sora pidiendo sólo la escena (sin texto ni logo); textos, logo y cierre se agregan en Remotion.
@@ -76,6 +88,8 @@ texto en español y esperá las definiciones antes de renderizar.
 ## 4. Entrega y calidad
 
 - MP4 H.264 yuv420p `+faststart`, CRF 8–12 para masters, audio AAC 320k. No bajar la resolución de la fuente.
+- `render.sh` ya renderiza con cuadros PNG y bt709 (Remotion usa JPEG 80 por defecto: no sacar esos flags).
+- Para web, nunca subir el master: pasar por `web_export.sh`.
 - Si el audio original se mantiene, verificá sincronía por correlación cruzada (0 ms). Nunca dejar silencio al final: extender la música.
 - Al entregar, mencioná qué verificaste y 1–2 decisiones abiertas.
 - Al terminar un video nuevo: sumá la composición y sus assets al repo, el video a `entregables/`, un paso a `scripts/build_all.sh` y una sección a `GUIA.md`; commit + push.
