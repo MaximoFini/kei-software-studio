@@ -39,7 +39,7 @@ if run 3; then
   rm -f "$OUT/_03_video.mp4"
 fi
 
-# 6, 7 y 8 · Explicativos con voz en off (voz ya generada en remotion/public y src; la música se baja de Pixabay)
+# 6 a 9 · Explicativos con voz en off (voz ya generada en remotion/public y src; la música se baja de Pixabay)
 if run 6; then
   python "$ROOT/scripts/explainer.py" musica qr
   render QrExplainer "$OUT/06-como-funciona-un-qr.mp4"
@@ -52,6 +52,10 @@ if run 8; then
   "$ROOT/.venv/Scripts/python" "$ROOT/scripts/ia_assets.py" 2>/dev/null || "$ROOT/.venv/bin/python" "$ROOT/scripts/ia_assets.py"
   python "$ROOT/scripts/explainer.py" musica ia
   render IaExplainer "$OUT/08-como-ve-una-foto-la-ia.mp4"
+fi
+if run 9; then
+  python "$ROOT/scripts/explainer.py" musica audio
+  render AudioExplainer "$OUT/09-como-viaja-un-audio.mp4"
 fi
 
 echo "Listo -> $OUT"

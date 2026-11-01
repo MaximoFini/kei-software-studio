@@ -229,3 +229,28 @@ cuadro 0 convirtiéndose en números; bucle abierto: "al final, su error más gr
 
 - Música: "Lo-Fi Chillhop" (AtlasAudio, Pixabay, sin Content ID), desde 0,2 s.
 - Render: `bash scripts/build_all.sh 8`.
+
+## 9 · "¿Cómo viaja un audio?" (explicativo animado, voz femenina)
+
+Mismo kit. Voz `es-AR-ElenaNeural` +20%, 49,5 s. Concepto: *tu voz es aire que vibra: el celular mide esa vibración
+miles de veces por segundo, la convierte en números, la achica para mandarla y el celular del otro lado usa esos
+números para volver a hacer vibrar el aire.*
+
+**Gancho:** "El audio que le mandaste a tu mamá no es tu voz: es una lista de números", con un chat abierto desde el
+cuadro 0 y la burbuja de audio deshaciéndose en números; bucle abierto: por qué odiás tu voz grabada (huesos).
+
+| Escena | Qué se ve |
+|---|---|
+| hook | Chat con "Mamá", la burbuja de audio tiembla y sus barras se vuelven números que salen volando |
+| promesa | Juli escucha su audio y se tapa la cara, 😖 |
+| juli | Juli aprieta el micrófono, arcos de sonido y partículas de aire comprimiéndose (onda longitudinal) |
+| micro | Celular por dentro: el aire mueve la membrana, sale la señal eléctrica, ⚡ |
+| medir | Onda ampliada con las medidas (barras y puntos), "16.000 por segundo" y el valor de cada una |
+| achica | Se marcan y se cierran los silencios, se suaviza lo agudo (oído), archivo de 2,5 MB a 250 KB |
+| viaja | Números en arco por internet de Juli a la mamá, parlante, aire que vuelve a vibrar, ❤️ |
+| huesos | Cabeza de Juli: camino por el aire (afuera) y por los huesos (adentro, más grave) → la grabación la escuchan los demás |
+| cta | Tarjeta @keisoftware, Juli saludando → cierre |
+
+- "16.000 por segundo" es la frecuencia de muestreo de los audios de WhatsApp (Opus de banda ancha).
+- Música: "Chillhop — Remain" (Ornave, Pixabay, sin Content ID), desde 0,2 s.
+- Render: `bash scripts/build_all.sh 9`.

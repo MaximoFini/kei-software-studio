@@ -1,0 +1,52 @@
+{
+ "id": "audio",
+ "titulo": "¿Cómo viaja un audio?",
+ "voz": "es-AR-ElenaNeural",
+ "rate": "+20%",
+ "pausa": 0.16,
+ "escenas": [
+  [
+   "hook",
+   "El audio que le mandaste a tu mamá no es tu voz: es una lista de números."
+  ],
+  [
+   "promesa",
+   "Y quedate hasta el final, que te cuento por qué odiás cómo suena tu voz grabada."
+  ],
+  [
+   "juli",
+   "Ella es Juli. Aprieta el micrófono y habla: su voz es aire que vibra."
+  ],
+  [
+   "micro",
+   "Adentro del celular, una membrana finita vibra igual que ese aire, y lo convierte en electricidad."
+  ],
+  [
+   "medir",
+   "El celular mide esa señal miles de veces por segundo, y cada medida es un número."
+  ],
+  [
+   "achica",
+   "Después la achica: saca los silencios y lo que tu oído casi no escucha. Pesa diez veces menos."
+  ],
+  [
+   "viaja",
+   "Los números viajan por internet, y el celular de su mamá los usa para mover el parlante: el aire vuelve a vibrar, y ahí está Juli."
+  ],
+  [
+   "huesos",
+   "¿Y tu voz grabada? Cuando hablás, también te escuchás por los huesos de la cabeza, que la hacen más grave. La grabación es cómo te escuchan los demás."
+  ],
+  [
+   "cta",
+   "Seguinos para entender la tecnología de todos los días."
+  ]
+ ],
+ "musica": {
+  "titulo": "Chillhop — Remain - Ornave (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-chillhop-remain-594997/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/08/31/audio_77d8cbede6.mp3?filename=ornave-chillhop-remain-594997.mp3",
+  "offset": 0.2,
+  "lufs": -25
+ }
+}
