@@ -39,4 +39,9 @@ if run 3; then
   rm -f "$OUT/_03_video.mp4"
 fi
 
+# 6 · "¿Cómo funciona un QR?" (explicativo con voz en off; voz y QR ya generados en remotion/public y src)
+if run 6; then
+  render QrExplainer "$OUT/06-como-funciona-un-qr.mp4"
+fi
+
 echo "Listo -> $OUT"

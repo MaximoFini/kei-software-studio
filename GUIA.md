@@ -154,3 +154,26 @@ Para un reel nuevo:
 3. Medir pausas: ver el movimiento por segundo (o tira de cuadros) y cargar `tramos`, `velocidad` y `cliente` en el JSON.
 4. `python scripts/landing_reels.py <id> --solo-cuerpo` → mirar el último cuadro y fijar `foco`.
 5. `python scripts/landing_reels.py <id> --draft` (preview) y después sin `--draft` → `out/reels/<id>.mp4`.
+
+## 6 · "¿Cómo funciona un QR?" (explicativo animado con voz en off)
+
+**Técnica:** guion → voz neuronal (edge-tts, `es-AR-ElenaNeural`, +10%) con tiempos por palabra →
+animación en Remotion sincronizada palabra por palabra → subtítulos con la palabra activa en Azul UI → cierre KEI.
+Público no técnico: una idea por escena, ejemplo con personajes (Sofi en un bar), sin jerga. Dura ~57 s.
+
+| Escena | Qué se ve |
+|---|---|
+| hook | QR que se arma módulo por módulo, línea de escaneo, visor y ✓ |
+| bar | Sofi entra, cartel BAR, pide la carta (ícono), el mozo señala el QR de la mesa → zoom al QR |
+| mensaje / bits | El QR enmarcado como "dibujo" → se separa en cuadraditos → lupa con 1 y 0 → 8 bits = una letra → dirección |
+| esquinas | Se iluminan los 3 patrones de posición; el QR gira y se inclina y el visor igual lo engancha |
+| lectura | Celular: encuentra, endereza, lee fila por fila, ✓ y se abre la carta |
+| mancha | Mancha de café + esquina arrancada, sigue leyendo; anillo de 0 a 30% |
+| origen | Japón, contador hasta 1994, cinta de fábrica con piezas etiquetadas, auto |
+| cta | Tarjeta @keisoftware con "Seguir" → "Siguiendo", Sofi saludando → cierre |
+
+- El QR es real (nivel H) y abre `instagram.com/keisoftware`; con la mancha y la esquina rota sigue decodificando (verificado con `cv2.QRCodeDetectorAruco`).
+- Para cambiar el texto: editar `GUION` en `scripts/qr_voz.py`, correr `uv run --python 3.11 --with edge-tts python scripts/qr_voz.py`
+  y ajustar en `QrExplainer.tsx` las palabras que disparan cada animación (`w("escena", "palabra")`). La duración sale sola.
+- Assets: `uv run --python 3.11 --with segno,numpy python scripts/qr_assets.py` (matriz del QR y sonidos pop/tic/ok).
+- Render: `bash scripts/build_all.sh 6`. Sin música: se suma en el editor de Instagram (bajita, debajo de la voz).

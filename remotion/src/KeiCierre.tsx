@@ -41,7 +41,7 @@ const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const easeOut = Easing.bezier(0.16, 1, 0.3, 1);
 
 // ---------- Fondo: halos laterales + trama de puntos ----------
-const Fondo: React.FC = () => {
+export const Fondo: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;

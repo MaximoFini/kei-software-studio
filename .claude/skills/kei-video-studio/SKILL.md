@@ -90,6 +90,10 @@ texto en español y esperá las definiciones antes de renderizar.
 - Música de Pixabay: muchos temas tienen "Content ID Registered" (generan reclamos en IG): verificar en la ficha antes de usar uno. La persona prefiere trap/phonk antes que épica orquestal.
 - Python llama a `bash` de WSL en Windows: `landing_reels.py` ya usa el bash de Git; replicarlo en scripts nuevos.
 
+### J. Explicativos animados con voz en off
+- Referencia: `remotion/src/QrExplainer.tsx` (GUIA.md §6). Guion en `scripts/qr_voz.py` → voz neuronal edge-tts (`es-AR-ElenaNeural`, vía `uv run --with edge-tts`, sin instalar nada en `.venv`) con tiempos por palabra en un JSON.
+- La animación se dispara por palabra (`w("escena","palabra")`); subtítulos de 3–4 palabras con la palabra activa en Azul UI, en y≈1470 (fuera de la UI de Instagram). Personajes planos en SVG con la paleta de marca. Voz a -14 LUFS; sin música (se suma en Instagram).
+
 ### G. Planos generativos
 - Guion, storyboard y prompts por plano para Kling/Veo/Sora pidiendo sólo la escena (sin texto ni logo); textos, logo y cierre se agregan en Remotion.
 
