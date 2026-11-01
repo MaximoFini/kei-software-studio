@@ -1,0 +1,17 @@
+{
+  "cada_dias": 3,
+  "por_defecto": {
+    "prueba": "manual",
+    "ia": false
+  },
+  "cola": [
+    {
+      "video": "entregables/02-llegamos-a-instagram.mp4",
+      "caption": "¡Llegamos a Instagram! 🚀 En KEI Software creamos software a medida y automatizaciones para que tu negocio trabaje mejor. Seguinos para ver lo que hacemos.\n\n#KEISoftware #software #desarrollo #automatizacion"
+    },
+    {
+      "video": "entregables/03-automatiza-con-ia.mp4",
+      "caption": "Automatizá con IA las tareas repetitivas de tu negocio y dedicá tu tiempo a lo que importa. 🤖 Escribinos y te contamos cómo.\n\n#KEISoftware #IA #automatizacion #inteligenciaartificial"
+    }
+  ]
+}
