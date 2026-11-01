@@ -21,10 +21,10 @@ import qrData from "./qrMatrix.json";
 
 const FPS = 60;
 const CIERRE_FRAMES = 240;
-const SKIP = 15; // primer tramo del cierre (sólo fondo)
+const SKIP = 24; // primer tramo del cierre (fondo y entrada del isotipo), para cerrar en 50 s
 const FADE = 0.3; // crossfade entre escenas
 const ESC = Object.fromEntries(voz.escenas.map((e) => [e.id, e]));
-const C0 = ESC.cta.e + 0.35; // entra el cierre
+const C0 = ESC.cta.e + 0.12; // entra el cierre
 export const QR_TOTAL = Math.round(C0 * FPS) - SKIP + CIERRE_FRAMES;
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -637,7 +637,7 @@ const Mancha: React.FC = () => {
   const snap = pop(t, w("mancha", "sigue") - 0.1, 14);
   const ok = pop(t, w("mancha", "funcionando"));
   const sube = ramp(t, w("mancha", "Trae") - 0.5, w("mancha", "Trae") + 0.2, easeInOut);
-  const respaldo = ramp(t, w("mancha", "Trae"), w("mancha", "información")) * (1 - ramp(t, w("mancha", "y", 0) - 0.2, w("mancha", "y", 0) + 0.2));
+  const respaldo = ramp(t, w("mancha", "Trae"), w("mancha", "información")) * (1 - ramp(t, w("mancha", "puede") - 0.2, w("mancha", "puede") + 0.2));
   const anillo = ramp(t, w("mancha", "información") - 0.2, w("mancha", "información") + 0.2);
   const pct = interpolate(t, [w("mancha", "perder"), w("mancha", "ciento") + 0.2], [0, 30], { ...clamp, easing: easeOut });
   const S = interpolate(sube, [0, 1], [600, 460]);
@@ -837,6 +837,19 @@ const Titulo: React.FC = () => {
   );
 };
 
+// Barra de progreso fina arriba (retención): avanza un poco más rápido al principio
+const Progreso: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+  const p = Math.pow(Math.min(1, frame / (durationInFrames - 1)), 0.85);
+  return (
+    <div style={{ position: "absolute", left: 60, right: 60, top: 150, height: 8, borderRadius: 4, background: `${BRAND.azulHielo}26`,
+      opacity: interpolate(frame, [0, 12], [0, 1], clamp) }}>
+      <div style={{ width: `${p * 100}%`, height: "100%", borderRadius: 4, background: BRAND.azulUI, boxShadow: `0 0 14px ${BRAND.azulUI}` }} />
+    </div>
+  );
+};
+
 // ---------------- Sonido ----------------
 const SFX: [string, number, number][] = [
   ["qr_pop.wav", 0.95, 0.35],
@@ -894,7 +907,10 @@ export const QrExplainer: React.FC = () => {
           <KeiCierre linea1="Software a medida." linea2="Resultados reales." fadeOut={false} />
         </AbsoluteFill>
       </Sequence>
+      <Progreso />
       <Audio src={staticFile("qr_voz.wav")} />
+      {/* Música de fondo ya bajita y con ducking bajo la voz (scripts/qr_musica.sh) */}
+      <Audio src={staticFile("qr_musica.wav")} />
       {SFX.map(([f, s, v], i) => (
         <Sequence key={i} from={Math.max(0, Math.round(s * FPS))} durationInFrames={FPS}>
           <Audio src={staticFile(f)} volume={v} />

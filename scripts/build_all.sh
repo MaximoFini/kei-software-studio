@@ -41,6 +41,7 @@ fi
 
 # 6 · "¿Cómo funciona un QR?" (explicativo con voz en off; voz y QR ya generados en remotion/public y src)
 if run 6; then
+  bash "$ROOT/scripts/qr_musica.sh"
   render QrExplainer "$OUT/06-como-funciona-un-qr.mp4"
 fi
 

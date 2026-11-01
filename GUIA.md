@@ -157,9 +157,9 @@ Para un reel nuevo:
 
 ## 6 · "¿Cómo funciona un QR?" (explicativo animado con voz en off)
 
-**Técnica:** guion → voz neuronal (edge-tts, `es-AR-ElenaNeural`, +10%) con tiempos por palabra →
+**Técnica:** guion → voz neuronal (edge-tts, `es-AR-ElenaNeural`, +20%) con tiempos por palabra →
 animación en Remotion sincronizada palabra por palabra → subtítulos con la palabra activa en Azul UI → cierre KEI.
-Público no técnico: una idea por escena, ejemplo con personajes (Sofi en un bar), sin jerga. Dura ~57 s.
+Público no técnico: una idea por escena, ejemplo con personajes (Sofi en un bar), sin jerga. Dura 50 s justos (cierre incluido): guion sin relleno, pausas de 0,16 s y el cierre entra 0,4 s adelantado.
 
 | Escena | Qué se ve |
 |---|---|
@@ -176,4 +176,7 @@ Público no técnico: una idea por escena, ejemplo con personajes (Sofi en un ba
 - Para cambiar el texto: editar `GUION` en `scripts/qr_voz.py`, correr `uv run --python 3.11 --with edge-tts python scripts/qr_voz.py`
   y ajustar en `QrExplainer.tsx` las palabras que disparan cada animación (`w("escena", "palabra")`). La duración sale sola.
 - Assets: `uv run --python 3.11 --with segno,numpy python scripts/qr_assets.py` (matriz del QR y sonidos pop/tic/ok).
-- Render: `bash scripts/build_all.sh 6`. Sin música: se suma en el editor de Instagram (bajita, debajo de la voz).
+- Barra de progreso fina en Azul UI arriba (y=150), avanza algo más rápido al principio (p^0,85) para incentivar a terminarlo.
+- Música: "Long Day" (PurrpleCat, Pixabay, sin Content ID) desde el primer tiempo del beat, -25 LUFS y ducking con la voz
+  (~-32 LUFS mientras habla, ~18 dB por debajo). `bash scripts/qr_musica.sh` la baja y arma `remotion/public/qr_musica.wav` (no se sube al repo).
+- Render: `bash scripts/build_all.sh 6`.
