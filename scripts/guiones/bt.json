@@ -1,0 +1,56 @@
+{
+ "id": "bt",
+ "titulo": "¿Cómo funciona el Bluetooth?",
+ "voz": "es-AR-TomasNeural",
+ "rate": "+14%",
+ "pausa": 0.16,
+ "escenas": [
+  [
+   "hook",
+   "El Bluetooth se llama así por un rey vikingo, que tenía un diente azul."
+  ],
+  [
+   "secreto",
+   "Y su logo esconde un secreto. Pero primero: ¿cómo llega la música de tu celular a tus auriculares, sin cables?"
+  ],
+  [
+   "mateo",
+   "Él es Mateo. Sale a correr con el celular en el bolsillo."
+  ],
+  [
+   "ondas",
+   "El celular convierte la canción en ondas de radio: como una radio en miniatura, que llega a unos diez metros."
+  ],
+  [
+   "emparejar",
+   "La primera vez, los dos se presentan: eso es emparejar. Después, se reconocen solos."
+  ],
+  [
+   "canales",
+   "Y para no chocar con el wifi, cambia de canal mil seiscientas veces por segundo."
+  ],
+  [
+   "bateria",
+   "Gasta tan poca energía que unos auriculares chiquitos aguantan horas."
+  ],
+  [
+   "rey",
+   "¿Y el rey? Harald Diente Azul unió a los pueblos de Dinamarca y Noruega. Bluetooth quería unir aparatos: por eso el nombre."
+  ],
+  [
+   "logo",
+   "Y el logo son sus iniciales, en runas vikingas."
+  ],
+  [
+   "cta",
+   "Seguinos para entender la tecnología de todos los días."
+  ]
+ ],
+ "musica": {
+  "titulo": "Vlog Hip-Hop - ProducesPlatinum (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-vlog-hip-hop-483574/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/02/12/audio_ef715196dc.mp3?filename=producesplatinum-vlog-hip-hop-483574.mp3",
+  "offset": 2.45,
+  "lufs": -25
+ }
+}

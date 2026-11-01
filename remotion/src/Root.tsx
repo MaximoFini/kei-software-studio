@@ -7,6 +7,7 @@ import { OfficeReel, OFFICE_TOTAL } from "./OfficeReel";
 import { Landing, calculateLandingMetadata, landingDefaults } from "./Landing";
 import { LandingReel, calculateLandingReelMetadata, landingReelDefaults } from "./LandingReel";
 import { QrExplainer, QR_TOTAL } from "./QrExplainer";
+import { BtExplainer, BT_TOTAL } from "./BtExplainer";
 
 // Formatos para landing: la duración y los fps salen del video (calculateMetadata)
 const LANDING_FORMATS = [
@@ -66,8 +67,9 @@ export const RemotionRoot: React.FC = () => (
       defaultProps={landingReelDefaults}
       calculateMetadata={calculateLandingReelMetadata}
     />
-    {/* Explicativo "¿Cómo funciona un QR?" con voz en off (scripts/qr_voz.py) */}
+    {/* Explicativo "¿Cómo funciona un QR?" con voz en off (scripts/explainer.py) */}
     <Composition id="QrExplainer" component={QrExplainer} durationInFrames={QR_TOTAL} fps={60} width={1080} height={1920} />
+    <Composition id="BtExplainer" component={BtExplainer} durationInFrames={BT_TOTAL} fps={60} width={1080} height={1920} />
     {LANDING_FORMATS.map((f) => (
       <Composition
         key={f.id}

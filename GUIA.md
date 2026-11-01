@@ -173,10 +173,35 @@ Público no técnico: una idea por escena, ejemplo con personajes (Sofi en un ba
 | cta | Tarjeta @keisoftware con "Seguir" → "Siguiendo", Sofi saludando → cierre |
 
 - El QR es real (nivel H) y abre `instagram.com/keisoftware`; con la mancha y la esquina rota sigue decodificando (verificado con `cv2.QRCodeDetectorAruco`).
-- Para cambiar el texto: editar `GUION` en `scripts/qr_voz.py`, correr `uv run --python 3.11 --with edge-tts python scripts/qr_voz.py`
+- Para cambiar el texto: editar `scripts/guiones/qr.json`, correr `uv run --python 3.11 --with edge-tts python scripts/explainer.py voz qr`
   y ajustar en `QrExplainer.tsx` las palabras que disparan cada animación (`w("escena", "palabra")`). La duración sale sola.
 - Assets: `uv run --python 3.11 --with segno,numpy python scripts/qr_assets.py` (matriz del QR y sonidos pop/tic/ok).
 - Barra de progreso fina en Azul UI arriba (y=150), avanza algo más rápido al principio (p^0,85) para incentivar a terminarlo.
 - Música: "Long Day" (PurrpleCat, Pixabay, sin Content ID) desde el primer tiempo del beat, -25 LUFS y ducking con la voz
-  (~-32 LUFS mientras habla, ~18 dB por debajo). `bash scripts/qr_musica.sh` la baja y arma `remotion/public/qr_musica.wav` (no se sube al repo).
+  (~-32 LUFS mientras habla, ~18 dB por debajo). `python scripts/explainer.py musica qr` la baja y arma `remotion/public/qr_musica.wav` (no se sube al repo).
 - Render: `bash scripts/build_all.sh 6`.
+
+## 7 · "¿Cómo funciona el Bluetooth?" (explicativo animado, voz masculina)
+
+Misma fórmula que el 6 (kit compartido en `remotion/src/explainerKit.tsx`: escenas con crossfade, subtítulos,
+título, barra de progreso, personajes, tarjeta "Seguir" y cierre). Voz `es-AR-TomasNeural` +14%, 49,6 s.
+
+**Gancho:** dato sorprendente en la primera frase ("se llama así por un rey vikingo que tenía un diente azul",
+con el rey en pantalla desde el cuadro 0) + bucle abierto ("su logo esconde un secreto") que se cierra al final
+con las runas ᚼ + ᛒ formando el logo: la promesa sostiene la retención hasta el último tramo.
+
+| Escena | Qué se ve |
+|---|---|
+| hook | Rey vikingo con corona y barba, logo de Bluetooth que aparece, sonrisa con el diente azul y destello |
+| secreto | Logo grande con "?" → celular con música → auriculares → cable que se corta ("sin cables") |
+| mateo | Mateo corriendo con auriculares, ciudad que pasa, celular en el bolsillo |
+| ondas | Ondas de radio del celular a los auriculares con notas, radio en miniatura, alcance de 10 m |
+| emparejar | Pantalla de Bluetooth: "Conectando..." → "Conectado ✓"; después enlace automático |
+| canales | 79 canales, el wifi ocupa una franja, el Bluetooth salta entre los libres; "1.600 saltos / seg" |
+| bateria | Batería que casi no baja mientras el reloj da vueltas |
+| rey | Harald «Diente Azul», banderas de Dinamarca y Noruega que se juntan → aparatos unidos al logo |
+| logo | Runas H y B que se dibujan y se superponen → logo de Bluetooth |
+| cta | Tarjeta @keisoftware "Seguir" → "Siguiendo", Mateo saludando → cierre |
+
+- Música: "Vlog Hip-Hop" (ProducesPlatinum, Pixabay, sin Content ID), desde 2,45 s; mismo nivel y ducking que el QR.
+- Render: `bash scripts/build_all.sh 7`.

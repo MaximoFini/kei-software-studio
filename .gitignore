@@ -18,3 +18,4 @@ models/
 # Assets temporales de los reels de landings (material de clientes)
 remotion/public/lr_*
 remotion/public/qr_musica.wav
+remotion/public/bt_musica.wav

@@ -1,59 +1,19 @@
 import React from "react";
+import { AbsoluteFill, Easing, interpolate } from "remotion";
+import { BRAND } from "./KeiCierre";
 import {
-  AbsoluteFill,
-  Audio,
-  Easing,
-  Img,
-  Sequence,
-  interpolate,
-  spring,
-  staticFile,
-  useCurrentFrame,
-  useVideoConfig,
-} from "remotion";
-import { KeiCierre, BRAND, fontFace, Fondo } from "./KeiCierre";
+  crearExplainer, useT, ramp, pop, hash, clamp, easeOut, easeInOut, Centro, Chip, Check, Telefono, Persona, TarjetaSeguir, Sfx,
+} from "./explainerKit";
 import voz from "./qrVoz.json";
 import qrData from "./qrMatrix.json";
 
-// Reel explicativo "¿Cómo funciona un QR?": voz en off (scripts/qr_voz.py), subtítulos palabra por palabra,
+// Reel explicativo "¿Cómo funciona un QR?": voz en off (scripts/explainer.py, guion en scripts/guiones/qr.json), subtítulos palabra por palabra,
 // animación con personajes (Sofi en un bar) y cierre KEI. Las escenas se sincronizan con los tiempos de
 // cada palabra de qrVoz.json; el QR es real (scripts/qr_assets.py) y abre el Instagram de KEI.
 
-const FPS = 60;
-const CIERRE_FRAMES = 240;
-const SKIP = 24; // primer tramo del cierre (fondo y entrada del isotipo), para cerrar en 50 s
-const FADE = 0.3; // crossfade entre escenas
-const ESC = Object.fromEntries(voz.escenas.map((e) => [e.id, e]));
-const C0 = ESC.cta.e + 0.12; // entra el cierre
-export const QR_TOTAL = Math.round(C0 * FPS) - SKIP + CIERRE_FRAMES;
-
-const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-const easeOut = Easing.bezier(0.16, 1, 0.3, 1);
-const easeInOut = Easing.bezier(0.65, 0, 0.35, 1);
+const { w, desde, TOTAL, Escena, Base } = crearExplainer(voz, "¿Cómo funciona un QR?");
+export const QR_TOTAL = TOTAL;
 const COFFEE = "#6B4426";
-const PIEL = "#F2C6A0";
-
-// Tiempo (s) de una palabra de una escena; n = ocurrencia
-const w = (id: string, palabra: string, n = 0) => {
-  const ps = ESC[id].palabras.filter((p) => p.w === palabra);
-  return (ps[n] ?? ps[0]).s;
-};
-// Ventana de cada escena: desde un poco antes de su primera palabra hasta que entra la siguiente
-const IDS = voz.escenas.map((e) => e.id);
-const desde = (id: string) => Math.max(0, ESC[id].s - 0.15);
-const hasta = (id: string) => {
-  const i = IDS.indexOf(id);
-  return i < IDS.length - 1 ? desde(IDS[i + 1]) : C0;
-};
-
-const useT = () => useCurrentFrame() / FPS;
-const ramp = (t: number, a: number, b: number, e = easeOut) => interpolate(t, [a, b], [0, 1], { ...clamp, easing: e });
-const pop = (t: number, a: number, damping = 12) =>
-  t < a ? 0 : spring({ frame: Math.round((t - a) * FPS), fps: FPS, config: { damping, stiffness: 170, mass: 0.8 } });
-const hash = (r: number, c: number) => {
-  const x = Math.sin(r * 127.1 + c * 311.7) * 43758.5453;
-  return x - Math.floor(x);
-};
 
 // ---------------- QR ----------------
 const N = qrData.n;
@@ -241,121 +201,7 @@ const Visor: React.FC<{ w: number; h: number; snap: number; ok?: number; opacity
   );
 };
 
-const Check: React.FC<{ p: number; size?: number; style?: React.CSSProperties }> = ({ p, size = 120, style }) =>
-  p <= 0 ? null : (
-    <div style={{ position: "absolute", width: size, height: size, borderRadius: "50%", background: BRAND.azulUI,
-      boxShadow: `0 0 50px ${BRAND.azulUI}aa`, display: "flex", alignItems: "center", justifyContent: "center",
-      transform: `scale(${p})`, ...style }}>
-      <svg width={size * 0.55} height={size * 0.55} viewBox="0 0 24 24">
-        <path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#fff" strokeWidth={3.2} strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </div>
-  );
-
-// ---------------- Personajes ----------------
-type PersonaProps = {
-  x: number;
-  y: number; // pies
-  escala?: number;
-  remera: string;
-  pantalon?: string;
-  pelo: string;
-  peinado: "largo" | "corto";
-  piel?: string;
-  brazoD?: number; // grados: 0 = colgando, 90 = horizontal hacia afuera, 150 = arriba
-  brazoI?: number;
-  delantal?: boolean;
-  fase?: number;
-  opacity?: number;
-  celular?: number; // 0..1 celular en la mano izquierda
-};
-
-const Persona: React.FC<PersonaProps> = ({
-  x, y, escala = 1, remera, pantalon = BRAND.azulMarino, pelo, peinado, piel = PIEL, brazoD = 8, brazoI = 8, delantal, fase = 0, opacity = 1, celular = 0,
-}) => {
-  const t = useT();
-  const bob = Math.sin(t * 2.4 + fase) * 4;
-  const parpadeo = (t + fase) % 3.4 < 0.12 ? 0.15 : 1;
-  const brazo = (lado: 1 | -1, ang: number, hijo?: React.ReactNode) => (
-    <g transform={`translate(${lado * 66} -372) rotate(${-lado * ang})`}>
-      <rect x={-17} y={-6} width={34} height={168} rx={17} fill={remera} />
-      <circle cx={0} cy={168} r={20} fill={piel} />
-      {hijo}
-    </g>
-  );
-  return (
-    <svg width={400 * escala} height={640 * escala} viewBox="-200 -600 400 640"
-      style={{ position: "absolute", left: x - 200 * escala, top: y - 600 * escala, overflow: "visible", opacity }}>
-      <g transform={`translate(0 ${bob * 0.3})`}>
-        <rect x={-46} y={-205} width={36} height={205} rx={16} fill={pantalon} />
-        <rect x={10} y={-205} width={36} height={205} rx={16} fill={pantalon} />
-        <ellipse cx={-30} cy={2} rx={34} ry={14} fill="#0B1230" />
-        <ellipse cx={30} cy={2} rx={34} ry={14} fill="#0B1230" />
-      </g>
-      <g transform={`translate(0 ${bob})`}>
-        {brazo(-1, brazoI, celular > 0 ? (
-          <g transform={`translate(0 170) rotate(${180 - brazoI * 0.4}) scale(${celular})`}>
-            <rect x={-26} y={-6} width={52} height={92} rx={10} fill="#0B1230" stroke="#3A4466" strokeWidth={4} />
-            <rect x={-19} y={2} width={38} height={72} rx={5} fill={BRAND.azulUI} opacity={0.8} />
-          </g>
-        ) : undefined)}
-        <rect x={-74} y={-400} width={148} height={222} rx={56} fill={remera} />
-        {delantal && <rect x={-56} y={-318} width={112} height={150} rx={14} fill="#FFFFFF" opacity={0.95} />}
-        {brazo(1, brazoD)}
-        <rect x={-18} y={-430} width={36} height={40} rx={10} fill={piel} />
-        {peinado === "largo" && (
-          <>
-            <rect x={-80} y={-500} width={44} height={150} rx={22} fill={pelo} />
-            <rect x={36} y={-500} width={44} height={150} rx={22} fill={pelo} />
-          </>
-        )}
-        <circle cx={0} cy={-478} r={66} fill={piel} />
-        {peinado === "largo" ? (
-          <path d="M-70 -478 Q-72 -560 0 -556 Q72 -560 70 -478 Q40 -530 -10 -520 Q-50 -512 -70 -478 Z" fill={pelo} />
-        ) : (
-          <path d="M-66 -486 Q-66 -560 0 -558 Q66 -560 66 -486 Q30 -524 -66 -486 Z" fill={pelo} />
-        )}
-        <ellipse cx={-23} cy={-476} rx={7} ry={7 * parpadeo} fill="#1B2140" />
-        <ellipse cx={23} cy={-476} rx={7} ry={7 * parpadeo} fill="#1B2140" />
-        <path d="M-20 -446 Q0 -430 20 -446" fill="none" stroke="#1B2140" strokeWidth={5} strokeLinecap="round" />
-        <circle cx={-40} cy={-452} r={9} fill="#F49A8C" opacity={0.45} />
-        <circle cx={40} cy={-452} r={9} fill="#F49A8C" opacity={0.45} />
-      </g>
-    </svg>
-  );
-};
-
 const SOFI = { remera: BRAND.azulUI, pelo: "#3B2417", peinado: "largo" as const };
-
-// ---------------- Escena (crossfade) ----------------
-const Escena: React.FC<{ id: string; children: React.ReactNode; zoom?: { x: number; y: number; s: number } }> = ({ id, children, zoom }) => {
-  const t = useT();
-  const a = desde(id), b = hasta(id);
-  if (t < a - 0.01 || t > b + FADE) return null;
-  const inP = a < 0.05 ? 1 : ramp(t, a, a + FADE);
-  const outP = ramp(t, b, b + FADE, Easing.in(Easing.quad));
-  let transform = `scale(${0.94 + 0.06 * inP + (zoom ? 0 : 0.05 * outP)})`;
-  let origin = "50% 42%";
-  if (zoom) {
-    transform = `scale(${(0.94 + 0.06 * inP) * interpolate(outP, [0, 1], [1, zoom.s])})`;
-    origin = `${zoom.x}px ${zoom.y}px`;
-  }
-  return (
-    <AbsoluteFill style={{ opacity: inP * (1 - outP), transform, transformOrigin: origin }}>{children}</AbsoluteFill>
-  );
-};
-
-const Centro: React.FC<{ x?: number; y: number; children: React.ReactNode; style?: React.CSSProperties }> = ({ x = 540, y, children, style }) => (
-  <div style={{ position: "absolute", left: x, top: y, transform: "translate(-50%, -50%)", ...style }}>{children}</div>
-);
-
-const Chip: React.FC<{ children: React.ReactNode; p: number; style?: React.CSSProperties }> = ({ children, p, style }) => (
-  <div style={{ position: "absolute", transform: `translate(-50%, -50%) scale(${p})`, opacity: Math.min(1, p * 2), whiteSpace: "nowrap",
-    fontFamily: "'Glacial Indifference'", fontWeight: 700, fontSize: 46, color: "#fff", padding: "14px 30px", borderRadius: 999,
-    background: `${BRAND.azulMarino}EE`, border: `2px solid ${BRAND.azulUI}88`, display: "flex", alignItems: "center", gap: 16, ...style }}>
-    {children}
-  </div>
-);
 
 // ---------------- Escenas ----------------
 const QR_Y = 760;
@@ -572,14 +418,6 @@ const Esquinas: React.FC = () => {
   );
 };
 
-const Telefono: React.FC<{ children: React.ReactNode; w?: number; h?: number }> = ({ children, w: W = 480, h = 960 }) => (
-  <div style={{ width: W, height: h, borderRadius: 70, background: "#0B1020", border: "12px solid #252E4D", position: "relative",
-    boxShadow: `0 40px 100px rgba(0,0,0,.6), 0 0 0 2px ${BRAND.azulUI}55`, overflow: "hidden" }}>
-    {children}
-    <div style={{ position: "absolute", top: 18, left: "50%", transform: "translateX(-50%)", width: 130, height: 36, borderRadius: 18, background: "#000" }} />
-  </div>
-);
-
 const Carta: React.FC<{ p: number }> = ({ p }) => {
   const items = [["Café", "$ 3.500"], ["Medialunas", "$ 2.800"], ["Tostado", "$ 6.900"], ["Licuado", "$ 4.200"], ["Brownie", "$ 3.900"]];
   return (
@@ -736,122 +574,18 @@ const Origen: React.FC = () => {
 
 const Cta: React.FC = () => {
   const t = useT();
-  const card = pop(t, w("cta", "Seguinos") - 0.1, 14);
-  const cursor = ramp(t, w("cta", "para") - 0.1, w("cta", "tecnología") - 0.1, easeInOut);
-  const tap = t >= w("cta", "tecnología") ? 1 : 0;
-  const tapPop = pop(t, w("cta", "tecnología"), 8);
   const saludo = Math.sin(t * 9) * 22;
   return (
     <Escena id="cta">
-      <Centro y={620} style={{ transform: `translate(-50%,-50%) scale(${card})` }}>
-        <div style={{ width: 760, borderRadius: 40, background: "#fff", padding: "40px 44px", display: "flex", flexDirection: "column", gap: 30,
-          boxShadow: `0 30px 80px rgba(0,0,0,.5), 0 0 0 4px ${BRAND.azulUI}55` }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 30 }}>
-            <div style={{ width: 150, height: 150, borderRadius: "50%", background: "#fff", border: `5px solid ${BRAND.azulUI}`,
-              display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Img src={staticFile("isotipo.png")} style={{ height: 96 }} />
-            </div>
-            <div>
-              <div style={{ fontFamily: "Montserrat", fontWeight: 700, fontSize: 50, color: BRAND.fondoOscuro }}>@keisoftware</div>
-              <div style={{ fontFamily: "Montserrat", fontWeight: 500, fontSize: 32, color: "#5A6386", marginTop: 6 }}>KEI Software</div>
-            </div>
-          </div>
-          <div style={{ height: 96, borderRadius: 22, background: tap ? BRAND.azulHielo : BRAND.azulUI, display: "flex", alignItems: "center",
-            justifyContent: "center", fontFamily: "Montserrat", fontWeight: 700, fontSize: 42, color: tap ? BRAND.azulMarino : "#fff",
-            transform: `scale(${tap ? 0.94 + 0.06 * tapPop : 1})` }}>
-            {tap ? "Siguiendo ✓" : "Seguir"}
-          </div>
-        </div>
-      </Centro>
-      {/* dedo / cursor */}
-      <div style={{ position: "absolute", left: interpolate(cursor, [0, 1], [900, 640]), top: interpolate(cursor, [0, 1], [1100, 690]),
-        width: 70, height: 70, borderRadius: "50%", background: "#ffffffcc", border: `5px solid ${BRAND.azulUI}`,
-        opacity: ramp(t, w("cta", "para") - 0.3, w("cta", "para")) * (1 - ramp(t, w("cta", "todos"), w("cta", "días"))),
-        transform: `scale(${tap ? 1 - 0.25 * Math.max(0, 1 - (t - w("cta", "tecnología")) * 5) : 1})` }} />
+      <TarjetaSeguir aparece={w("cta", "Seguinos") - 0.1} cursorDesde={w("cta", "para") - 0.1} toque={w("cta", "tecnología")}
+        cursorFin={[w("cta", "todos"), w("cta", "días")]} />
       <Persona x={300} y={1340} escala={0.72} {...SOFI} brazoD={130 + saludo} />
     </Escena>
   );
 };
 
-// ---------------- Subtítulos ----------------
-type Palabra = { w: string; s: number; e: number };
-const BLOQUES = (() => {
-  const out: { ps: Palabra[]; txt: string[]; s: number; e: number }[] = [];
-  for (const esc of voz.escenas) {
-    let pos = 0;
-    let cur: Palabra[] = [], txt: string[] = [];
-    esc.palabras.forEach((p, i) => {
-      const idx = esc.texto.indexOf(p.w, pos);
-      let shown = p.w;
-      let corte = false;
-      if (idx >= 0) {
-        if (esc.texto[idx - 1] === "¿") shown = "¿" + shown;
-        const sig = esc.texto[idx + p.w.length] ?? "";
-        if (sig === "?") shown += "?";
-        corte = /[.,:?]/.test(sig);
-        pos = idx + p.w.length;
-      }
-      cur.push(p);
-      txt.push(shown);
-      const resto = esc.palabras.length - 1 - i;
-      if ((cur.length >= 4 && resto !== 1) || corte || resto === 0) {
-        out.push({ ps: cur, txt, s: cur[0].s, e: cur[cur.length - 1].e });
-        cur = [];
-        txt = [];
-      }
-    });
-  }
-  return out.map((b, i) => ({ ...b, e: Math.min(out[i + 1]?.s ?? b.e + 0.4, b.e + 0.5) }));
-})();
-
-const Subtitulos: React.FC = () => {
-  const t = useT();
-  const b = BLOQUES.find((x) => t >= x.s - 0.05 && t < x.e);
-  if (!b) return null;
-  const p = pop(t, b.s - 0.05, 14);
-  return (
-    <div style={{ position: "absolute", left: 70, right: 70, top: 1470, transform: `translateY(-50%) scale(${0.9 + 0.1 * p})`,
-      display: "flex", flexWrap: "wrap", justifyContent: "center", columnGap: 20, rowGap: 0, textAlign: "center",
-      fontFamily: "'Glacial Indifference'", fontWeight: 700, fontSize: 80, lineHeight: 1.12, opacity: Math.min(1, p * 2) }}>
-      {b.ps.map((pw, i) => {
-        const activa = t >= pw.s - 0.03 && t < (b.ps[i + 1] ? b.ps[i + 1].s - 0.03 : b.e);
-        return (
-          <span key={i} style={{ color: activa ? BRAND.azulUI : "#fff",
-            textShadow: `0 0 10px ${BRAND.fondoOscuro}, 0 4px 0 ${BRAND.fondoOscuro}, 0 0 30px ${BRAND.fondoOscuro}` }}>
-            {b.txt[i]}
-          </span>
-        );
-      })}
-    </div>
-  );
-};
-
-const Titulo: React.FC = () => {
-  const t = useT();
-  const p = pop(t, 0.05, 15);
-  return (
-    <Chip p={p * (1 - ramp(t, C0 - 0.3, C0))} style={{ left: 540, top: 250, fontSize: 44, padding: "14px 32px 14px 22px" }}>
-      <Img src={staticFile("isotipo.png")} style={{ height: 50 }} />
-      ¿Cómo funciona un QR?
-    </Chip>
-  );
-};
-
-// Barra de progreso fina arriba (retención): avanza un poco más rápido al principio
-const Progreso: React.FC = () => {
-  const frame = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
-  const p = Math.pow(Math.min(1, frame / (durationInFrames - 1)), 0.85);
-  return (
-    <div style={{ position: "absolute", left: 60, right: 60, top: 150, height: 8, borderRadius: 4, background: `${BRAND.azulHielo}26`,
-      opacity: interpolate(frame, [0, 12], [0, 1], clamp) }}>
-      <div style={{ width: `${p * 100}%`, height: "100%", borderRadius: 4, background: BRAND.azulUI, boxShadow: `0 0 14px ${BRAND.azulUI}` }} />
-    </div>
-  );
-};
-
 // ---------------- Sonido ----------------
-const SFX: [string, number, number][] = [
+const SFX: Sfx[] = [
   ["qr_pop.wav", 0.95, 0.35],
   ["qr_ok.wav", w("hook", "segundo") + 0.1, 0.4],
   ["qr_pop.wav", w("bar", "Sofi"), 0.35],
@@ -880,45 +614,16 @@ const SFX: [string, number, number][] = [
 for (let k = 0; k < 8; k++) SFX.push(["qr_tick.wav", w("lectura", "lee") + k * ((w("lectura", "y") - w("lectura", "lee")) / 8), 0.18]);
 
 // ---------------- Composición ----------------
-export const QrExplainer: React.FC = () => {
-  const t = useT();
-  const cierreOpacity = interpolate(t, [C0, C0 + 0.4], [0, 1], { ...clamp, easing: Easing.inOut(Easing.quad) });
-  return (
-    <AbsoluteFill style={{ backgroundColor: BRAND.fondoOscuro }}>
-      <style>{fontFace}</style>
-      {t < C0 + 0.45 && (
-        <>
-          <Fondo />
-          <Hook />
-          <Bar />
-          <Mensaje />
-          <Bits />
-          <Esquinas />
-          <Lectura />
-          <Mancha />
-          <Origen />
-          <Cta />
-          <Titulo />
-          <Subtitulos />
-        </>
-      )}
-      <Sequence from={Math.round(C0 * FPS) - SKIP} durationInFrames={CIERRE_FRAMES}>
-        <AbsoluteFill style={{ opacity: cierreOpacity, backgroundColor: BRAND.fondoOscuro }}>
-          <KeiCierre linea1="Software a medida." linea2="Resultados reales." fadeOut={false} />
-        </AbsoluteFill>
-      </Sequence>
-      <Progreso />
-      <Audio src={staticFile("qr_voz.wav")} />
-      {/* Música de fondo ya bajita y con ducking bajo la voz (scripts/qr_musica.sh) */}
-      <Audio src={staticFile("qr_musica.wav")} />
-      {SFX.map(([f, s, v], i) => (
-        <Sequence key={i} from={Math.max(0, Math.round(s * FPS))} durationInFrames={FPS}>
-          <Audio src={staticFile(f)} volume={v} />
-        </Sequence>
-      ))}
-      <Sequence from={Math.round(C0 * FPS) - 20} durationInFrames={FPS * 2}>
-        <Audio src={staticFile("whoosh.wav")} volume={0.6} />
-      </Sequence>
-    </AbsoluteFill>
-  );
-};
+export const QrExplainer: React.FC = () => (
+  <Base audio="qr" sfx={SFX}>
+    <Hook />
+    <Bar />
+    <Mensaje />
+    <Bits />
+    <Esquinas />
+    <Lectura />
+    <Mancha />
+    <Origen />
+    <Cta />
+  </Base>
+);

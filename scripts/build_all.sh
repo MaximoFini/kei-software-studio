@@ -39,10 +39,14 @@ if run 3; then
   rm -f "$OUT/_03_video.mp4"
 fi
 
-# 6 · "¿Cómo funciona un QR?" (explicativo con voz en off; voz y QR ya generados en remotion/public y src)
+# 6 y 7 · Explicativos con voz en off (voz ya generada en remotion/public y src; la música se baja de Pixabay)
 if run 6; then
-  bash "$ROOT/scripts/qr_musica.sh"
+  python "$ROOT/scripts/explainer.py" musica qr
   render QrExplainer "$OUT/06-como-funciona-un-qr.mp4"
+fi
+if run 7; then
+  python "$ROOT/scripts/explainer.py" musica bt
+  render BtExplainer "$OUT/07-como-funciona-el-bluetooth.mp4"
 fi
 
 echo "Listo -> $OUT"

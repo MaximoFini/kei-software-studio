@@ -1,0 +1,52 @@
+{
+ "id": "qr",
+ "titulo": "¿Cómo funciona un QR?",
+ "voz": "es-AR-ElenaNeural",
+ "rate": "+20%",
+ "pausa": 0.16,
+ "escenas": [
+  [
+   "hook",
+   "¿Cómo hace tu celular para leer un QR en menos de un segundo?"
+  ],
+  [
+   "bar",
+   "Ella es Sofi. Llega a un bar, pide la carta, y le señalan esto."
+  ],
+  [
+   "mensaje",
+   "Parece un dibujo, pero es un mensaje escrito con cuadraditos."
+  ],
+  [
+   "bits",
+   "Cada cuadradito negro es un uno, y cada blanco, un cero. Combinados, forman letras: la dirección de la carta."
+  ],
+  [
+   "esquinas",
+   "Los tres cuadrados grandes le muestran a la cámara dónde está el código y cómo está girado. Por eso funciona aunque lo apuntes torcido."
+  ],
+  [
+   "lectura",
+   "La cámara lo encuentra, lo endereza, lo lee fila por fila, y listo: se abre la carta."
+  ],
+  [
+   "mancha",
+   "Y lo más loco: aunque se manche o le falte un pedazo, sigue funcionando. Trae información de respaldo: puede perder hasta un treinta por ciento."
+  ],
+  [
+   "origen",
+   "Lo inventaron en Japón, en 1994, para seguir piezas de autos."
+  ],
+  [
+   "cta",
+   "Seguinos para entender la tecnología de todos los días."
+  ]
+ ],
+ "musica": {
+  "titulo": "Long Day - PurrpleCat (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-long-day-518602/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/04/24/audio_c8a99a93d5.mp3?filename=purrplecat-long-day-518602.mp3",
+  "offset": 20.2,
+  "lufs": -25
+ }
+}
