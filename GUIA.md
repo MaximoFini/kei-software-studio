@@ -205,3 +205,27 @@ con las runas ᚼ + ᛒ formando el logo: la promesa sostiene la retención hast
 
 - Música: "Vlog Hip-Hop" (ProducesPlatinum, Pixabay, sin Content ID), desde 2,45 s; mismo nivel y ducking que el QR.
 - Render: `bash scripts/build_all.sh 7`.
+
+## 8 · "¿Cómo ve una foto la IA?" (explicativo con fotos reales)
+
+Mismo kit que el 6 y el 7. Voz `es-AR-TomasNeural` +8%, 48,6 s. Fotos libres de Pixabay (perro, gatos, chihuahua, muffin):
+`scripts/ia_assets.py` las baja, las recorta y calcula los **píxeles reales** (24×24) y los **bordes reales** (Canny) de la
+foto del perro, así lo que se ve es lo que hace una red de verdad. Las fotos no se suben al repo (`remotion/public/ia_foto_*`).
+
+**Gancho:** "Para una inteligencia artificial, esta foto de un perro es solo una lista de números", con la foto desde el
+cuadro 0 convirtiéndose en números; bucle abierto: "al final, su error más gracioso" (adelanto borroso) → chihuahua vs. muffin.
+
+| Escena | Qué se ve |
+|---|---|
+| hook | Foto del perro escaneada → mosaico de píxeles → número de cada píxel |
+| promesa | Mosaico con "?" → adelanto borroso de las dos fotos del final |
+| pixeles | Foto → píxeles → zoom a un píxel del ojo con sus valores R, G, B y el color |
+| bordes | Ventanita (filtro) que recorre la foto → aparecen los bordes reales → manchas en ojos y hocico |
+| formas | Recuadros en orejas, ojos y hocico con su etiqueta |
+| ejemplos | Pared de fotos que no termina, "+1.000.000 fotos", Lucía etiquetando PERRO / GATO |
+| probabilidad | Barras Perro 97% / Gato 3% |
+| error | Chihuahua etiquetado "MUFFIN 71%" y muffin "PERRO 64%", 🤔 |
+| cta | Tarjeta @keisoftware, Lucía saludando → cierre |
+
+- Música: "Lo-Fi Chillhop" (AtlasAudio, Pixabay, sin Content ID), desde 0,2 s.
+- Render: `bash scripts/build_all.sh 8`.

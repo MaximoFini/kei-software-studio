@@ -1,0 +1,52 @@
+{
+ "id": "ia",
+ "titulo": "¿Cómo ve una foto la IA?",
+ "voz": "es-AR-TomasNeural",
+ "rate": "+8%",
+ "pausa": 0.16,
+ "escenas": [
+  [
+   "hook",
+   "Para una inteligencia artificial, esta foto de un perro es solo una lista de números."
+  ],
+  [
+   "promesa",
+   "Y con eso adivina qué hay. Quedate, porque al final te muestro su error más gracioso."
+  ],
+  [
+   "pixeles",
+   "Toda foto está hecha de puntitos llamados píxeles, y cada píxel es un número que dice de qué color es."
+  ],
+  [
+   "bordes",
+   "Primero, la IA busca cosas simples: bordes, líneas y manchas."
+  ],
+  [
+   "formas",
+   "Después junta esas piezas en formas: orejas, ojos, un hocico."
+  ],
+  [
+   "ejemplos",
+   "¿Y cómo aprendió? Viendo millones de fotos que alguien ya había etiquetado: perro, gato, perro, gato."
+  ],
+  [
+   "probabilidad",
+   "Al final, nunca está segura: da un porcentaje. Noventa y siete por ciento perro."
+  ],
+  [
+   "error",
+   "¿Y el error? A veces confunde un chihuahua con un muffin. ¿Vos te das cuenta cuál es cuál?"
+  ],
+  [
+   "cta",
+   "Seguinos para entender la tecnología de todos los días."
+  ]
+ ],
+ "musica": {
+  "titulo": "Lo-Fi Chillhop - AtlasAudio (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-lo-fi-chillhop-617588/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/10/09/audio_b4c9ac3a5f.mp3?filename=atlasaudio-lo-fi-chillhop-617588.mp3",
+  "offset": 0.2,
+  "lufs": -25
+ }
+}

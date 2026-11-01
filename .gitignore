@@ -19,3 +19,5 @@ models/
 remotion/public/lr_*
 remotion/public/qr_musica.wav
 remotion/public/bt_musica.wav
+remotion/public/ia_foto_*
+remotion/public/ia_musica.wav

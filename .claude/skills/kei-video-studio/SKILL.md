@@ -91,10 +91,10 @@ texto en español y esperá las definiciones antes de renderizar.
 - Python llama a `bash` de WSL en Windows: `landing_reels.py` ya usa el bash de Git; replicarlo en scripts nuevos.
 
 ### J. Explicativos animados con voz en off
-- Referencias: `QrExplainer.tsx` y `BtExplainer.tsx` (GUIA.md §6 y §7). Piezas comunes en `remotion/src/explainerKit.tsx` (`crearExplainer(voz, titulo)` da `w`, `Escena` y `Base`); cada reel sólo escribe sus escenas.
+- Referencias: `QrExplainer.tsx`, `BtExplainer.tsx` e `IaExplainer.tsx` (GUIA.md §6, §7 y §8; el 8 usa fotos reales de Pixabay procesadas con OpenCV). Piezas comunes en `remotion/src/explainerKit.tsx` (`crearExplainer(voz, titulo)` da `w`, `Escena` y `Base`); cada reel sólo escribe sus escenas.
 - Guion en `scripts/guiones/<id>.json` (voz, velocidad, escenas, música) → `uv run --python 3.11 --with edge-tts python scripts/explainer.py voz <id>` (edge-tts, sin instalar nada en `.venv`) y `python scripts/explainer.py musica <id>`. Duración objetivo ~50 s con cierre.
 - Gancho: dato sorprendente en la primera frase, con imagen fuerte desde el cuadro 0, y un bucle abierto que se cierra al final.
-- La animación se dispara por palabra (`w("escena","palabra")`); subtítulos de 3–4 palabras con la palabra activa en Azul UI, en y≈1470 (fuera de la UI de Instagram). Personajes planos en SVG con la paleta de marca. Voz a -14 LUFS; música de Pixabay sin Content ID a ~18 dB debajo de la voz con ducking; barra de progreso arriba.
+- La animación se dispara por palabra (`w("escena","palabra")`); subtítulos de 3–4 palabras con la palabra activa en Azul UI, en y≈1470 (fuera de la UI de Instagram). Personajes planos en SVG con la paleta de marca. Voz a -14 LUFS; música de Pixabay sin Content ID (distinta en cada reel) a ~18 dB debajo de la voz con ducking; barra de progreso arriba.
 
 ### G. Planos generativos
 - Guion, storyboard y prompts por plano para Kling/Veo/Sora pidiendo sólo la escena (sin texto ni logo); textos, logo y cierre se agregan en Remotion.

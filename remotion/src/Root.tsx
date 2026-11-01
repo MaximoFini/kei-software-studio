@@ -8,6 +8,7 @@ import { Landing, calculateLandingMetadata, landingDefaults } from "./Landing";
 import { LandingReel, calculateLandingReelMetadata, landingReelDefaults } from "./LandingReel";
 import { QrExplainer, QR_TOTAL } from "./QrExplainer";
 import { BtExplainer, BT_TOTAL } from "./BtExplainer";
+import { IaExplainer, IA_TOTAL } from "./IaExplainer";
 
 // Formatos para landing: la duración y los fps salen del video (calculateMetadata)
 const LANDING_FORMATS = [
@@ -70,6 +71,7 @@ export const RemotionRoot: React.FC = () => (
     {/* Explicativo "¿Cómo funciona un QR?" con voz en off (scripts/explainer.py) */}
     <Composition id="QrExplainer" component={QrExplainer} durationInFrames={QR_TOTAL} fps={60} width={1080} height={1920} />
     <Composition id="BtExplainer" component={BtExplainer} durationInFrames={BT_TOTAL} fps={60} width={1080} height={1920} />
+    <Composition id="IaExplainer" component={IaExplainer} durationInFrames={IA_TOTAL} fps={60} width={1080} height={1920} />
     {LANDING_FORMATS.map((f) => (
       <Composition
         key={f.id}
