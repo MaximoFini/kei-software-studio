@@ -4,51 +4,5 @@
     "prueba": "manual",
     "ia": false
   },
-  "cola": [
-    {
-      "video": "publicar/videos/14-como-sabe-que-no-soy-un-robot.mp4",
-      "caption": "Hiciste click en \"No soy un robot\"… y igual te pidió elegir semáforos 🚦🤖\n\nEl click no es la prueba: la página ya te venía mirando antes. Cómo movés el mouse, cuánto tardás y desde dónde entrás arman un puntaje de confianza. Si algo no cierra, aparecen los semáforos.\n\nY quedate hasta el final: esos semáforos esconden un secreto 👀\n\n👉 Seguinos para entender la tecnología de todos los días.\n\n#captcha #norobot #tecnologia #seguridadinformatica #internet #explicado #keisoftware",
-      "prueba": "manual"
-    },
-    {
-      "video": "publicar/videos/15-como-funciona-el-token.mp4",
-      "caption": "Tu celu y el banco no se hablan… y aun así inventan el mismo número 🔐📱\n\nEl día que activaste el token, los dos guardaron el mismo secreto. Cada 30 segundos lo mezclan con la hora y llegan al mismo código sin comunicarse. Si alguien te lo roba, en medio minuto ya no sirve.\n\nGuardalo para cuando alguien te pregunte cómo funciona 💾\n\n👉 Seguinos para entender la tecnología de todos los días.\n\n#token #homebanking #ciberseguridad #seguridad #tecnologia #bancos #explicado #keisoftware",
-      "prueba": "manual"
-    },
-    {
-      "video": "publicar/videos/16-como-funcionan-las-cookies.mp4",
-      "caption": "Aceptaste cookies más de mil veces… ¿sabés qué aceptaste? 🍪\n\nAlgunas son útiles: recuerdan tu carrito y tu sesión. Otras son de empresas de publicidad que anotan qué páginas visitás. Por eso mirás unas zapatillas una vez y te persiguen por todos lados 👟\n\nAl final te cuento qué botón casi nadie toca (y debería).\n\n👉 Seguinos para entender la tecnología de todos los días.\n\n#cookies #privacidad #internet #publicidaddigital #datospersonales #tecnologia #explicado #keisoftware",
-      "prueba": "manual"
-    },
-    {
-      "video": "publicar/videos/17-como-piensa-la-ia.mp4",
-      "caption": "Cuando la IA te responde, no está pensando: está apostando 🎲🤖\n\nA cada palabra posible le pone un porcentaje y elige una, casi siempre la más probable. Así, palabra por palabra, arma toda la respuesta. Por eso a veces inventa cosas con total seguridad.\n\nHay algo que nunca hace… te lo cuento al final. Spoiler: revisá lo que te dice ✅\n\n👉 Seguinos para entender la tecnología de todos los días.\n\n#inteligenciaartificial #ia #chatgpt #tecnologia #ai #explicado #aprendizaje #keisoftware",
-      "prueba": "manual"
-    },
-    {
-      "video": "publicar/videos/18-como-sabe-el-celu-que-lo-acercaste.mp4",
-      "caption": "Acercás el celu a la oreja y la pantalla se apaga sola. ¿Quién le avisó? 📱👂\n\nArriba de la pantalla hay un sensor de proximidad casi invisible: manda una luz infrarroja y mide cuánta vuelve. Si vuelve mucha, algo está pegado y bloquea el toque. Por eso tu cachete no te corta la llamada.\n\n¿Y por qué a veces falla? Te lo cuento al final 👀\n\n👉 Seguinos para entender la tecnología de todos los días.\n\n#celular #smartphone #sensores #tecnologia #curiosidades #explicado #sabiasque #keisoftware",
-      "prueba": "manual"
-    },
-    {
-      "video": "publicar/videos/19-como-funciona-un-zip.mp4",
-      "caption": "Un zip achica un archivo y después lo devuelve idéntico. ¿Dónde estaba el espacio de sobra? 🗜️📁\n\nLos archivos están llenos de repeticiones. El zip anota cada cosa una sola vez y en el resto pone atajos cortitos. Al descomprimir, la compu cambia cada atajo por el original: no falta ni una letra.\n\nY al final: por qué a veces no achica nada 🤔\n\n👉 Seguinos para entender la tecnología de todos los días.\n\n#zip #compresion #archivos #computacion #tecnologia #informatica #explicado #keisoftware",
-      "prueba": "manual"
-    },
-    {
-      "video": "publicar/videos/20-que-hace-una-vpn.mp4",
-      "caption": "Una VPN no te hace invisible: te cambia de quién desconfiás 🕵️‍♀️🔒\n\nSin VPN, el wifi del café ve a qué sitios entrás. Con VPN, todo viaja por un túnel cifrado… pero el túnel termina en la VPN, que ahora es la que ve todo.\n\nAntes de usar una, hacele esta pregunta (te la digo al final) 👇\n\n👉 Seguinos para entender la tecnología de todos los días.\n\n#vpn #privacidad #ciberseguridad #wifi #internet #tecnologia #explicado #keisoftware",
-      "prueba": "manual"
-    },
-    {
-      "video": "publicar/videos/21-como-guardan-tu-contrasena.mp4",
-      "caption": "Cuando olvidás tu contraseña te mandan un link, nunca la contraseña. ¿Sabés por qué? Porque ni ellos la saben 🔑\n\nLa web no guarda tu contraseña: guarda su huella (el hash), un código de un solo sentido. Cuando volvés a entrar, compara huellas. Si se filtra la base, se ven huellas, no contraseñas.\n\nAl final: la señal de que una web te cuida mal 🚩\n\n👉 Seguinos para entender la tecnología de todos los días.\n\n#contraseñas #ciberseguridad #hash #seguridadinformatica #passwords #tecnologia #explicado #keisoftware",
-      "prueba": "manual"
-    },
-    {
-      "video": "publicar/videos/22-5-mitos-del-celu.mp4",
-      "caption": "5 cosas de tu celu que creés ciertas… y no lo son 📱❌\n\n1️⃣ Te escucha para mostrarte publicidad\n2️⃣ El modo incógnito te hace anónimo\n3️⃣ Cargarlo toda la noche lo rompe\n4️⃣ Borrar un archivo lo elimina\n5️⃣ Más barras de wifi = más velocidad\n\n¿Cuál te creías? Contanos en los comentarios 👇 (la última seguro 😅)\n\n👉 Seguinos para entender la tecnología de todos los días.\n\n#mitos #celular #smartphone #tecnologia #curiosidades #wifi #privacidad #keisoftware",
-      "prueba": "manual"
-    }
-  ]
+  "cola": []
 }
