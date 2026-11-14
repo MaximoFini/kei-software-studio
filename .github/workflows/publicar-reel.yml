@@ -1,10 +1,13 @@
 # Publica el próximo reel de publicar/cola.json cuando pasaron "cada_dias" desde el último.
-# Corre todos los días a las 12:00 (Argentina); el script decide si toca publicar.
+# Corre todos los días a las 12:07 (Argentina) y, de respaldo, a las 14:07: GitHub demora o saltea los horarios
+# programados cuando tiene carga (sobre todo en la hora en punto). El script publica como máximo un reel por día,
+# así que el respaldo no duplica.
 name: Publicar reel
 
 on:
   schedule:
-    - cron: "0 15 * * *"
+    - cron: "7 15 * * *"
+    - cron: "7 17 * * *"
   workflow_dispatch:
     inputs:
       force:
