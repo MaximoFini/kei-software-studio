@@ -47,8 +47,19 @@ async def tts(texto, voz, rate, mp3):
     return palabras
 
 
+def usar_ca_del_entorno():
+    """edge-tts sólo confía en los certificados de certifi. Detrás de un proxy con certificado propio (el
+    entorno en la nube de Claude) hay que pasarle el CA del entorno, antes de importar edge_tts."""
+    ca = next((p for p in (os.environ.get("SSL_CERT_FILE"), os.environ.get("REQUESTS_CA_BUNDLE"),
+                           "/root/.ccr/ca-bundle.crt") if p and os.path.exists(p)), None)
+    if ca:
+        import certifi
+        certifi.where = lambda: ca
+
+
 def voz(g):
     import asyncio
+    usar_ca_del_entorno()
     tmp = tempfile.mkdtemp()
     escenas, lista, t = [], [], 0.0
     for i, (sid, texto) in enumerate(g["escenas"]):

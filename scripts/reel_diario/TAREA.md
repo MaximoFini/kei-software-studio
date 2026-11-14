@@ -13,6 +13,8 @@ reel de prueba a las 12:00 (hora de Argentina) y después borra la rama. Esta ta
 - Si algo del entorno falla (no hay red, falta ffmpeg, falla el render por algo que no es el guion), no lo
   arregles tocando el repo: terminá y explicá qué pasó. Ese día no se publica nada, y está bien.
 - Sin pedir confirmación a nadie: nadie va a contestar.
+- No borres ramas ni hagas push de nada más: desde la nube borrar ramas falla, y las del reel las borra el
+  Action después de publicar.
 
 ## Pasos
 
