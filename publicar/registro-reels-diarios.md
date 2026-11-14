@@ -3,17 +3,19 @@
 Se actualiza solo cada vez que se publica un reel diario (`scripts/publish_reel.py`). No editar a mano:
 se regenera con `python scripts/reel_diario.py registro`.
 
-**Publicados:** 0 · **por línea:** - · **por rubro:** -
+**Publicados:** 1 · **por línea:** conocido: 1 · **por rubro:** gimnasio: 1
 
 ## Publicados
 
-Todavía no se publicó ningún reel diario.
+| fecha | línea | rubro | tema | reel |
+|---|---|---|---|---|
+| 2026-11-14 | conocido | gimnasio | IA1 · El socio que se va callado: deja de venir y no renueva | [ver](https://www.instagram.com/reel/DfulPzFTn5f/) |
 
-## Temas de temas.md (0 de 51 hechos)
+## Temas de temas.md (1 de 51 hechos)
 
 ### Serie gimnasios con IA · conocido
 
-- [ ] IA1. El socio que se va callado
+- [x] IA1. El socio que se va callado — 2026-11-14, [ver](https://www.instagram.com/reel/DfulPzFTn5f/)
 - [ ] IA2. Cómo lo detecta la IA
 - [ ] IA3. El mensaje a tiempo
 - [ ] IA4. A quién llamar primero
