@@ -1,0 +1,37 @@
+{
+ "slug": "ejemplo-consultas-por-whatsapp",
+ "tema": "Ejemplo técnico: responder consultas de precios por WhatsApp a mano",
+ "titulo": "¿Te pasa esto?",
+ "caption": "Ejemplo técnico del reel diario (no se publica).\n\n#keisoftware",
+ "escenas": [
+  {"id": "gancho", "texto": "¿Cuántas horas por día perdés contestando lo mismo por WhatsApp?",
+   "visual": {"tipo": "gancho", "icono": "chat", "efecto": "alerta", "etiqueta": "Todos los días", "palabra": "WhatsApp"}},
+  {"id": "frase", "texto": "Hola, ¿precio? ¿Tenés stock? ¿Hacen envíos?",
+   "visual": {"tipo": "frase", "texto": "Hola, ¿precio? ¿Tenés stock? ¿Hacen envíos?", "destacar": ["¿precio?"], "etiqueta": "Tus clientes, a toda hora"}},
+  {"id": "noche", "texto": "Y no llegan en horario de oficina: llegan a la noche, el domingo, mientras comés.",
+   "visual": {"tipo": "notificaciones", "etiqueta": "23:47", "items": [
+     {"de": "Martín", "texto": "Hola! precio?"}, {"de": "Caro", "texto": "Tenés en talle M?"},
+     {"de": "Lucas", "texto": "Hacen envíos a Córdoba?"}, {"de": "Ana", "texto": "Sigue disponible?"}]}},
+  {"id": "laura", "texto": "Laura vende ropa online. Contesta todo ella, y se le escapan ventas.",
+   "visual": {"tipo": "persona", "animo": "estresado", "etiqueta": "Laura, tienda online", "items": [
+     {"icono": "chat", "valor": "32"}, {"icono": "mail", "valor": "8"}, {"icono": "planilla"}, {"icono": "reloj"}]}},
+  {"id": "horas", "texto": "Son más de quince horas por semana respondiendo preguntas repetidas.",
+   "visual": {"tipo": "contador", "hasta": 15, "sufijo": " h", "icono": "reloj", "etiqueta": "por semana", "palabra": "quince"}},
+  {"id": "caos", "texto": "Pedidos en el chat, stock en una planilla, pagos en otra app.",
+   "visual": {"tipo": "caos", "final": "cruz", "items": [
+     {"icono": "chat", "texto": "Pedidos", "palabra": "Pedidos"}, {"icono": "planilla", "texto": "Stock", "palabra": "stock"},
+     {"icono": "dinero", "texto": "Pagos", "palabra": "pagos"}]}},
+  {"id": "lista", "texto": "Mensajes sin responder, pedidos perdidos, clientes que se van.",
+   "visual": {"tipo": "lista", "marca": "cruz", "items": [
+     {"icono": "chat", "texto": "Sin responder"}, {"icono": "caja", "texto": "Pedidos perdidos"}, {"icono": "clientes", "texto": "Clientes que se van"}]}},
+  {"id": "cambio", "texto": "Antes, todo a mano. Después, un sistema que responde y ordena por vos.",
+   "visual": {"tipo": "antesDespues", "antes": {"titulo": "Antes", "items": [{"texto": "Todo a mano"}, {"texto": "Horas perdidas"}]},
+     "despues": {"titulo": "Después", "palabra": "Después", "items": [{"texto": "Respuestas al toque"}, {"texto": "Todo en un lugar"}]}}},
+  {"id": "solucion", "texto": "Precios, stock y pedidos, en un solo lugar y al instante.",
+   "visual": {"tipo": "solucion", "app": "Tu tienda", "items": [
+     {"icono": "dinero", "texto": "Precios", "valor": "al día"}, {"icono": "caja", "texto": "Stock", "valor": "48"},
+     {"icono": "carrito", "texto": "Pedidos", "valor": "+12"}]}},
+  {"id": "cta", "texto": "Seguinos para dejar de perder tiempo en tu negocio.",
+   "visual": {"tipo": "cta"}}
+ ]
+}

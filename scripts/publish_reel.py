@@ -25,6 +25,11 @@ Formato de cada entrada de la cola:
           "auto"   = reel de prueba que Instagram pasa a seguidores si rinde bien
           null     = reel normal
   Si una entrada no define "prueba", se usa la de "por_defecto".
+
+Reels diarios (scripts/reel_diario.py): cada uno llega como una rama claude/reel-diario-AAAA-MM-DD-<slug> con un
+commit huérfano (reel.mp4 + reel.json). Si la cola manual está vacía, se publica el más viejo, como reel de
+prueba por jsDelivr fijado a ese commit, y después se borra la rama para que el repo no crezca.
+Se publica como máximo un reel por día entre los dos orígenes.
 """
 import argparse, json, os, subprocess, sys, time, urllib.error, urllib.parse, urllib.request
 from datetime import datetime, timezone
@@ -37,6 +42,7 @@ COLA = ROOT / "publicar" / "cola.json"
 PUBLICADOS = ROOT / "publicar" / "publicados.json"
 PRUEBA = {"manual": "MANUAL", "auto": "SS_PERFORMANCE"}
 REPO = "MaximoFini/kei-software-studio"
+PREFIJO_DIARIO = "claude/reel-diario-"
 
 
 def api(method, path, token, **params):
@@ -73,11 +79,21 @@ def save(p, data):
 
 
 def git(*args):
-    return subprocess.check_output(["git", *args], cwd=ROOT, text=True).strip()
+    return subprocess.check_output(["git", *args], cwd=ROOT, text=True, encoding="utf-8").strip()
 
 
-def public_url(video):
-    """URL de jsDelivr fijada a un commit que ya está en GitHub y contiene el video (sirve video/mp4)."""
+def public_url(video, sha=None):
+    """URL de jsDelivr fijada a un commit que ya está en GitHub y contiene el video (sirve video/mp4).
+    Con sha (reel diario) el video sólo está en ese commit de su rama, no en el disco."""
+    if sha:
+        url = f"https://cdn.jsdelivr.net/gh/{REPO}@{sha}/{urllib.parse.quote(video)}"
+        with urllib.request.urlopen(urllib.request.Request(url, method="HEAD"), timeout=120) as r:
+            tipo, peso = r.headers.get("Content-Type", ""), int(r.headers.get("Content-Length") or 0)
+        if not tipo.startswith("video/"):
+            sys.exit(f"jsDelivr no sirve {video} como video ({tipo})")
+        if peso >= 20 * 1024 * 1024:
+            sys.exit(f"{video} pesa 20 MB o más: jsDelivr no lo sirve")
+        return url
     if (ROOT / video).stat().st_size >= 20 * 1024 * 1024:
         sys.exit(f"{video} pesa 20 MB o más: jsDelivr no lo sirve. Bajale el bitrate para publicarlo como prueba")
     if not git("ls-files", video):
@@ -106,13 +122,15 @@ def upload(container, video, token):
         sys.exit(f"Error subiendo el video: {res}")
 
 
-def publish(entry, defaults, token, ig_id):
-    if not (ROOT / entry["video"]).exists():
+def publish(entry, defaults, token, ig_id, sha=None):
+    if not sha and not (ROOT / entry["video"]).exists():
         sys.exit(f"No existe {entry['video']}")
     prueba = entry.get("prueba", defaults.get("prueba"))
+    if sha and not prueba:
+        prueba = "manual"  # el reel diario sólo existe en su rama: se publica por video_url
     params = {"media_type": "REELS", "caption": entry.get("caption", "")}
     if prueba:  # trial_params sólo funciona con video_url (la subida reanudable lo ignora)
-        params["video_url"] = public_url(entry["video"])
+        params["video_url"] = public_url(entry["video"], sha)
         params["trial_params"] = {"graduation_strategy": PRUEBA[prueba]}
     else:
         params["upload_type"] = "resumable"
@@ -140,6 +158,37 @@ def publish(entry, defaults, token, ig_id):
     return media, link
 
 
+def diarios():
+    """Ramas de reels diarios listos para publicar, del más viejo al más nuevo: [(rama, sha)]."""
+    refs = git("ls-remote", "--heads", "origin", f"refs/heads/{PREFIJO_DIARIO}*")
+    return sorted((l.split("\t")[1].removeprefix("refs/heads/"), l.split("\t")[0]) for l in refs.splitlines() if l.strip())
+
+
+def manifest_diario(rama, sha):
+    git("fetch", "--quiet", "--depth=1", "origin", f"refs/heads/{rama}")
+    return json.loads(git("show", f"{sha}:reel.json"))
+
+
+def publicar_diario(cola, publicados, token, ig_id, dry):
+    rama, sha = diarios()[0]
+    m = manifest_diario(rama, sha)
+    entry = {"video": m.get("video", "reel.mp4"), "caption": m["caption"], "prueba": m.get("prueba"), "ia": m.get("ia")}
+    entry = {k: v for k, v in entry.items() if v is not None}
+    if dry:
+        print(f"Publicaría el reel diario {rama} ({sha[:7]})\nCaption: {entry['caption']}")
+        return
+    media, link = publish(entry, cola.get("por_defecto", {}), token, ig_id, sha=sha)
+    publicados.append({"video": f"{rama}:{entry['video']}", "caption": entry["caption"], "tema": m.get("tema"), "slug": m.get("slug"),
+                       "titulo": m.get("titulo"), "commit": sha, "prueba": entry.get("prueba", cola.get("por_defecto", {}).get("prueba")),
+                       "fecha": datetime.now(timezone.utc).isoformat(timespec="seconds"), "media_id": media, "link": link})
+    save(PUBLICADOS, publicados)
+    try:  # la rama ya no hace falta: Instagram bajó el video y jsDelivr lo tiene cacheado por commit
+        git("push", "--quiet", "origin", "--delete", rama)
+    except subprocess.CalledProcessError:
+        print(f"Aviso: no se pudo borrar la rama {rama}")
+    print(f"Quedan {len(diarios())} reels diarios pendientes")
+
+
 def main():
     sys.stdout.reconfigure(encoding="utf-8")  # la consola de Windows no imprime emojis de los captions
     ap = argparse.ArgumentParser()
@@ -161,8 +210,9 @@ def main():
 
     cola, publicados = load(COLA, {}), load(PUBLICADOS, [])
     pendientes = cola.get("cola", [])
-    if not pendientes:
-        print("La cola está vacía: no hay nada para publicar")
+    hay_diarios = not pendientes and bool(diarios())
+    if not pendientes and not hay_diarios:
+        print("La cola está vacía y no hay reels diarios pendientes: no hay nada para publicar")
         return
 
     cada = cola.get("cada_dias", 3)
@@ -172,6 +222,10 @@ def main():
         if dias < cada - 0.1:  # margen para que el cron diario no se corra de hora
             print(f"Último reel hace {dias:.1f} días; toca cada {cada}. Nada que hacer hoy")
             return
+
+    if hay_diarios:
+        publicar_diario(cola, publicados, token, ig_id, a.dry_run)
+        return
 
     entry = pendientes[0]
     if a.dry_run:

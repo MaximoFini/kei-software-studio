@@ -131,6 +131,17 @@ bash scripts/render.sh KeiCierre out/cierre.mp4
    ```
    Queda todo en `out/web/hero/`. Subir esa carpeta al hosting de la landing y pegar `snippet.html`.
 
+### Reel diario automático ("dolor del cliente")
+
+Todos los días, sin intervención: una tarea programada de Claude en la nube escribe el guion y corre
+`scripts/reel_diario.py` (voz, música, render de `DolorReel`, compresión y controles). El reel queda en una rama
+`claude/reel-diario-…` y el GitHub Action "Publicar reel" lo sube como reel de prueba a las 12:00 y borra la rama.
+Instrucciones de la tarea: `scripts/reel_diario/TAREA.md`. Formato del guion: `scripts/reel_diario/FORMATO.md`.
+```bash
+python scripts/reel_diario.py generar scripts/reel_diario/ejemplo.json --no-push   # probarlo en la PC
+python scripts/reel_diario.py pendientes                                           # reels esperando publicarse
+```
+
 **Para grabar mejor:** 4K a 30 fps; bloquear exposición y foco (mantener apretado en la pantalla);
 buena luz de frente. Si la idea es mostrar una web o una app, **grabar la pantalla en la PC** (OBS) en lugar
 de filmar el monitor.
@@ -148,6 +159,7 @@ remotion/         Proyecto de Remotion (React)
   src/GameReel.tsx        Video 2: "Llegamos a Instagram" (motion graphics)
   src/OfficeReel.tsx      Video 3: celulares + push-in a la pantalla "IA" + cierre
   src/Landing.tsx         Videos de landing (16:9, 9:16, 4:5, 1:1): clip + subtítulos de marca + cierre
+  src/DolorReel.tsx       Reel diario "dolor del cliente", armado 100% desde un guion JSON
   public/                 Assets de las composiciones (fuentes, logos, SFX, videos intermedios, música)
 entregables/      Videos finales listos para publicar
 examples/         Cierre animado de muestra
@@ -166,6 +178,8 @@ scripts/
   logo_swap.py            Reemplaza un logo fijo por el de KEI, cuadro a cuadro
   extend_music.py         Extiende la música para que siga durante el cierre
   whoosh.py               Genera el SFX de transición (propio, sin derechos)
+  reel_diario.py          Reel diario: guion JSON → reel validado → rama lista para publicar
+  publish_reel.py         Publica en Instagram (cola manual y reels diarios); lo corre el GitHub Action
 GUIA.md           Cómo se hizo cada video y qué tocar para hacer uno nuevo
 ```
 

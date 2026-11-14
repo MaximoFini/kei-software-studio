@@ -22,3 +22,8 @@ remotion/public/bt_musica.wav
 remotion/public/ia_foto_*
 remotion/public/ia_musica.wav
 remotion/public/audio_musica.wav
+
+# Reel diario: audio y tiempos que se regeneran cada día (scripts/reel_diario.py)
+remotion/public/dolor_voz.wav
+remotion/public/dolor_musica.wav
+remotion/src/dolorVoz.json

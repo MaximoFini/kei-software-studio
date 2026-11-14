@@ -14,6 +14,7 @@ Cada video tiene un guion en scripts/guiones/<id>.json (voz, velocidad, escenas 
 Uso (sin instalar nada en .venv; uv baja edge-tts a una caché):
   uv run --python 3.11 --with edge-tts python scripts/explainer.py voz bt
   python scripts/explainer.py musica bt
+  python scripts/explainer.py voz work/reel_diario/guion.json   (también acepta la ruta a un guion)
 """
 import json, os, subprocess, sys, tempfile
 
@@ -111,5 +112,7 @@ def musica(g):
 if __name__ == "__main__":
     if len(sys.argv) != 3 or sys.argv[1] not in ("voz", "musica"):
         sys.exit(__doc__)
-    g = json.load(open(os.path.join(ROOT, "scripts", "guiones", f"{sys.argv[2]}.json"), encoding="utf-8"))
+    # Acepta un id (scripts/guiones/<id>.json) o la ruta a un guion (lo usa scripts/reel_diario.py)
+    ruta = sys.argv[2] if sys.argv[2].endswith(".json") else os.path.join(ROOT, "scripts", "guiones", f"{sys.argv[2]}.json")
+    g = json.load(open(ruta, encoding="utf-8"))
     {"voz": voz, "musica": musica}[sys.argv[1]](g)

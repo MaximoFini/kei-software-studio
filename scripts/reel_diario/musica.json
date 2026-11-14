@@ -1,0 +1,30 @@
+[
+ {
+  "titulo": "Long Day - PurrpleCat (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-long-day-518602/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/04/24/audio_c8a99a93d5.mp3?filename=purrplecat-long-day-518602.mp3",
+  "offset": 20.2,
+  "lufs": -25
+ },
+ {
+  "titulo": "Chillhop — Remain - Ornave (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-chillhop-remain-594997/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/08/31/audio_77d8cbede6.mp3?filename=ornave-chillhop-remain-594997.mp3",
+  "offset": 0.2,
+  "lufs": -25
+ },
+ {
+  "titulo": "Lo-Fi Chillhop - AtlasAudio (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-lo-fi-chillhop-617588/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/10/09/audio_b4c9ac3a5f.mp3?filename=atlasaudio-lo-fi-chillhop-617588.mp3",
+  "offset": 0.2,
+  "lufs": -25
+ },
+ {
+  "titulo": "Vlog Hip-Hop - ProducesPlatinum (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-vlog-hip-hop-483574/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/02/12/audio_ef715196dc.mp3?filename=producesplatinum-vlog-hip-hop-483574.mp3",
+  "offset": 2.45,
+  "lufs": -25
+ }
+]

@@ -284,11 +284,12 @@ export type PersonaProps = {
   corona?: boolean;
   capa?: string;
   dientes?: number; // 0..1 sonrisa abierta; el diente azul brilla con el valor
+  triste?: boolean; // boca hacia abajo, cejas preocupadas y sin rubor
 };
 
 export const Persona: React.FC<PersonaProps> = ({
   x, y, escala = 1, remera, pantalon = BRAND.azulMarino, pelo, peinado, piel = PIEL, brazoD = 8, brazoI = 8, delantal, fase = 0, opacity = 1,
-  celular = 0, corre = 0, auriculares = 0, barba, corona, capa, dientes = 0,
+  celular = 0, corre = 0, auriculares = 0, barba, corona, capa, dientes = 0, triste = false,
 }) => {
   const t = useT();
   const zancada = Math.sin(t * 11 + fase);
@@ -361,9 +362,12 @@ export const Persona: React.FC<PersonaProps> = ({
             <rect x={-7} y={-448} width={14} height={15} rx={3} fill={BRAND.azulUI} />
           </g>
         ) : (
-          <path d="M-20 -446 Q0 -430 20 -446" fill="none" stroke="#1B2140" strokeWidth={5} strokeLinecap="round" />
+          <path d={triste ? "M-20 -436 Q0 -454 20 -436" : "M-20 -446 Q0 -430 20 -446"} fill="none" stroke="#1B2140" strokeWidth={5} strokeLinecap="round" />
         )}
-        {!barba && (
+        {triste && (
+          <path d="M-38 -500 L-12 -492 M38 -500 L12 -492" stroke="#1B2140" strokeWidth={5} strokeLinecap="round" />
+        )}
+        {!barba && !triste && (
           <>
             <circle cx={-40} cy={-452} r={9} fill="#F49A8C" opacity={0.45} />
             <circle cx={40} cy={-452} r={9} fill="#F49A8C" opacity={0.45} />

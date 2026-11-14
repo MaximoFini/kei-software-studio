@@ -10,6 +10,7 @@ import { QrExplainer, QR_TOTAL } from "./QrExplainer";
 import { BtExplainer, BT_TOTAL } from "./BtExplainer";
 import { IaExplainer, IA_TOTAL } from "./IaExplainer";
 import { AudioExplainer, AUDIO_TOTAL } from "./AudioExplainer";
+import { DolorReel, calculateDolorMetadata, dolorDefaults } from "./DolorReel";
 
 // Formatos para landing: la duración y los fps salen del video (calculateMetadata)
 const LANDING_FORMATS = [
@@ -74,6 +75,17 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="BtExplainer" component={BtExplainer} durationInFrames={BT_TOTAL} fps={60} width={1080} height={1920} />
     <Composition id="IaExplainer" component={IaExplainer} durationInFrames={IA_TOTAL} fps={60} width={1080} height={1920} />
     <Composition id="AudioExplainer" component={AudioExplainer} durationInFrames={AUDIO_TOTAL} fps={60} width={1080} height={1920} />
+    {/* Reel diario de "dolor del cliente", armado desde datos (scripts/reel_diario.py) */}
+    <Composition
+      id="DolorReel"
+      component={DolorReel}
+      durationInFrames={600}
+      fps={60}
+      width={1080}
+      height={1920}
+      defaultProps={dolorDefaults}
+      calculateMetadata={calculateDolorMetadata}
+    />
     {LANDING_FORMATS.map((f) => (
       <Composition
         key={f.id}
