@@ -24,13 +24,15 @@ reel de prueba a las 12:00 (hora de Argentina) y después borra la rama. Esta ta
    ```
 2. **¿Hace falta generar?** `python scripts/reel_diario.py pendientes`. Si hay **2 o más** pendientes, terminá
    sin generar (el publicador va atrasado y no tiene sentido acumular).
-3. **Elegir el tema.** Leé [temas.md](temas.md) entero y la salida de `python scripts/reel_diario.py usados`
-   (fecha · línea · rubro · tema, del más viejo al más nuevo). Elegí la línea que toca (la contraria a la del
+3. **Elegir el tema.** Leé [temas.md](temas.md) entero, el registro
+   [publicar/registro-reels-diarios.md](../../publicar/registro-reels-diarios.md) (qué temas ya se hicieron) y
+   la salida de `python scripts/reel_diario.py usados` (fecha · línea · rubro · id · tema, del más viejo al más
+   nuevo, incluidos los pendientes de publicar). Elegí la línea que toca (la contraria a la del
    último reel), un rubro distinto del último de esa línea y un tema que no se haya usado, respetando la
    prioridad de la serie de gimnasios con IA. Si se agotaron los temas de un rubro, inventá uno nuevo con el
    mismo criterio.
 4. **Escribir el guion** en `work/reel_diario/hoy.json` siguiendo [FORMATO.md](FORMATO.md) y la guía de
-   contenido de [temas.md](temas.md), con `rubro` y `linea`. Dedicale la mayor parte del esfuerzo al gancho:
+   contenido de [temas.md](temas.md), con `rubro`, `linea` y `tema_id`. Dedicale la mayor parte del esfuerzo al gancho:
    escribí 3 opciones con tipos distintos y quedate con la que corte el scroll más fuerte para ese rubro. Mirá [ejemplo.json](ejemplo.json) como referencia de forma, no de contenido.
 5. **Validar:** `python scripts/reel_diario.py validar work/reel_diario/hoy.json`. Corregí hasta que diga
    "Guion OK".

@@ -9,6 +9,7 @@ Validarlo con `python scripts/reel_diario.py validar <guion.json>`.
   "tema": "Responder consultas a mano",     // una línea; sirve para no repetir temas
   "rubro": "gimnasio",                      // gimnasio, landing, concesionaria, ecommerce, barberia, profesional, pyme…
   "linea": "conocido",                      // "conocido" (rubros que ya trabajamos) o "nuevo" (rubros a validar)
+  "tema_id": "IA2",                         // id del tema en temas.md (vacío si es un tema inventado)
   "titulo": "¿Te pasa esto?",               // chip de arriba, máx. 32 caracteres
   "caption": "texto del post con #hashtags",
   "voz": "es-AR-ElenaNeural",               // opcional: si falta, alterna Elena y Tomás día por medio

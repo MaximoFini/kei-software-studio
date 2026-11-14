@@ -17,6 +17,10 @@ Uso:
   python scripts/reel_diario.py generar <guion.json> --no-push   todo menos el push (prueba local)
   python scripts/reel_diario.py pendientes                       reels generados que todavía no se publicaron
   python scripts/reel_diario.py usados                           temas ya publicados o pendientes (para no repetir)
+  python scripts/reel_diario.py registro                         regenera publicar/registro-reels-diarios.md
+
+Registro: publicar/publicados.json guarda cada reel publicado (lo escribe publish_reel.py) y
+publicar/registro-reels-diarios.md lo muestra legible: qué se publicó y qué temas de temas.md faltan.
 """
 import argparse, importlib.util, json, os, re, shutil, subprocess, sys, tempfile
 from datetime import datetime, timedelta, timezone
@@ -27,6 +31,8 @@ WORK = ROOT / "work" / "reel_diario"
 OUT = ROOT / "out" / "reel_diario"
 MUSICA = ROOT / "scripts" / "reel_diario" / "musica.json"
 PUBLICADOS = ROOT / "publicar" / "publicados.json"
+TEMAS = ROOT / "scripts" / "reel_diario" / "temas.md"
+REGISTRO = ROOT / "publicar" / "registro-reels-diarios.md"
 PREFIJO = "claude/reel-diario-"
 AUDIO_ID = "dolor"  # remotion/public/dolor_voz.wav y dolor_musica.wav
 MAX_MB = 18.5  # margen bajo los 20 MB de jsDelivr
@@ -63,6 +69,8 @@ def validar(g):
             err.append(f"falta '{campo}'")
     if g.get("linea") and g["linea"] not in ("conocido", "nuevo"):
         err.append("linea: 'conocido' o 'nuevo'")
+    if g.get("tema_id") and str(g["tema_id"]) not in {i for i, _, _ in temas_lista()}:
+        err.append(f"tema_id '{g['tema_id']}' no está en temas.md (si el tema es inventado, dejalo vacío)")
     if g.get("slug") and not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", g["slug"]):
         err.append("slug: sólo minúsculas, números y guiones")
     if len(g.get("titulo", "")) > 32:
@@ -265,6 +273,58 @@ def generar(path, push=True):
         print(f"Generado sin subir: {final.relative_to(ROOT)}")
 
 
+# ---------------- Temas y registro ----------------
+def temas_lista():
+    """Temas numerados de temas.md: [(id, texto, sección)]. Ids: "1".."N" y "IA1".."IA7" (serie de gimnasios)."""
+    res, seccion = [], ""
+    for linea in TEMAS.read_text(encoding="utf-8").splitlines():
+        if linea.startswith("## Serie destacada"):
+            seccion = "Serie gimnasios con IA · conocido"
+        elif linea.startswith("### ") and seccion:  # sólo las secciones de la serie y de la lista de temas
+            seccion = linea[4:].strip()
+        m = re.match(r"^(IA\d+|\d+)\. (.+)$", linea)
+        if m and seccion:
+            texto = re.sub(r"\*\*(.+?)\*\*.*", r"\1", m.group(2)).rstrip(":")
+            res.append((m.group(1), texto, seccion))
+    return res
+
+
+def registro():
+    """Escribe publicar/registro-reels-diarios.md desde publicados.json y temas.md."""
+    pubs = [p for p in json.loads(PUBLICADOS.read_text(encoding="utf-8")) if p.get("tema")]
+    hechos = {str(p["tema_id"]): p for p in pubs if p.get("tema_id")}
+
+    def cuenta(clave):
+        n = {}
+        for p in pubs:
+            n[p.get(clave, "?")] = n.get(p.get(clave, "?"), 0) + 1
+        return ", ".join(f"{k}: {v}" for k, v in sorted(n.items(), key=lambda kv: -kv[1])) or "-"
+
+    L = ["# Registro de reels diarios", "",
+         "Se actualiza solo cada vez que se publica un reel diario (`scripts/publish_reel.py`). No editar a mano:",
+         "se regenera con `python scripts/reel_diario.py registro`.", "",
+         f"**Publicados:** {len(pubs)} · **por línea:** {cuenta('linea')} · **por rubro:** {cuenta('rubro')}", "",
+         "## Publicados", ""]
+    if pubs:
+        L += ["| fecha | línea | rubro | tema | reel |", "|---|---|---|---|---|"]
+        for p in reversed(pubs):
+            tema = (f"{p['tema_id']} · " if p.get("tema_id") else "") + p["tema"].replace("|", "/")
+            L.append(f"| {p['fecha'][:10]} | {p.get('linea', '?')} | {p.get('rubro', '?')} | {tema} | [ver]({p.get('link', '')}) |")
+    else:
+        L.append("Todavía no se publicó ningún reel diario.")
+    lista = temas_lista()
+    L += ["", f"## Temas de temas.md ({len(hechos)} de {len(lista)} hechos)"]
+    seccion = None
+    for i, texto, sec in lista:
+        if sec != seccion:
+            L += ["", f"### {sec}", ""]
+            seccion = sec
+        p = hechos.get(i)
+        L.append(f"- [x] {i}. {texto} — {p['fecha'][:10]}, [ver]({p.get('link', '')})" if p else f"- [ ] {i}. {texto}")
+    REGISTRO.write_text("\n".join(L) + "\n", encoding="utf-8", newline="\n")
+    return REGISTRO
+
+
 # ---------------- Consultas ----------------
 def pendientes():
     refs = out(["git", "ls-remote", "--heads", "origin", f"refs/heads/{PREFIJO}*"])
@@ -273,7 +333,7 @@ def pendientes():
 
 def usados():
     """Reels diarios publicados y pendientes, del más viejo al más nuevo: fecha · línea · rubro · tema."""
-    fila = lambda fecha, m: f"{fecha} · {m.get('linea', '?')} · {m.get('rubro', '?')} · {m.get('tema', '?')}"
+    fila = lambda fecha, m: f"{fecha} · {m.get('linea', '?')} · {m.get('rubro', '?')} · {m.get('tema_id') or '-'} · {m.get('tema', '?')}"
     filas = [fila(p["fecha"][:10], p) for p in json.loads(PUBLICADOS.read_text(encoding="utf-8")) if p.get("tema")]
     for rama, sha in pendientes():
         subprocess.run(["git", "fetch", "--quiet", "--depth=1", "origin", f"refs/heads/{rama}"], cwd=ROOT, check=True)
@@ -284,7 +344,7 @@ def usados():
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser()
-    ap.add_argument("accion", choices=["validar", "generar", "pendientes", "usados"])
+    ap.add_argument("accion", choices=["validar", "generar", "pendientes", "usados", "registro"])
     ap.add_argument("guion", nargs="?")
     ap.add_argument("--no-push", action="store_true")
     a = ap.parse_args()
@@ -300,6 +360,8 @@ def main():
         print(f"{len(p)} pendiente(s)")
         for rama, sha in p:
             print(f"  {rama}  {sha[:7]}")
+    elif a.accion == "registro":
+        print(f"Registro actualizado: {registro().relative_to(ROOT)}")
     else:
         print("\n".join(usados()) or "(ninguno)")
 

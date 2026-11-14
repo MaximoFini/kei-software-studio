@@ -3,26 +3,122 @@
  "tema": "Serie IA 1-2: el socio que se va callado y cómo lo detecta la IA",
  "rubro": "gimnasio",
  "linea": "conocido",
+ "tema_id": "IA1",
  "titulo": "Tu gimnasio",
  "caption": "¿Y si supieras qué socio se va a ir antes de que se vaya? 🏋️\n\nLa mayoría no avisa: deja de venir de a poco y un día no renueva. Si se te van 8 socios por mes con una cuota de 35 mil, son 280 mil pesos por mes, más de 3 millones por año.\n\nEn KEI Software armamos sistemas de gestión a medida para gimnasios, con IA que detecta cuando un socio cambia su costumbre y le escribe ese mismo día.\n¿Te pasa algo parecido? Escribinos por DM y lo vemos juntos 📩\n\n👉 Seguinos para que tu negocio trabaje para vos.\n\n#keisoftware #softwareamedida #gimnasio #gym #fitness #retencion #inteligenciaartificial",
  "escenas": [
-  {"id": "gancho", "texto": "¿Y si supieras qué socio se va a ir antes de que se vaya?",
-   "visual": {"tipo": "gancho", "icono": "usuario", "efecto": "alerta", "etiqueta": "Antes de que se vaya", "palabra": "socio"}},
-  {"id": "callado", "texto": "La mayoría no avisa: deja de venir de a poco y un día no renueva.",
-   "visual": {"tipo": "persona", "animo": "estresado", "etiqueta": "Martín, gimnasio", "persona": {"peinado": "corto", "remera": "#2A44C9"},
-     "items": [{"icono": "usuario", "valor": "-8", "texto": "Bajas del mes"}, {"icono": "calendario"}, {"icono": "planilla"}]}},
-  {"id": "cuenta", "texto": "Ocho socios por mes, con cuota de treinta y cinco mil: doscientos ochenta mil pesos que se van.",
-   "visual": {"tipo": "contador", "hasta": 280, "prefijo": "$", "sufijo": " mil", "icono": "caida", "etiqueta": "por mes", "palabra": "doscientos"}},
-  {"id": "detecta", "texto": "Con IA, el sistema mira la asistencia de cada socio: venía tres veces por semana y hace diez días que no aparece.",
-   "visual": {"tipo": "asistencia", "etiqueta": "Asistencia de Lucas", "patron": [0, 2, 4], "semanas": 4, "corte": 3,
-     "alerta": "Socio en riesgo", "palabra": "diez"}},
-  {"id": "mensaje", "texto": "Ese mismo día le llega un mensaje para que vuelva.",
-   "visual": {"tipo": "notificaciones", "etiqueta": "09:30", "items": [{"de": "Tu gimnasio", "texto": "¿Te reservo la clase del jueves?"}]}},
-  {"id": "lista", "texto": "Y vos ves quiénes están en riesgo, para llamar primero.",
-   "visual": {"tipo": "solucion", "app": "Socios en riesgo", "items": [
-     {"icono": "usuario", "texto": "Lucas", "valor": "10 días"}, {"icono": "usuario", "texto": "Carla", "valor": "8 días"},
-     {"icono": "usuario", "texto": "Juan", "valor": "7 días"}]}},
-  {"id": "cta", "texto": "Seguinos para que tu negocio trabaje para vos, y no al revés.",
-   "visual": {"tipo": "cta"}}
+  {
+   "id": "gancho",
+   "texto": "¿Y si supieras qué socio se va a ir antes de que se vaya?",
+   "visual": {
+    "tipo": "gancho",
+    "icono": "usuario",
+    "efecto": "alerta",
+    "etiqueta": "Antes de que se vaya",
+    "palabra": "socio"
+   }
+  },
+  {
+   "id": "callado",
+   "texto": "La mayoría no avisa: deja de venir de a poco y un día no renueva.",
+   "visual": {
+    "tipo": "persona",
+    "animo": "estresado",
+    "etiqueta": "Martín, gimnasio",
+    "persona": {
+     "peinado": "corto",
+     "remera": "#2A44C9"
+    },
+    "items": [
+     {
+      "icono": "usuario",
+      "valor": "-8",
+      "texto": "Bajas del mes"
+     },
+     {
+      "icono": "calendario"
+     },
+     {
+      "icono": "planilla"
+     }
+    ]
+   }
+  },
+  {
+   "id": "cuenta",
+   "texto": "Ocho socios por mes, con cuota de treinta y cinco mil: doscientos ochenta mil pesos que se van.",
+   "visual": {
+    "tipo": "contador",
+    "hasta": 280,
+    "prefijo": "$",
+    "sufijo": " mil",
+    "icono": "caida",
+    "etiqueta": "por mes",
+    "palabra": "doscientos"
+   }
+  },
+  {
+   "id": "detecta",
+   "texto": "Con IA, el sistema mira la asistencia de cada socio: venía tres veces por semana y hace diez días que no aparece.",
+   "visual": {
+    "tipo": "asistencia",
+    "etiqueta": "Asistencia de Lucas",
+    "patron": [
+     0,
+     2,
+     4
+    ],
+    "semanas": 4,
+    "corte": 3,
+    "alerta": "Socio en riesgo",
+    "palabra": "diez"
+   }
+  },
+  {
+   "id": "mensaje",
+   "texto": "Ese mismo día le llega un mensaje para que vuelva.",
+   "visual": {
+    "tipo": "notificaciones",
+    "etiqueta": "09:30",
+    "items": [
+     {
+      "de": "Tu gimnasio",
+      "texto": "¿Te reservo la clase del jueves?"
+     }
+    ]
+   }
+  },
+  {
+   "id": "lista",
+   "texto": "Y vos ves quiénes están en riesgo, para llamar primero.",
+   "visual": {
+    "tipo": "solucion",
+    "app": "Socios en riesgo",
+    "items": [
+     {
+      "icono": "usuario",
+      "texto": "Lucas",
+      "valor": "10 días"
+     },
+     {
+      "icono": "usuario",
+      "texto": "Carla",
+      "valor": "8 días"
+     },
+     {
+      "icono": "usuario",
+      "texto": "Juan",
+      "valor": "7 días"
+     }
+    ]
+   }
+  },
+  {
+   "id": "cta",
+   "texto": "Seguinos para que tu negocio trabaje para vos, y no al revés.",
+   "visual": {
+    "tipo": "cta"
+   }
+  }
  ]
 }

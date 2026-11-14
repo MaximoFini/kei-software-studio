@@ -115,24 +115,26 @@ sistema mira la asistencia de cada socio, detecta cuándo cambia su patrón ("ve
 días que no viene"), lo marca en riesgo y dispara un mensaje personalizado, o le avisa al dueño a quién
 llamar primero. Ángulos (uno por reel, en este orden):
 
-1. **El socio que se va callado:** no avisa, deja de venir y no renueva. Cuenta: 8 bajas por mes × 35 mil =
+IA1. **El socio que se va callado:** no avisa, deja de venir y no renueva. Cuenta: 8 bajas por mes × 35 mil =
    280 mil por mes, más de 3 millones por año.
-2. **Cómo lo detecta la IA:** compara la asistencia de cada socio con su propia costumbre, no con un promedio.
+IA2. **Cómo lo detecta la IA:** compara la asistencia de cada socio con su propia costumbre, no con un promedio.
    Ejemplo visual: venía lunes, miércoles y viernes; hace 10 días que no aparece → alerta.
-3. **El mensaje a tiempo:** "Te extrañamos, ¿te reservo la clase del jueves?" sale solo el día que se detecta,
+IA3. **El mensaje a tiempo:** "Te extrañamos, ¿te reservo la clase del jueves?" sale solo el día que se detecta,
    no un mes después cuando ya se fue.
-4. **A quién llamar primero:** el sistema ordena la lista de socios en riesgo, el dueño llama a 5 en lugar
+IA4. **A quién llamar primero:** el sistema ordena la lista de socios en riesgo, el dueño llama a 5 en lugar
    de revisar 300.
-5. **Recuperar es más barato que conseguir:** cuánto cuesta conseguir un socio nuevo (publicidad, promos)
+IA5. **Recuperar es más barato que conseguir:** cuánto cuesta conseguir un socio nuevo (publicidad, promos)
    contra mandar un mensaje a uno que ya tenés.
-6. **Los primeros 30 días:** el socio nuevo que no arma la costumbre en el primer mes es el que más se va;
+IA6. **Los primeros 30 días:** el socio nuevo que no arma la costumbre en el primer mes es el que más se va;
    el sistema lo acompaña con recordatorios.
-7. **Lo que la planilla no te muestra:** en la planilla figura "activo" porque pagó, pero hace 3 semanas que
+IA7. **Lo que la planilla no te muestra:** en la planilla figura "activo" porque pagó, pero hace 3 semanas que
    no viene.
 
 ## Lista de temas
 
-Formato: **tema** · línea · rubro. Elegir uno que no aparezca en `python scripts/reel_diario.py usados`.
+Formato: **tema** · línea · rubro. Cada tema tiene un id (el número, o IA1-IA7 en la serie): ponelo en el
+`tema_id` del guion para que el registro lo marque como hecho. Los temas ya hechos están en
+[publicar/registro-reels-diarios.md](../../publicar/registro-reels-diarios.md); si inventás uno, `tema_id` va vacío.
 Cuando se agoten, inventar nuevos del mismo rubro con el mismo criterio (bien específicos).
 
 ### Gimnasios · conocido
