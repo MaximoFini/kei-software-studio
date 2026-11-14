@@ -1,15 +1,17 @@
 # Formato del guion del reel diario
 
-Un guion es un JSON que `scripts/reel_diario.py` convierte en reel. Ejemplo completo con los 10 tipos de escena:
-[ejemplo.json](ejemplo.json). Validarlo con `python scripts/reel_diario.py validar <guion.json>`.
+Un guion es un JSON que `scripts/reel_diario.py` convierte en reel. Ejemplos reales que siguen la guía de temas.md: [ejemplo.json](ejemplo.json) y [ejemplo-gimnasio-ia.json](ejemplo-gimnasio-ia.json).
+Validarlo con `python scripts/reel_diario.py validar <guion.json>`.
 
 ```jsonc
 {
   "slug": "consultas-por-whatsapp",        // minúsculas y guiones; va en el nombre de la rama
   "tema": "Responder consultas a mano",     // una línea; sirve para no repetir temas
+  "rubro": "gimnasio",                      // gimnasio, landing, concesionaria, ecommerce, barberia, profesional, pyme…
+  "linea": "conocido",                      // "conocido" (rubros que ya trabajamos) o "nuevo" (rubros a validar)
   "titulo": "¿Te pasa esto?",               // chip de arriba, máx. 32 caracteres
   "caption": "texto del post con #hashtags",
-  "voz": "es-AR-ElenaNeural",               // opcional (también es-AR-TomasNeural)
+  "voz": "es-AR-ElenaNeural",               // opcional: si falta, alterna Elena y Tomás día por medio
   "rate": "+18%",                           // opcional, velocidad de la voz
   "musica": 2,                              // opcional: índice de musica.json (si falta, rota por día)
   "escenas": [
@@ -18,7 +20,7 @@ Un guion es un JSON que `scripts/reel_diario.py` convierte en reel. Ejemplo comp
 }
 ```
 
-Reglas que controla el validador: 5 a 11 escenas, 70 a 150 palabras en total (≈ 30-55 s), cada escena de 3 a
+Reglas que controla el validador: 6 a 9 escenas, 70 a 110 palabras en total (reel de ≈ 30-40 s), cada escena de 3 a
 40 palabras, `id` únicos en camelCase y la última escena de tipo `cta`. Los subtítulos salen solos de la voz.
 
 ## Visuales
@@ -37,6 +39,7 @@ esa palabra (sin importar tildes ni mayúsculas). Si no se indica, los items se 
 | `antesDespues` | `antes` y `despues`: `{titulo, items (máx. 3), palabra?}` | dos paneles: rojo arriba, azul abajo |
 | `notificaciones` | `items` (máx. 6: `de`, `texto` máx. 34, `icono`?), `etiqueta`? (hora) | celular que vibra con mensajes que se apilan |
 | `solucion` | `app`, `items` (máx. 5: `icono`, `texto`, `valor`?) | celular con la app ordenada y check final |
+| `asistencia` | `patron` (índices de días que viene, ej. `[0, 2, 4]`), `semanas`? (2-5, def. 4), `corte`? (semana en que deja de venir, def. la última), `dias`? (def. L M X J V S), `etiqueta`?, `alerta`? (máx. 22, ej. "Socio en riesgo"), `palabra`? (cuándo termina de llenarse) | grilla de asistencia que se llena, días vacíos en rojo y alerta |
 | `cta` | — | tarjeta @keisoftware con "Seguir" → "Siguiendo" |
 
 Textos de items: máx. 24 caracteres (34 en notificaciones). Etiquetas: máx. 30.

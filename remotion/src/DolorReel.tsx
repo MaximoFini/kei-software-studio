@@ -35,6 +35,11 @@ type Visual = {
   despues?: { titulo: string; items: Item[]; palabra?: string };
   app?: string;
   palabra?: string;
+  semanas?: number;
+  dias?: string[];
+  patron?: number[];
+  corte?: number;
+  alerta?: string;
 };
 export type DolorProps = { titulo: string; audio: string; voz: VozData; escenas: { id: string; visual: Visual }[] };
 
@@ -378,9 +383,9 @@ const Notificaciones: React.FC<EscProps> = ({ id, v, k }) => {
           {items.map((it, i) => {
             const q = pop(t, ts[i], 14);
             const encima = Math.max(0, llegadas - 1 - i); // cuántas llegaron después
-            const y = 260 + encima * 150;
+            const y = 260 + encima * 156;
             return q > 0 && y < 900 && (
-              <div key={i} style={{ position: "absolute", left: 22, right: 22, top: y, height: 132, borderRadius: 28, background: "#ffffffF0",
+              <div key={i} style={{ position: "absolute", left: 22, right: 22, top: y, height: 140, borderRadius: 28, background: "#ffffffF0",
                 padding: "18px 22px", display: "flex", gap: 18, transform: `translateY(${(1 - q) * -60}px) scale(${0.9 + 0.1 * q})`, opacity: Math.min(1, q * 2) * (1 - encima * 0.12) }}>
                 <div style={{ width: 64, height: 64, flexShrink: 0, borderRadius: 18, background: it.icono === "mail" ? BRAND.azulUI : "#25A55F",
                   display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -388,7 +393,8 @@ const Notificaciones: React.FC<EscProps> = ({ id, v, k }) => {
                 </div>
                 <div style={{ overflow: "hidden" }}>
                   <div style={{ ...ui, fontWeight: 700, fontSize: 28, color: BRAND.fondoOscuro }}>{it.de ?? "Cliente"}</div>
-                  <div style={{ ...ui, fontWeight: 500, fontSize: 28, color: "#3A4466", whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden", width: 400 }}>{it.texto}</div>
+                  <div style={{ ...ui, fontWeight: 500, fontSize: 27, lineHeight: 1.15, color: "#3A4466", width: 400, display: "-webkit-box",
+                    WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{it.texto}</div>
                 </div>
               </div>
             );
@@ -436,6 +442,56 @@ const Solucion: React.FC<EscProps> = ({ id, v, k }) => {
   );
 };
 
+// Asistencia de un socio: semanas (filas) x días (columnas). Viene en los días de "patron" hasta la semana
+// "corte"; desde ahí los días quedan vacíos en rojo y salta la alerta (detección de inactividad).
+const Asistencia: React.FC<EscProps> = ({ id, v, k }) => {
+  const t = useT();
+  const dias = v.dias ?? ["L", "M", "X", "J", "V", "S"];
+  const semanas = v.semanas ?? 4;
+  const corte = v.corte ?? semanas - 1;
+  const patron = v.patron ?? [0, 2, 4];
+  const ini = k.tiempos(id, [{}])[0];
+  const finIda = k.en(id, v.palabra) ?? ini + (k.ESC[id].e - ini) * 0.55;
+  const p = pop(t, k.desde(id), 14);
+  const celda = 118, gap = 18;
+  const W = dias.length * celda + (dias.length - 1) * gap;
+  const alerta = pop(t, finIda + 0.5, 9);
+  const total = semanas * dias.length;
+  return (
+    <k.Escena id={id}>
+      <Centro y={790} style={{ transform: `translate(-50%,-50%) scale(${p})`, width: W + 80, padding: 40, borderRadius: 44,
+        background: `${BRAND.azulMarino}EE`, border: `2px solid ${BRAND.azulUI}66` }}>
+        {v.etiqueta && <div style={{ ...texto, fontSize: 46, marginBottom: 26 }}>{v.etiqueta}</div>}
+        <div style={{ display: "flex", gap, marginBottom: 14 }}>
+          {dias.map((d) => <div key={d} style={{ width: celda, textAlign: "center", ...ui, fontWeight: 700, fontSize: 34, color: BRAND.azulHielo }}>{d}</div>)}
+        </div>
+        {[...Array(semanas)].map((_, s) => (
+          <div key={s} style={{ display: "flex", gap, marginBottom: gap }}>
+            {dias.map((_, d) => {
+              const i = s * dias.length + d;
+              const at = ini + ((finIda - ini) * i) / total;
+              const q = ramp(t, at, at + 0.25);
+              const vino = s < corte && patron.includes(d);
+              const falta = s >= corte && patron.includes(d);
+              return (
+                <div key={d} style={{ width: celda, height: celda * 0.8, borderRadius: 22, display: "flex", alignItems: "center", justifyContent: "center",
+                  background: vino ? BRAND.azulUI : "#0B1230", border: `3px solid ${falta ? ROJO : vino ? BRAND.azulUI : "#2A3566"}`,
+                  opacity: 0.25 + 0.75 * q, transform: `scale(${0.85 + 0.15 * q})`, boxShadow: vino && q > 0.5 ? `0 0 18px ${BRAND.azulUI}88` : undefined }}>
+                  {vino && q > 0.5 && <Ico n="check" size={52} grosor={3} />}
+                  {falta && q > 0.5 && <Ico n="cruz" size={44} color={ROJO} grosor={3} />}
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </Centro>
+      {v.alerta && <Chip p={alerta} style={{ left: 540, top: 1260, fontSize: 52, background: `${ROJO}EE`, border: `2px solid #fff6` }}>
+        <Ico n="alerta" size={50} grosor={2.4} />{v.alerta}
+      </Chip>}
+    </k.Escena>
+  );
+};
+
 const Cta: React.FC<EscProps> = ({ id, k }) => {
   const a = k.desde(id) + 0.1;
   return (
@@ -447,7 +503,7 @@ const Cta: React.FC<EscProps> = ({ id, k }) => {
 
 export const ESCENAS: Record<string, React.FC<EscProps>> = {
   gancho: Gancho, persona: PersonaEsc, caos: Caos, contador: Contador, lista: Lista, frase: Frase,
-  antesDespues: AntesDespues, notificaciones: Notificaciones, solucion: Solucion, cta: Cta,
+  antesDespues: AntesDespues, notificaciones: Notificaciones, solucion: Solucion, cta: Cta, asistencia: Asistencia,
 };
 
 // Efectos: un "pop" suave por cada elemento que aparece y un "ok" en los checks
@@ -457,6 +513,10 @@ const efectos = (props: DolorProps, k: Kit): Sfx[] => {
     if (!k.ESC[id]) continue;
     if (v.items?.length && v.tipo !== "antesDespues") k.tiempos(id, v.items).forEach((s) => out.push(["qr_pop.wav", s, 0.25]));
     if (v.tipo === "gancho") out.push(["qr_pop.wav", k.desde(id) + 0.05, 0.4]);
+    if (v.tipo === "asistencia" && v.alerta) {
+      const ini = k.tiempos(id, [{}])[0];
+      out.push(["qr_pop.wav", (k.en(id, v.palabra) ?? ini + (k.ESC[id].e - ini) * 0.55) + 0.5, 0.5]);
+    }
     if (v.tipo === "solucion" && v.items?.length) out.push(["qr_ok.wav", k.tiempos(id, v.items).slice(-1)[0] + 0.6, 0.5]);
   }
   return out;

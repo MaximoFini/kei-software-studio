@@ -178,7 +178,7 @@ def publicar_diario(cola, publicados, token, ig_id, dry):
         print(f"Publicaría el reel diario {rama} ({sha[:7]})\nCaption: {entry['caption']}")
         return
     media, link = publish(entry, cola.get("por_defecto", {}), token, ig_id, sha=sha)
-    publicados.append({"video": f"{rama}:{entry['video']}", "caption": entry["caption"], "tema": m.get("tema"), "slug": m.get("slug"),
+    publicados.append({"video": f"{rama}:{entry['video']}", "caption": entry["caption"], "tema": m.get("tema"), "rubro": m.get("rubro"), "linea": m.get("linea"), "slug": m.get("slug"),
                        "titulo": m.get("titulo"), "commit": sha, "prueba": entry.get("prueba", cola.get("por_defecto", {}).get("prueba")),
                        "fecha": datetime.now(timezone.utc).isoformat(timespec="seconds"), "media_id": media, "link": link})
     save(PUBLICADOS, publicados)

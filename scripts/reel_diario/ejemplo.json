@@ -1,37 +1,130 @@
 {
- "slug": "ejemplo-consultas-por-whatsapp",
- "tema": "Ejemplo técnico: responder consultas de precios por WhatsApp a mano",
+ "slug": "turnos-por-chat-y-llamadas",
+ "tema": "Turnos por chat y llamadas, con superposiciones",
+ "rubro": "profesional",
+ "linea": "nuevo",
  "titulo": "¿Te pasa esto?",
- "caption": "Ejemplo técnico del reel diario (no se publica).\n\n#keisoftware",
+ "caption": "¿Seguís dando turnos por chat? 📅\n\nSi coordinás 15 turnos por día y cada uno te lleva 4 minutos de idas y vueltas, es 1 hora diaria. Son 20 horas por mes que no estás atendiendo.\n\nEn KEI Software armamos sistemas de turnos a medida: tus pacientes eligen el horario solos y el recordatorio sale automático.\n¿Te pasa algo parecido? Escribinos por DM y lo vemos juntos 📩\n\n👉 Seguinos para que tu negocio trabaje para vos.\n\n#keisoftware #softwareamedida #pymes #emprendedores #turnos #consultorio #profesionales #agenda",
  "escenas": [
-  {"id": "gancho", "texto": "¿Cuántas horas por día perdés contestando lo mismo por WhatsApp?",
-   "visual": {"tipo": "gancho", "icono": "chat", "efecto": "alerta", "etiqueta": "Todos los días", "palabra": "WhatsApp"}},
-  {"id": "frase", "texto": "Hola, ¿precio? ¿Tenés stock? ¿Hacen envíos?",
-   "visual": {"tipo": "frase", "texto": "Hola, ¿precio? ¿Tenés stock? ¿Hacen envíos?", "destacar": ["¿precio?"], "etiqueta": "Tus clientes, a toda hora"}},
-  {"id": "noche", "texto": "Y no llegan en horario de oficina: llegan a la noche, el domingo, mientras comés.",
-   "visual": {"tipo": "notificaciones", "etiqueta": "23:47", "items": [
-     {"de": "Martín", "texto": "Hola! precio?"}, {"de": "Caro", "texto": "Tenés en talle M?"},
-     {"de": "Lucas", "texto": "Hacen envíos a Córdoba?"}, {"de": "Ana", "texto": "Sigue disponible?"}]}},
-  {"id": "laura", "texto": "Laura vende ropa online. Contesta todo ella, y se le escapan ventas.",
-   "visual": {"tipo": "persona", "animo": "estresado", "etiqueta": "Laura, tienda online", "items": [
-     {"icono": "chat", "valor": "32"}, {"icono": "mail", "valor": "8"}, {"icono": "planilla"}, {"icono": "reloj"}]}},
-  {"id": "horas", "texto": "Son más de quince horas por semana respondiendo preguntas repetidas.",
-   "visual": {"tipo": "contador", "hasta": 15, "sufijo": " h", "icono": "reloj", "etiqueta": "por semana", "palabra": "quince"}},
-  {"id": "caos", "texto": "Pedidos en el chat, stock en una planilla, pagos en otra app.",
-   "visual": {"tipo": "caos", "final": "cruz", "items": [
-     {"icono": "chat", "texto": "Pedidos", "palabra": "Pedidos"}, {"icono": "planilla", "texto": "Stock", "palabra": "stock"},
-     {"icono": "dinero", "texto": "Pagos", "palabra": "pagos"}]}},
-  {"id": "lista", "texto": "Mensajes sin responder, pedidos perdidos, clientes que se van.",
-   "visual": {"tipo": "lista", "marca": "cruz", "items": [
-     {"icono": "chat", "texto": "Sin responder"}, {"icono": "caja", "texto": "Pedidos perdidos"}, {"icono": "clientes", "texto": "Clientes que se van"}]}},
-  {"id": "cambio", "texto": "Antes, todo a mano. Después, un sistema que responde y ordena por vos.",
-   "visual": {"tipo": "antesDespues", "antes": {"titulo": "Antes", "items": [{"texto": "Todo a mano"}, {"texto": "Horas perdidas"}]},
-     "despues": {"titulo": "Después", "palabra": "Después", "items": [{"texto": "Respuestas al toque"}, {"texto": "Todo en un lugar"}]}}},
-  {"id": "solucion", "texto": "Precios, stock y pedidos, en un solo lugar y al instante.",
-   "visual": {"tipo": "solucion", "app": "Tu tienda", "items": [
-     {"icono": "dinero", "texto": "Precios", "valor": "al día"}, {"icono": "caja", "texto": "Stock", "valor": "48"},
-     {"icono": "carrito", "texto": "Pedidos", "valor": "+12"}]}},
-  {"id": "cta", "texto": "Seguinos para dejar de perder tiempo en tu negocio.",
-   "visual": {"tipo": "cta"}}
+  {
+   "id": "gancho",
+   "texto": "¿Cuánto tiempo perdés por día coordinando turnos por chat?",
+   "visual": {
+    "tipo": "notificaciones",
+    "etiqueta": "08:12",
+    "items": [
+     {
+      "de": "Paula",
+      "texto": "Hola! tenés turno el jueves?"
+     },
+     {
+      "de": "Diego",
+      "texto": "Puedo pasar mi turno a las 18?"
+     },
+     {
+      "de": "Sofía",
+      "texto": "Me confirmás para mañana?"
+     }
+    ]
+   }
+  },
+  {
+   "id": "laura",
+   "texto": "Laura es kinesióloga. Entre paciente y paciente contesta mensajes, mueve horarios y atiende llamadas.",
+   "visual": {
+    "tipo": "persona",
+    "animo": "estresado",
+    "etiqueta": "Laura, kinesióloga",
+    "items": [
+     {
+      "icono": "chat",
+      "valor": "15"
+     },
+     {
+      "icono": "telefono",
+      "valor": "6"
+     },
+     {
+      "icono": "calendario"
+     }
+    ]
+   }
+  },
+  {
+   "id": "cuenta",
+   "texto": "Hagamos la cuenta: quince turnos por día, cuatro minutos cada uno.",
+   "visual": {
+    "tipo": "contador",
+    "hasta": 60,
+    "sufijo": " min",
+    "icono": "reloj",
+    "etiqueta": "por día",
+    "palabra": "cuatro"
+   }
+  },
+  {
+   "id": "mes",
+   "texto": "Es una hora diaria. Veinte horas por mes sin atender a nadie.",
+   "visual": {
+    "tipo": "contador",
+    "hasta": 20,
+    "sufijo": " h",
+    "icono": "calendario",
+    "etiqueta": "por mes",
+    "palabra": "Veinte"
+   }
+  },
+  {
+   "id": "encima",
+   "texto": "Y encima, turnos superpuestos y pacientes que se olvidan.",
+   "visual": {
+    "tipo": "lista",
+    "marca": "cruz",
+    "items": [
+     {
+      "icono": "calendario",
+      "texto": "Turnos superpuestos",
+      "palabra": "superpuestos"
+     },
+     {
+      "icono": "usuario",
+      "texto": "Pacientes que faltan",
+      "palabra": "olvidan"
+     }
+    ]
+   }
+  },
+  {
+   "id": "salida",
+   "texto": "Con un sistema de turnos, cada paciente elige su horario y le llega el recordatorio solo.",
+   "visual": {
+    "tipo": "solucion",
+    "app": "Turnos",
+    "items": [
+     {
+      "icono": "calendario",
+      "texto": "Jueves 10:00",
+      "valor": "Paula"
+     },
+     {
+      "icono": "calendario",
+      "texto": "Jueves 18:00",
+      "valor": "Diego"
+     },
+     {
+      "icono": "campana",
+      "texto": "Recordatorio",
+      "valor": "enviado"
+     }
+    ]
+   }
+  },
+  {
+   "id": "cta",
+   "texto": "Seguinos para que tu negocio trabaje para vos, y no al revés.",
+   "visual": {
+    "tipo": "cta"
+   }
+  }
  ]
 }

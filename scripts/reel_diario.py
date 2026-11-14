@@ -35,6 +35,7 @@ AR = timezone(timedelta(hours=-3))
 TIPOS = {  # campos obligatorios de cada visual
     "gancho": ["icono"], "persona": [], "caos": ["items"], "contador": ["hasta"], "lista": ["items"], "frase": ["texto"],
     "antesDespues": ["antes", "despues"], "notificaciones": ["items"], "solucion": ["items"], "cta": [],
+    "asistencia": ["patron"],
 }
 MAX_ITEMS = {"persona": 7, "caos": 6, "lista": 5, "notificaciones": 6, "solucion": 5}
 
@@ -57,9 +58,11 @@ def iconos():
 # ---------------- Validación ----------------
 def validar(g):
     err = []
-    for campo in ("slug", "tema", "titulo", "caption", "escenas"):
+    for campo in ("slug", "tema", "rubro", "linea", "titulo", "caption", "escenas"):
         if not g.get(campo):
             err.append(f"falta '{campo}'")
+    if g.get("linea") and g["linea"] not in ("conocido", "nuevo"):
+        err.append("linea: 'conocido' o 'nuevo'")
     if g.get("slug") and not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", g["slug"]):
         err.append("slug: sólo minúsculas, números y guiones")
     if len(g.get("titulo", "")) > 32:
@@ -67,8 +70,8 @@ def validar(g):
     if len(g.get("caption", "")) > 2000:
         err.append("caption: máximo 2000 caracteres")
     esc = g.get("escenas", [])
-    if not 5 <= len(esc) <= 11:
-        err.append("escenas: entre 5 y 11")
+    if not 6 <= len(esc) <= 9:
+        err.append("escenas: entre 6 y 9")
     ids = [e.get("id") for e in esc]
     if len(set(ids)) != len(ids):
         err.append("escenas: los id se repiten")
@@ -104,14 +107,20 @@ def validar(g):
             for lado in ("antes", "despues"):
                 if len((v.get(lado) or {}).get("items", [])) > 3:
                     err.append(f"{donde}: máximo 3 items en '{lado}'")
+        if tipo == "asistencia":
+            dias = v.get("dias") or ["L", "M", "X", "J", "V", "S"]
+            if not 2 <= v.get("semanas", 4) <= 5 or not all(isinstance(d, int) and 0 <= d < len(dias) for d in v.get("patron", [])):
+                err.append(f"{donde}: asistencia necesita 'semanas' entre 2 y 5 y 'patron' con índices de 'dias'")
+            if len(v.get("alerta", "") or "") > 22:
+                err.append(f"{donde}: la alerta tiene que tener 22 caracteres o menos")
         if tipo == "frase" and len(v.get("texto", "")) > 70:
             err.append(f"{donde}: la frase tiene que tener 70 caracteres o menos")
         if len(v.get("etiqueta", "") or "") > 30:
             err.append(f"{donde}: etiqueta de 30 caracteres o menos")
     if esc and (esc[-1].get("visual") or {}).get("tipo") != "cta":
         err.append("la última escena tiene que ser 'cta'")
-    if not 70 <= palabras_total <= 150:
-        err.append(f"el guion tiene {palabras_total} palabras: entre 70 y 150 (≈ 30-55 s de voz)")
+    if not 70 <= palabras_total <= 110:
+        err.append(f"el guion tiene {palabras_total} palabras: entre 70 y 110 (reel de ≈ 30-40 s)")
     return err
 
 
@@ -132,6 +141,15 @@ def python_tts():
         return ["uv", "run", "--python", "3.11", "--with", "edge-tts", "python"]
     run([sys.executable, "-m", "pip", "install", "--quiet", "edge-tts"])
     return [sys.executable]
+
+
+# Voz alternada día por medio (las dos rioplatenses); el guion puede fijar "voz" y "rate"
+VOCES = [("es-AR-ElenaNeural", "+18%"), ("es-AR-TomasNeural", "+12%")]
+
+
+def elegir_voz(g):
+    voz, rate = VOCES[datetime.now(AR).timetuple().tm_yday % 2]
+    return g.get("voz", voz), g.get("rate", rate if "voz" not in g else "+15%")
 
 
 def elegir_musica(g):
@@ -178,8 +196,8 @@ def controlar(final):
     tipos = [s["codec_type"] for s in info["streams"]]
     v = next(s for s in info["streams"] if s["codec_type"] == "video")
     err = []
-    if not 25 <= dur <= 75:
-        err.append(f"duración {dur:.1f} s fuera de 25-75 s")
+    if not 27 <= dur <= 46:
+        err.append(f"duración {dur:.1f} s fuera de 27-46 s (acortá o alargá el guion)")
     if mb >= MAX_MB:
         err.append(f"pesa {mb:.1f} MB (máximo {MAX_MB})")
     if "audio" not in tipos:
@@ -221,7 +239,7 @@ def generar(path, push=True):
     OUT.mkdir(parents=True, exist_ok=True)
     guion = WORK / "guion_voz.json"
     guion.write_text(json.dumps({
-        "id": AUDIO_ID, "titulo": g["titulo"], "voz": g.get("voz", "es-AR-ElenaNeural"), "rate": g.get("rate", "+18%"),
+        "id": AUDIO_ID, "titulo": g["titulo"], "voz": elegir_voz(g)[0], "rate": elegir_voz(g)[1],
         "pausa": 0.16, "escenas": [[e["id"], e["texto"]] for e in g["escenas"]], "musica": elegir_musica(g),
     }, ensure_ascii=False, indent=1), encoding="utf-8")
 
@@ -254,9 +272,13 @@ def pendientes():
 
 
 def usados():
-    temas = [p.get("tema") or p.get("caption", "")[:60] for p in json.loads(PUBLICADOS.read_text(encoding="utf-8")) if p.get("tema")]
-    temas += [f"(pendiente) {rama.removeprefix(PREFIJO)}" for rama, _ in pendientes()]
-    return temas
+    """Reels diarios publicados y pendientes, del más viejo al más nuevo: fecha · línea · rubro · tema."""
+    fila = lambda fecha, m: f"{fecha} · {m.get('linea', '?')} · {m.get('rubro', '?')} · {m.get('tema', '?')}"
+    filas = [fila(p["fecha"][:10], p) for p in json.loads(PUBLICADOS.read_text(encoding="utf-8")) if p.get("tema")]
+    for rama, sha in pendientes():
+        subprocess.run(["git", "fetch", "--quiet", "--depth=1", "origin", f"refs/heads/{rama}"], cwd=ROOT, check=True)
+        filas.append(fila("pendiente", json.loads(out(["git", "show", f"{sha}:reel.json"]))))
+    return filas
 
 
 def main():
