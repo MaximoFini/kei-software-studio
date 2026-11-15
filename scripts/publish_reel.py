@@ -221,7 +221,7 @@ def main():
     if publicados and not a.force:
         ultimo = datetime.fromisoformat(publicados[-1]["fecha"])
         dias = (datetime.now(timezone.utc) - ultimo).total_seconds() / 86400
-        if dias < cada - 0.1:  # margen para que el cron diario no se corra de hora
+        if dias < cada - 0.15:  # margen: la hora de publicación varía según cuánto tarda la tarea
             print(f"Último reel hace {dias:.1f} días; toca cada {cada}. Nada que hacer hoy")
             return
 
