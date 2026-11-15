@@ -27,7 +27,7 @@ Formato de cada entrada de la cola:
   Si una entrada no define "prueba", se usa la de "por_defecto".
 
 Reels diarios (scripts/reel_diario.py): cada uno llega como una rama claude/reel-diario-AAAA-MM-DD-<slug> con un
-commit huérfano (reel.mp4 + reel.json). Si la cola manual está vacía, se publica el más viejo, como reel de
+commit sobre main que suma reel.mp4 + reel.json en la raíz (el push dispara el Action). Si la cola manual está vacía, se publica el más viejo, como reel de
 prueba por jsDelivr fijado a ese commit, y después se borra la rama para que el repo no crezca.
 Se publica como máximo un reel por día entre los dos orígenes.
 """

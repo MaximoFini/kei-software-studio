@@ -224,7 +224,10 @@ def controlar(final):
 
 
 def subir(g, final):
-    """Commit huérfano (sin padre) con reel.mp4 y reel.json en una rama nueva; no toca el árbol de trabajo."""
+    """Commit sobre main con reel.mp4 y reel.json en la raíz, en una rama nueva; no toca el árbol de trabajo.
+    Parte de main para que la rama traiga el workflow: el push a claude/reel-diario-* dispara "Publicar reel" al
+    instante (los horarios programados de GitHub se demoran horas o se saltean). El video sólo queda en esa rama,
+    que el Action borra después de publicar, así que main no crece."""
     fecha = datetime.now(AR).strftime("%Y-%m-%d")
     rama = f"{PREFIJO}{fecha}-{g['slug']}"
     manifest = {**g, "generado": datetime.now(timezone.utc).isoformat(timespec="seconds"), "video": "reel.mp4"}
@@ -232,10 +235,16 @@ def subir(g, final):
     tmp.write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     blob_v = out(["git", "hash-object", "-w", final])
     blob_j = out(["git", "hash-object", "-w", tmp])
-    # En bytes: en modo texto Windows convierte \n en \r\n y los nombres quedan "reel.json\r"
-    tree = subprocess.run(["git", "mktree"], cwd=ROOT, check=True, capture_output=True,
-                          input=f"100644 blob {blob_j}\treel.json\n100644 blob {blob_v}\treel.mp4\n".encode()).stdout.decode().strip()
-    sha = out(["git", "commit-tree", tree, "-m", f"Reel diario: {g['titulo']}"])
+    run(["git", "fetch", "--quiet", "origin", "main"])
+    base = out(["git", "rev-parse", "FETCH_HEAD"])
+    # Árbol de main + reel.mp4 + reel.json, armado en un índice aparte (el del repo no se toca)
+    env = {**os.environ, "GIT_INDEX_FILE": str(WORK / "indice-reel")}
+    git_idx = lambda *a: subprocess.run(["git", *a], cwd=ROOT, check=True, env=env, capture_output=True, text=True).stdout.strip()
+    git_idx("read-tree", base)
+    git_idx("update-index", "--add", "--cacheinfo", f"100644,{blob_v},reel.mp4")
+    git_idx("update-index", "--add", "--cacheinfo", f"100644,{blob_j},reel.json")
+    tree = git_idx("write-tree")
+    sha = out(["git", "commit-tree", tree, "-p", base, "-m", f"Reel diario: {g['titulo']}"])
     run(["git", "push", "origin", f"{sha}:refs/heads/{rama}"])
     print(f"Listo para publicar: rama {rama} ({sha[:7]})")
     return rama, sha

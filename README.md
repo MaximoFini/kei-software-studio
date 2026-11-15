@@ -135,7 +135,7 @@ bash scripts/render.sh KeiCierre out/cierre.mp4
 
 Todos los días, sin intervención: una tarea programada de Claude en la nube escribe el guion y corre
 `scripts/reel_diario.py` (voz, música, render de `DolorReel`, compresión y controles). El reel queda en una rama
-`claude/reel-diario-…` y el GitHub Action "Publicar reel" lo sube como reel de prueba a las 12:00 y borra la rama.
+`claude/reel-diario-…`; ese push dispara el GitHub Action "Publicar reel", que lo sube como reel de prueba y borra la rama.
 Instrucciones de la tarea: `scripts/reel_diario/TAREA.md`. Formato del guion: `scripts/reel_diario/FORMATO.md`.
 ```bash
 python scripts/reel_diario.py generar scripts/reel_diario/ejemplo.json --no-push   # probarlo en la PC

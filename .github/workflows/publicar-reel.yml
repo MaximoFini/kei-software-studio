@@ -1,10 +1,12 @@
-# Publica el próximo reel de publicar/cola.json cuando pasaron "cada_dias" desde el último.
-# Corre todos los días a las 12:07 (Argentina) y, de respaldo, a las 14:07: GitHub demora o saltea los horarios
-# programados cuando tiene carga (sobre todo en la hora en punto). El script publica como máximo un reel por día,
-# así que el respaldo no duplica.
+# Publica el próximo reel (cola manual de publicar/cola.json o reel diario) cuando pasaron "cada_dias" desde el último.
+# Se dispara al instante cuando la tarea de Claude sube una rama claude/reel-diario-* (~11:40 Argentina).
+# Los horarios de 12:07 y 14:07 son de respaldo: GitHub los demora horas o los saltea cuando tiene carga.
+# El script publica como máximo un reel por día, así que nada se duplica.
 name: Publicar reel
 
 on:
+  push:
+    branches: ["claude/reel-diario-**"]
   schedule:
     - cron: "7 15 * * *"
     - cron: "7 17 * * *"
@@ -27,6 +29,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main  # en un push a la rama del reel, el código y la cola se leen de main
 
       - uses: actions/setup-python@v5
         with:

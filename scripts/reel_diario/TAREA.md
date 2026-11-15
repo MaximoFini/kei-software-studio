@@ -4,8 +4,8 @@ Instrucciones para la tarea programada de Claude que corre todos los días en la
 
 > Seguí las instrucciones de scripts/reel_diario/TAREA.md del repo kei-software-studio.
 
-El reel que se genera queda en una rama `claude/reel-diario-…`. El GitHub Action "Publicar reel" lo publica como
-reel de prueba a las 12:00 (hora de Argentina) y después borra la rama. Esta tarea **no publica nada en Instagram**.
+El reel que se genera queda en una rama `claude/reel-diario-…`. Subir esa rama dispara el GitHub Action "Publicar
+reel", que lo publica como reel de prueba en unos minutos y después borra la rama. Esta tarea **no publica nada en Instagram**.
 
 ## Reglas
 
