@@ -118,5 +118,20 @@
     "fecha": "2026-11-15T16:35:32+00:00",
     "media_id": "18134306419758584",
     "link": "https://www.instagram.com/reel/DfxOLMMT4_G/"
+  },
+  {
+    "video": "claude/reel-diario-2026-11-16-interesados-sin-seguimiento:reel.mp4",
+    "caption": "Entraron 150 consultas y vendiste 12. ¿Y las otras 138? 🚗\n\nSi nadie vuelve a llamar a los interesados, son 138 personas por mes que preguntaron y quedaron en el aire. Con que una de cada diez compre, serían casi 14 ventas más.\n\nEn KEI Software armamos un sistema de seguimiento de interesados a medida para concesionarias: cada consulta queda registrada y el vendedor recibe el aviso de cuándo volver a llamar.\n¿Te pasa algo parecido? Escribinos por DM y lo vemos juntos 📩\n\n👉 Seguinos para que tu negocio trabaje para vos.\n\n#keisoftware #softwareamedida #concesionaria #autos #ventasdeautos #seguimiento #crm #pymes",
+    "tema": "Vendedores que no hacen seguimiento a los interesados",
+    "tema_id": "16",
+    "rubro": "concesionaria",
+    "linea": "conocido",
+    "slug": "interesados-sin-seguimiento",
+    "titulo": "Tu concesionaria, hoy",
+    "commit": "eaa329350ddcb76fb10adfef9a4b6875e1e4c763",
+    "prueba": "manual",
+    "fecha": "2026-11-16T23:45:33+00:00",
+    "media_id": "17980520628170653",
+    "link": "https://www.instagram.com/reel/Df0kMEsJLmw/"
   }
 ]

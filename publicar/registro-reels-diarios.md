@@ -3,16 +3,17 @@
 Se actualiza solo cada vez que se publica un reel diario (`scripts/publish_reel.py`). No editar a mano:
 se regenera con `python scripts/reel_diario.py registro`.
 
-**Publicados:** 2 · **por línea:** conocido: 1, nuevo: 1 · **por rubro:** gimnasio: 1, ecommerce: 1
+**Publicados:** 3 · **por línea:** conocido: 2, nuevo: 1 · **por rubro:** gimnasio: 1, ecommerce: 1, concesionaria: 1
 
 ## Publicados
 
 | fecha | línea | rubro | tema | reel |
 |---|---|---|---|---|
+| 2026-11-16 | conocido | concesionaria | 16 · Vendedores que no hacen seguimiento a los interesados | [ver](https://www.instagram.com/reel/Df0kMEsJLmw/) |
 | 2026-11-15 | nuevo | ecommerce | 22 · Consultas de noche o el fin de semana que nadie responde | [ver](https://www.instagram.com/reel/DfxOLMMT4_G/) |
 | 2026-11-14 | conocido | gimnasio | IA1 · El socio que se va callado: deja de venir y no renueva | [ver](https://www.instagram.com/reel/DfulPzFTn5f/) |
 
-## Temas de temas.md (2 de 51 hechos)
+## Temas de temas.md (3 de 51 hechos)
 
 ### Serie gimnasios con IA · conocido
 
@@ -47,7 +48,7 @@ se regenera con `python scripts/reel_diario.py registro`.
 ### Concesionarias · conocido
 
 - [ ] 15. Consultas de portales, redes y chat sin centralizar
-- [ ] 16. Vendedores que no hacen seguimiento a los interesados
+- [x] 16. Vendedores que no hacen seguimiento a los interesados — 2026-11-16, [ver](https://www.instagram.com/reel/Df0kMEsJLmw/)
 - [ ] 17. Stock desactualizado: se ofrece un auto que ya se vendió
 - [ ] 18. Usados en consignación o toma controlados en planillas
 - [ ] 19. Papeles y documentación de cada operación en carpetas
