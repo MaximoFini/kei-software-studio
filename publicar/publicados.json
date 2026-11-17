@@ -133,5 +133,20 @@
     "fecha": "2026-11-16T23:45:33+00:00",
     "media_id": "17980520628170653",
     "link": "https://www.instagram.com/reel/Df0kMEsJLmw/"
+  },
+  {
+    "video": "claude/reel-diario-2026-11-17-clientes-que-faltan-barberia:reel.mp4",
+    "caption": "¿Sillón vacío y el cliente sin avisar? ✂️\n\nSi das 25 turnos por día y faltan 3, a 12 mil el corte son 36 mil pesos por día. En una semana de 6 días, más de 200 mil.\n\nEn KEI Software armamos sistemas de turnos a medida para barberías: el cliente confirma o cancela con un toque y el hueco se libera para otro.\n¿Te pasa algo parecido? Escribinos por DM y lo vemos juntos 📩\n\n👉 Seguinos para que tu negocio trabaje para vos.\n\n#keisoftware #softwareamedida #barberia #barberos #turnos #agenda #emprendedores",
+    "tema": "Clientes que faltan sin avisar y el sillón queda vacío",
+    "tema_id": "29",
+    "rubro": "barberia",
+    "linea": "nuevo",
+    "slug": "clientes-que-faltan-barberia",
+    "titulo": "¿Te pasa esto?",
+    "commit": "89ac5f1cefe27eb223fffcf103c224f8a609e9e1",
+    "prueba": "manual",
+    "fecha": "2026-11-17T22:52:27+00:00",
+    "media_id": "18131762881870598",
+    "link": "https://www.instagram.com/reel/Df3C9BjItFn/"
   }
 ]

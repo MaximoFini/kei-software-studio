@@ -3,17 +3,18 @@
 Se actualiza solo cada vez que se publica un reel diario (`scripts/publish_reel.py`). No editar a mano:
 se regenera con `python scripts/reel_diario.py registro`.
 
-**Publicados:** 3 · **por línea:** conocido: 2, nuevo: 1 · **por rubro:** gimnasio: 1, ecommerce: 1, concesionaria: 1
+**Publicados:** 4 · **por línea:** conocido: 2, nuevo: 2 · **por rubro:** gimnasio: 1, ecommerce: 1, concesionaria: 1, barberia: 1
 
 ## Publicados
 
 | fecha | línea | rubro | tema | reel |
 |---|---|---|---|---|
+| 2026-11-17 | nuevo | barberia | 29 · Clientes que faltan sin avisar y el sillón queda vacío | [ver](https://www.instagram.com/reel/Df3C9BjItFn/) |
 | 2026-11-16 | conocido | concesionaria | 16 · Vendedores que no hacen seguimiento a los interesados | [ver](https://www.instagram.com/reel/Df0kMEsJLmw/) |
 | 2026-11-15 | nuevo | ecommerce | 22 · Consultas de noche o el fin de semana que nadie responde | [ver](https://www.instagram.com/reel/DfxOLMMT4_G/) |
 | 2026-11-14 | conocido | gimnasio | IA1 · El socio que se va callado: deja de venir y no renueva | [ver](https://www.instagram.com/reel/DfulPzFTn5f/) |
 
-## Temas de temas.md (3 de 51 hechos)
+## Temas de temas.md (4 de 51 hechos)
 
 ### Serie gimnasios con IA · conocido
 
@@ -67,7 +68,7 @@ se regenera con `python scripts/reel_diario.py registro`.
 ### Barberías · nuevo
 
 - [ ] 28. Turnos por chat todo el día, mientras cortás
-- [ ] 29. Clientes que faltan sin avisar y el sillón queda vacío
+- [x] 29. Clientes que faltan sin avisar y el sillón queda vacío — 2026-11-17, [ver](https://www.instagram.com/reel/Df3C9BjItFn/)
 - [ ] 30. Huecos en la agenda que nadie ocupa
 - [ ] 31. Clientes que no vuelven y nadie los llama
 - [ ] 32. No saber cuánto factura cada barbero
