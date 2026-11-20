@@ -3,12 +3,13 @@
 Se actualiza solo cada vez que se publica un reel diario (`scripts/publish_reel.py`). No editar a mano:
 se regenera con `python scripts/reel_diario.py registro`.
 
-**Publicados:** 6 · **por línea:** conocido: 3, nuevo: 3 · **por rubro:** gimnasio: 2, ecommerce: 1, concesionaria: 1, barberia: 1, profesional: 1
+**Publicados:** 7 · **por línea:** conocido: 4, nuevo: 3 · **por rubro:** gimnasio: 2, ecommerce: 1, concesionaria: 1, barberia: 1, profesional: 1, landing: 1
 
 ## Publicados
 
 | fecha | línea | rubro | tema | reel |
 |---|---|---|---|---|
+| 2026-11-20 | conocido | landing | 9 · Mucho tráfico de anuncios y casi ninguna consulta | [ver](https://www.instagram.com/reel/Df-s-jxuIBd/) |
 | 2026-11-19 | nuevo | profesional | 35 · Recordatorios de turnos mandados a mano | [ver](https://www.instagram.com/reel/Df8LF6dh31N/) |
 | 2026-11-18 | conocido | gimnasio | IA2 · Serie IA2: cómo lo detecta la IA, comparando a cada socio con su propia costumbre | [ver](https://www.instagram.com/reel/Df5l012AvrV/) |
 | 2026-11-17 | nuevo | barberia | 29 · Clientes que faltan sin avisar y el sillón queda vacío | [ver](https://www.instagram.com/reel/Df3C9BjItFn/) |
@@ -16,7 +17,7 @@ se regenera con `python scripts/reel_diario.py registro`.
 | 2026-11-15 | nuevo | ecommerce | 22 · Consultas de noche o el fin de semana que nadie responde | [ver](https://www.instagram.com/reel/DfxOLMMT4_G/) |
 | 2026-11-14 | conocido | gimnasio | IA1 · El socio que se va callado: deja de venir y no renueva | [ver](https://www.instagram.com/reel/DfulPzFTn5f/) |
 
-## Temas de temas.md (6 de 51 hechos)
+## Temas de temas.md (7 de 51 hechos)
 
 ### Serie gimnasios con IA · conocido
 
@@ -41,7 +42,7 @@ se regenera con `python scripts/reel_diario.py registro`.
 
 ### Landings con conversión · conocido
 
-- [ ] 9. Mucho tráfico de anuncios y casi ninguna consulta
+- [x] 9. Mucho tráfico de anuncios y casi ninguna consulta — 2026-11-20, [ver](https://www.instagram.com/reel/Df-s-jxuIBd/)
 - [ ] 10. Una web que no explica en 5 segundos qué vendés
 - [ ] 11. Una web que tarda en cargar desde el celular
 - [ ] 12. Un formulario largo que nadie completa
