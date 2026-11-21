@@ -3,12 +3,13 @@
 Se actualiza solo cada vez que se publica un reel diario (`scripts/publish_reel.py`). No editar a mano:
 se regenera con `python scripts/reel_diario.py registro`.
 
-**Publicados:** 7 · **por línea:** conocido: 4, nuevo: 3 · **por rubro:** gimnasio: 2, ecommerce: 1, concesionaria: 1, barberia: 1, profesional: 1, landing: 1
+**Publicados:** 8 · **por línea:** conocido: 4, nuevo: 4 · **por rubro:** gimnasio: 2, ecommerce: 1, concesionaria: 1, barberia: 1, profesional: 1, landing: 1, pyme: 1
 
 ## Publicados
 
 | fecha | línea | rubro | tema | reel |
 |---|---|---|---|---|
+| 2026-11-21 | nuevo | pyme | 40 · Cobros pendientes que nadie persigue | [ver](https://www.instagram.com/reel/DgBIgntCtJe/) |
 | 2026-11-20 | conocido | landing | 9 · Mucho tráfico de anuncios y casi ninguna consulta | [ver](https://www.instagram.com/reel/Df-s-jxuIBd/) |
 | 2026-11-19 | nuevo | profesional | 35 · Recordatorios de turnos mandados a mano | [ver](https://www.instagram.com/reel/Df8LF6dh31N/) |
 | 2026-11-18 | conocido | gimnasio | IA2 · Serie IA2: cómo lo detecta la IA, comparando a cada socio con su propia costumbre | [ver](https://www.instagram.com/reel/Df5l012AvrV/) |
@@ -17,7 +18,7 @@ se regenera con `python scripts/reel_diario.py registro`.
 | 2026-11-15 | nuevo | ecommerce | 22 · Consultas de noche o el fin de semana que nadie responde | [ver](https://www.instagram.com/reel/DfxOLMMT4_G/) |
 | 2026-11-14 | conocido | gimnasio | IA1 · El socio que se va callado: deja de venir y no renueva | [ver](https://www.instagram.com/reel/DfulPzFTn5f/) |
 
-## Temas de temas.md (7 de 51 hechos)
+## Temas de temas.md (8 de 51 hechos)
 
 ### Serie gimnasios con IA · conocido
 
@@ -88,7 +89,7 @@ se regenera con `python scripts/reel_diario.py registro`.
 
 - [ ] 38. No saber cuánto stock hay sin ir a contar
 - [ ] 39. Presupuestos armados a mano y sin seguimiento
-- [ ] 40. Cobros pendientes que nadie persigue
+- [x] 40. Cobros pendientes que nadie persigue — 2026-11-21, [ver](https://www.instagram.com/reel/DgBIgntCtJe/)
 - [ ] 41. Pasar datos de una planilla a otra
 - [ ] 42. Todo depende del dueño: si no está, no se resuelve nada
 - [ ] 43. Información del negocio repartida en 5 lugares
