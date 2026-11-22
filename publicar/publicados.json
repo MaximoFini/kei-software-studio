@@ -208,5 +208,20 @@
     "fecha": "2026-11-21T20:53:27+00:00",
     "media_id": "18079468052759806",
     "link": "https://www.instagram.com/reel/DgBIgntCtJe/"
+  },
+  {
+    "video": "claude/reel-diario-2026-11-22-gimnasio-mensaje-a-tiempo-ia:reel.mp4",
+    "caption": "Un socio lleva diez días sin venir. ¿Quién le escribe hoy? 💬\n\nSi te enterás cuando no renueva, ya llegaste tarde: cada baja son 35 mil pesos por mes que dejás de cobrar. Con el sistema correcto, el aviso sale el mismo día que el socio cambia su costumbre.\n\nEn KEI Software armamos sistemas de gestión a medida para gimnasios, con IA que detecta cuándo un socio se aleja y le manda un mensaje a tiempo.\n¿Te pasa algo parecido? Escribinos por DM y lo vemos juntos 📩\n\n👉 Seguinos para que tu negocio trabaje para vos.\n\n#keisoftware #softwareamedida #gimnasio #gym #fitness #retencion #inteligenciaartificial",
+    "tema": "Serie IA3: el mensaje a tiempo, el día que el socio cambia su costumbre y no un mes después",
+    "tema_id": "IA3",
+    "rubro": "gimnasio",
+    "linea": "conocido",
+    "slug": "gimnasio-mensaje-a-tiempo-ia",
+    "titulo": "Tu gimnasio",
+    "commit": "b71f3a9fcaa2db66e8f58df0e0b607530e3afc32",
+    "prueba": "manual",
+    "fecha": "2026-11-22T21:01:10+00:00",
+    "media_id": "17886736782523338",
+    "link": "https://www.instagram.com/reel/DgDuLWnvUds/"
   }
 ]

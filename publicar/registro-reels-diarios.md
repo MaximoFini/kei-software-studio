@@ -3,12 +3,13 @@
 Se actualiza solo cada vez que se publica un reel diario (`scripts/publish_reel.py`). No editar a mano:
 se regenera con `python scripts/reel_diario.py registro`.
 
-**Publicados:** 8 · **por línea:** conocido: 4, nuevo: 4 · **por rubro:** gimnasio: 2, ecommerce: 1, concesionaria: 1, barberia: 1, profesional: 1, landing: 1, pyme: 1
+**Publicados:** 9 · **por línea:** conocido: 5, nuevo: 4 · **por rubro:** gimnasio: 3, ecommerce: 1, concesionaria: 1, barberia: 1, profesional: 1, landing: 1, pyme: 1
 
 ## Publicados
 
 | fecha | línea | rubro | tema | reel |
 |---|---|---|---|---|
+| 2026-11-22 | conocido | gimnasio | IA3 · Serie IA3: el mensaje a tiempo, el día que el socio cambia su costumbre y no un mes después | [ver](https://www.instagram.com/reel/DgDuLWnvUds/) |
 | 2026-11-21 | nuevo | pyme | 40 · Cobros pendientes que nadie persigue | [ver](https://www.instagram.com/reel/DgBIgntCtJe/) |
 | 2026-11-20 | conocido | landing | 9 · Mucho tráfico de anuncios y casi ninguna consulta | [ver](https://www.instagram.com/reel/Df-s-jxuIBd/) |
 | 2026-11-19 | nuevo | profesional | 35 · Recordatorios de turnos mandados a mano | [ver](https://www.instagram.com/reel/Df8LF6dh31N/) |
@@ -18,13 +19,13 @@ se regenera con `python scripts/reel_diario.py registro`.
 | 2026-11-15 | nuevo | ecommerce | 22 · Consultas de noche o el fin de semana que nadie responde | [ver](https://www.instagram.com/reel/DfxOLMMT4_G/) |
 | 2026-11-14 | conocido | gimnasio | IA1 · El socio que se va callado: deja de venir y no renueva | [ver](https://www.instagram.com/reel/DfulPzFTn5f/) |
 
-## Temas de temas.md (8 de 51 hechos)
+## Temas de temas.md (9 de 51 hechos)
 
 ### Serie gimnasios con IA · conocido
 
 - [x] IA1. El socio que se va callado — 2026-11-14, [ver](https://www.instagram.com/reel/DfulPzFTn5f/)
 - [x] IA2. Cómo lo detecta la IA — 2026-11-18, [ver](https://www.instagram.com/reel/Df5l012AvrV/)
-- [ ] IA3. El mensaje a tiempo
+- [x] IA3. El mensaje a tiempo — 2026-11-22, [ver](https://www.instagram.com/reel/DgDuLWnvUds/)
 - [ ] IA4. A quién llamar primero
 - [ ] IA5. Recuperar es más barato que conseguir
 - [ ] IA6. Los primeros 30 días
