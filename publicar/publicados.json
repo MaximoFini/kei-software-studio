@@ -223,5 +223,20 @@
     "fecha": "2026-11-22T21:01:10+00:00",
     "media_id": "17886736782523338",
     "link": "https://www.instagram.com/reel/DgDuLWnvUds/"
+  },
+  {
+    "video": "claude/reel-diario-2026-11-23-vender-sin-stock:reel.mp4",
+    "caption": "Te pagaron el pedido y ese producto ya no estaba 😬\n\nSi se te venden 6 pedidos por mes de algo agotado y cada uno era de 40 mil, son 240 mil pesos en ventas que se caen. Y un cliente que no vuelve.\n\nEn KEI Software armamos tiendas con stock que se descuenta solo en cada venta, a medida para e-commerce.\n¿Te pasa algo parecido? Escribinos por DM y lo vemos juntos 📩\n\n👉 Seguinos para que tu negocio trabaje para vos.\n\n#keisoftware #softwareamedida #ecommerce #tiendaonline #emprendedores #stock #ventasonline #pymes",
+    "tema": "Vender algo que ya no había en stock",
+    "tema_id": "23",
+    "rubro": "ecommerce",
+    "linea": "nuevo",
+    "slug": "vender-sin-stock",
+    "titulo": "¿Te pasa esto?",
+    "commit": "898b9fe4a27de2138f2a8f73807e816f97ebdf1b",
+    "prueba": "manual",
+    "fecha": "2026-11-24T02:10:06+00:00",
+    "media_id": "18161888005507690",
+    "link": "https://www.instagram.com/reel/DgG2UftJl1A/"
   }
 ]

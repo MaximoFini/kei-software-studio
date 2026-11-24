@@ -3,12 +3,13 @@
 Se actualiza solo cada vez que se publica un reel diario (`scripts/publish_reel.py`). No editar a mano:
 se regenera con `python scripts/reel_diario.py registro`.
 
-**Publicados:** 9 · **por línea:** conocido: 5, nuevo: 4 · **por rubro:** gimnasio: 3, ecommerce: 1, concesionaria: 1, barberia: 1, profesional: 1, landing: 1, pyme: 1
+**Publicados:** 10 · **por línea:** conocido: 5, nuevo: 5 · **por rubro:** gimnasio: 3, ecommerce: 2, concesionaria: 1, barberia: 1, profesional: 1, landing: 1, pyme: 1
 
 ## Publicados
 
 | fecha | línea | rubro | tema | reel |
 |---|---|---|---|---|
+| 2026-11-24 | nuevo | ecommerce | 23 · Vender algo que ya no había en stock | [ver](https://www.instagram.com/reel/DgG2UftJl1A/) |
 | 2026-11-22 | conocido | gimnasio | IA3 · Serie IA3: el mensaje a tiempo, el día que el socio cambia su costumbre y no un mes después | [ver](https://www.instagram.com/reel/DgDuLWnvUds/) |
 | 2026-11-21 | nuevo | pyme | 40 · Cobros pendientes que nadie persigue | [ver](https://www.instagram.com/reel/DgBIgntCtJe/) |
 | 2026-11-20 | conocido | landing | 9 · Mucho tráfico de anuncios y casi ninguna consulta | [ver](https://www.instagram.com/reel/Df-s-jxuIBd/) |
@@ -19,7 +20,7 @@ se regenera con `python scripts/reel_diario.py registro`.
 | 2026-11-15 | nuevo | ecommerce | 22 · Consultas de noche o el fin de semana que nadie responde | [ver](https://www.instagram.com/reel/DfxOLMMT4_G/) |
 | 2026-11-14 | conocido | gimnasio | IA1 · El socio que se va callado: deja de venir y no renueva | [ver](https://www.instagram.com/reel/DfulPzFTn5f/) |
 
-## Temas de temas.md (9 de 51 hechos)
+## Temas de temas.md (10 de 51 hechos)
 
 ### Serie gimnasios con IA · conocido
 
@@ -64,7 +65,7 @@ se regenera con `python scripts/reel_diario.py registro`.
 
 - [ ] 21. Contestar los mismos precios y preguntas por chat todo el día
 - [x] 22. Consultas de noche o el fin de semana que nadie responde — 2026-11-15, [ver](https://www.instagram.com/reel/DfxOLMMT4_G/)
-- [ ] 23. Vender algo que ya no había en stock
+- [x] 23. Vender algo que ya no había en stock — 2026-11-24, [ver](https://www.instagram.com/reel/DgG2UftJl1A/)
 - [ ] 24. Pedidos anotados en el chat, el cuaderno y la planilla
 - [ ] 25. Carritos abandonados que nadie recupera
 - [ ] 26. Comprobantes de pago perdidos en el chat
