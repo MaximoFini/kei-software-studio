@@ -3,12 +3,13 @@
 Se actualiza solo cada vez que se publica un reel diario (`scripts/publish_reel.py`). No editar a mano:
 se regenera con `python scripts/reel_diario.py registro`.
 
-**Publicados:** 10 · **por línea:** conocido: 5, nuevo: 5 · **por rubro:** gimnasio: 3, ecommerce: 2, concesionaria: 1, barberia: 1, profesional: 1, landing: 1, pyme: 1
+**Publicados:** 11 · **por línea:** conocido: 6, nuevo: 5 · **por rubro:** gimnasio: 3, ecommerce: 2, concesionaria: 2, barberia: 1, profesional: 1, landing: 1, pyme: 1
 
 ## Publicados
 
 | fecha | línea | rubro | tema | reel |
 |---|---|---|---|---|
+| 2026-11-24 | conocido | concesionaria | 17 · Stock desactualizado: se ofrece un auto que ya se vendió | [ver](https://www.instagram.com/reel/DgJLQOyONul/) |
 | 2026-11-24 | nuevo | ecommerce | 23 · Vender algo que ya no había en stock | [ver](https://www.instagram.com/reel/DgG2UftJl1A/) |
 | 2026-11-22 | conocido | gimnasio | IA3 · Serie IA3: el mensaje a tiempo, el día que el socio cambia su costumbre y no un mes después | [ver](https://www.instagram.com/reel/DgDuLWnvUds/) |
 | 2026-11-21 | nuevo | pyme | 40 · Cobros pendientes que nadie persigue | [ver](https://www.instagram.com/reel/DgBIgntCtJe/) |
@@ -20,7 +21,7 @@ se regenera con `python scripts/reel_diario.py registro`.
 | 2026-11-15 | nuevo | ecommerce | 22 · Consultas de noche o el fin de semana que nadie responde | [ver](https://www.instagram.com/reel/DfxOLMMT4_G/) |
 | 2026-11-14 | conocido | gimnasio | IA1 · El socio que se va callado: deja de venir y no renueva | [ver](https://www.instagram.com/reel/DfulPzFTn5f/) |
 
-## Temas de temas.md (10 de 51 hechos)
+## Temas de temas.md (11 de 51 hechos)
 
 ### Serie gimnasios con IA · conocido
 
@@ -56,7 +57,7 @@ se regenera con `python scripts/reel_diario.py registro`.
 
 - [ ] 15. Consultas de portales, redes y chat sin centralizar
 - [x] 16. Vendedores que no hacen seguimiento a los interesados — 2026-11-16, [ver](https://www.instagram.com/reel/Df0kMEsJLmw/)
-- [ ] 17. Stock desactualizado: se ofrece un auto que ya se vendió
+- [x] 17. Stock desactualizado: se ofrece un auto que ya se vendió — 2026-11-24, [ver](https://www.instagram.com/reel/DgJLQOyONul/)
 - [ ] 18. Usados en consignación o toma controlados en planillas
 - [ ] 19. Papeles y documentación de cada operación en carpetas
 - [ ] 20. No saber qué vendedor convierte y cuál no

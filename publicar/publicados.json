@@ -238,5 +238,20 @@
     "fecha": "2026-11-24T02:10:06+00:00",
     "media_id": "18161888005507690",
     "link": "https://www.instagram.com/reel/DgG2UftJl1A/"
+  },
+  {
+    "video": "claude/reel-diario-2026-11-24-stock-desactualizado-concesionaria:reel.mp4",
+    "caption": "El cliente llega por el auto publicado, y ya se vendió 🚗\n\nSi de 150 consultas por mes, 10 son por autos que ya no están, son 10 clientes que se van con mala impresión. Y cada uno le sacó tiempo a tu vendedor.\n\nEn KEI Software armamos sistemas de stock a medida para concesionarias: cuando se vende un auto, sale de todas las publicaciones.\n¿Te pasa algo parecido? Escribinos por DM y lo vemos juntos 📩\n\n👉 Seguinos para que tu negocio trabaje para vos.\n\n#keisoftware #softwareamedida #concesionaria #autos #stock #ventadeautos #agenciadeautos",
+    "tema": "Stock desactualizado: se ofrece un auto que ya se vendió",
+    "tema_id": "17",
+    "rubro": "concesionaria",
+    "linea": "conocido",
+    "slug": "stock-desactualizado-concesionaria",
+    "titulo": "¿Te pasa esto?",
+    "commit": "1ed0b6d22494c4d869d93e384565ee7a7993a572",
+    "prueba": "manual",
+    "fecha": "2026-11-24T23:51:25+00:00",
+    "media_id": "18139305181644451",
+    "link": "https://www.instagram.com/reel/DgJLQOyONul/"
   }
 ]
