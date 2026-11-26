@@ -3,12 +3,13 @@
 Se actualiza solo cada vez que se publica un reel diario (`scripts/publish_reel.py`). No editar a mano:
 se regenera con `python scripts/reel_diario.py registro`.
 
-**Publicados:** 12 · **por línea:** conocido: 6, nuevo: 6 · **por rubro:** gimnasio: 3, ecommerce: 2, concesionaria: 2, barberia: 2, profesional: 1, landing: 1, pyme: 1
+**Publicados:** 13 · **por línea:** conocido: 7, nuevo: 6 · **por rubro:** gimnasio: 4, ecommerce: 2, concesionaria: 2, barberia: 2, profesional: 1, landing: 1, pyme: 1
 
 ## Publicados
 
 | fecha | línea | rubro | tema | reel |
 |---|---|---|---|---|
+| 2026-11-26 | conocido | gimnasio | IA4 · Serie IA4: a quién llamar primero, la IA ordena los socios en riesgo | [ver](https://www.instagram.com/reel/DgOUJ18OI0r/) |
 | 2026-11-25 | nuevo | barberia | 28 · Turnos por chat todo el día, mientras cortás | [ver](https://www.instagram.com/reel/DgLuLWZqp-s/) |
 | 2026-11-24 | conocido | concesionaria | 17 · Stock desactualizado: se ofrece un auto que ya se vendió | [ver](https://www.instagram.com/reel/DgJLQOyONul/) |
 | 2026-11-24 | nuevo | ecommerce | 23 · Vender algo que ya no había en stock | [ver](https://www.instagram.com/reel/DgG2UftJl1A/) |
@@ -22,14 +23,14 @@ se regenera con `python scripts/reel_diario.py registro`.
 | 2026-11-15 | nuevo | ecommerce | 22 · Consultas de noche o el fin de semana que nadie responde | [ver](https://www.instagram.com/reel/DfxOLMMT4_G/) |
 | 2026-11-14 | conocido | gimnasio | IA1 · El socio que se va callado: deja de venir y no renueva | [ver](https://www.instagram.com/reel/DfulPzFTn5f/) |
 
-## Temas de temas.md (12 de 51 hechos)
+## Temas de temas.md (13 de 51 hechos)
 
 ### Serie gimnasios con IA · conocido
 
 - [x] IA1. El socio que se va callado — 2026-11-14, [ver](https://www.instagram.com/reel/DfulPzFTn5f/)
 - [x] IA2. Cómo lo detecta la IA — 2026-11-18, [ver](https://www.instagram.com/reel/Df5l012AvrV/)
 - [x] IA3. El mensaje a tiempo — 2026-11-22, [ver](https://www.instagram.com/reel/DgDuLWnvUds/)
-- [ ] IA4. A quién llamar primero
+- [x] IA4. A quién llamar primero — 2026-11-26, [ver](https://www.instagram.com/reel/DgOUJ18OI0r/)
 - [ ] IA5. Recuperar es más barato que conseguir
 - [ ] IA6. Los primeros 30 días
 - [ ] IA7. Lo que la planilla no te muestra

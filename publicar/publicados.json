@@ -268,5 +268,20 @@
     "fecha": "2026-11-25T23:35:04+00:00",
     "media_id": "18036978740911040",
     "link": "https://www.instagram.com/reel/DgLuLWZqp-s/"
+  },
+  {
+    "video": "claude/reel-diario-2026-11-26-gimnasio-a-quien-llamar-primero:reel.mp4",
+    "caption": "¿Tenés 300 socios y no sabés a cuál llamar primero? 📞\n\nRevisar 300 socios uno por uno, a un minuto cada uno, son 5 horas. Con IA, el sistema ordena la lista según cuánto cambió la costumbre de cada uno y vos llamás a los 5 que más lo necesitan.\n\nEn KEI Software armamos sistemas de gestión a medida para gimnasios, con una lista de socios en riesgo lista cada mañana.\n¿Te pasa algo parecido? Escribinos por DM y lo vemos juntos 📩\n\n👉 Seguinos para que tu negocio trabaje para vos.\n\n#keisoftware #softwareamedida #gimnasio #gym #fitness #retencion #inteligenciaartificial",
+    "tema": "Serie IA4: a quién llamar primero, la IA ordena los socios en riesgo",
+    "tema_id": "IA4",
+    "rubro": "gimnasio",
+    "linea": "conocido",
+    "slug": "gimnasio-a-quien-llamar-primero",
+    "titulo": "Tu gimnasio",
+    "commit": "6e6580c90efac65b0aa8764755691ed7f92d1202",
+    "prueba": "manual",
+    "fecha": "2026-11-26T23:45:17+00:00",
+    "media_id": "18109123208033342",
+    "link": "https://www.instagram.com/reel/DgOUJ18OI0r/"
   }
 ]
