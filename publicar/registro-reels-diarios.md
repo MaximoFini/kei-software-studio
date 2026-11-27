@@ -3,12 +3,13 @@
 Se actualiza solo cada vez que se publica un reel diario (`scripts/publish_reel.py`). No editar a mano:
 se regenera con `python scripts/reel_diario.py registro`.
 
-**Publicados:** 13 · **por línea:** conocido: 7, nuevo: 6 · **por rubro:** gimnasio: 4, ecommerce: 2, concesionaria: 2, barberia: 2, profesional: 1, landing: 1, pyme: 1
+**Publicados:** 14 · **por línea:** conocido: 7, nuevo: 7 · **por rubro:** gimnasio: 4, ecommerce: 2, concesionaria: 2, barberia: 2, pyme: 2, profesional: 1, landing: 1
 
 ## Publicados
 
 | fecha | línea | rubro | tema | reel |
 |---|---|---|---|---|
+| 2026-11-27 | nuevo | pyme | 39 · Presupuestos armados a mano y sin seguimiento | [ver](https://www.instagram.com/reel/DgQ2clWtDWq/) |
 | 2026-11-26 | conocido | gimnasio | IA4 · Serie IA4: a quién llamar primero, la IA ordena los socios en riesgo | [ver](https://www.instagram.com/reel/DgOUJ18OI0r/) |
 | 2026-11-25 | nuevo | barberia | 28 · Turnos por chat todo el día, mientras cortás | [ver](https://www.instagram.com/reel/DgLuLWZqp-s/) |
 | 2026-11-24 | conocido | concesionaria | 17 · Stock desactualizado: se ofrece un auto que ya se vendió | [ver](https://www.instagram.com/reel/DgJLQOyONul/) |
@@ -23,7 +24,7 @@ se regenera con `python scripts/reel_diario.py registro`.
 | 2026-11-15 | nuevo | ecommerce | 22 · Consultas de noche o el fin de semana que nadie responde | [ver](https://www.instagram.com/reel/DfxOLMMT4_G/) |
 | 2026-11-14 | conocido | gimnasio | IA1 · El socio que se va callado: deja de venir y no renueva | [ver](https://www.instagram.com/reel/DfulPzFTn5f/) |
 
-## Temas de temas.md (13 de 51 hechos)
+## Temas de temas.md (14 de 51 hechos)
 
 ### Serie gimnasios con IA · conocido
 
@@ -93,7 +94,7 @@ se regenera con `python scripts/reel_diario.py registro`.
 ### Pymes en general · nuevo
 
 - [ ] 38. No saber cuánto stock hay sin ir a contar
-- [ ] 39. Presupuestos armados a mano y sin seguimiento
+- [x] 39. Presupuestos armados a mano y sin seguimiento — 2026-11-27, [ver](https://www.instagram.com/reel/DgQ2clWtDWq/)
 - [x] 40. Cobros pendientes que nadie persigue — 2026-11-21, [ver](https://www.instagram.com/reel/DgBIgntCtJe/)
 - [ ] 41. Pasar datos de una planilla a otra
 - [ ] 42. Todo depende del dueño: si no está, no se resuelve nada

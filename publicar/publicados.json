@@ -283,5 +283,20 @@
     "fecha": "2026-11-26T23:45:17+00:00",
     "media_id": "18109123208033342",
     "link": "https://www.instagram.com/reel/DgOUJ18OI0r/"
+  },
+  {
+    "video": "claude/reel-diario-2026-11-27-presupuestos-sin-seguimiento:reel.mp4",
+    "caption": "Cinco presupuestos por mes se pierden y nadie llama 📄\n\nSi mandás 20 presupuestos por mes y 5 quedan sin respuesta, y cada uno valía 200 mil pesos, son un millón por mes que se enfría.\n\nEn KEI Software armamos un sistema de presupuestos a medida para pymes: cada uno queda registrado y te avisa cuándo volver a llamar.\n¿Te pasa algo parecido? Escribinos por DM y lo vemos juntos 📩\n\n👉 Seguinos para que tu negocio trabaje para vos.\n\n#keisoftware #softwareamedida #pymes #emprendedores #presupuestos #ventas #seguimiento #negocios",
+    "tema": "Presupuestos armados a mano y sin seguimiento",
+    "tema_id": "39",
+    "rubro": "pyme",
+    "linea": "nuevo",
+    "slug": "presupuestos-sin-seguimiento",
+    "titulo": "¿Te pasa esto?",
+    "commit": "ae61c18e40bb5d449e30755ae30ea33232cbb24d",
+    "prueba": "manual",
+    "fecha": "2026-11-27T23:23:30+00:00",
+    "media_id": "18134577349694442",
+    "link": "https://www.instagram.com/reel/DgQ2clWtDWq/"
   }
 ]
