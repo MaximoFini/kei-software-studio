@@ -298,5 +298,45 @@
     "fecha": "2026-11-27T23:23:30+00:00",
     "media_id": "18134577349694442",
     "link": "https://www.instagram.com/reel/DgQ2clWtDWq/"
+  },
+  {
+    "video": "publicar/videos/23-como-sabe-el-gps-donde-estas.mp4",
+    "caption": "Sin Einstein, tu GPS se equivocaría por kilómetros 🛰️📍\n\nTu celu escucha la hora que repiten unos 30 satélites, mide cuánto tardó en llegar cada señal y, con cuatro de ellos, calcula dónde estás. Pero los relojes de los satélites corren más rápido que los nuestros: sin corregirlo, el GPS fallaría unos 10 km por día.\n\nGuardalo para cuando alguien te pregunte cómo sabe tu celu dónde estás 💾\n\n👉 Seguinos y comentá qué aparato querés que expliquemos.\n\n#gps #einstein #tecnologia #ciencia #relatividad #explicado #keisoftware",
+    "prueba": "manual",
+    "fecha": "2026-11-27T23:33:48+00:00",
+    "media_id": "17905819008608202",
+    "link": "https://www.instagram.com/reel/DgQ3mhKBbJw/"
+  },
+  {
+    "video": "publicar/videos/24-como-sabe-la-pantalla-donde-tocaste.mp4",
+    "caption": "Una salchicha puede usar tu celular, pero un guante no 🌭🧤\n\nTu pantalla no siente la presión: bajo el vidrio hay una grilla de cables con carga eléctrica y tu cuerpo, que conduce, le absorbe un poquito. El celu detecta dónde cambió la carga y ahí está tu toque. La salchicha conduce; el guante aísla.\n\nMandáselo a alguien que use guantes con el celu 😅\n\n👉 Seguinos y contanos qué querés que expliquemos.\n\n#pantallatactil #celular #tecnologia #curiosidades #explicado #keisoftware",
+    "prueba": "manual",
+    "fecha": "2026-11-27T23:34:43+00:00",
+    "media_id": "18028399997870137",
+    "link": "https://www.instagram.com/reel/DgQ3u49qJiS/"
+  },
+  {
+    "video": "publicar/videos/25-como-reconoce-shazam-una-cancion.mp4",
+    "caption": "Shazam reconoce una canción en 5 segundos, aunque haya ruido 🎵🔍\n\nPrimero dibuja el sonido (qué notas suenan y qué tan fuerte), se queda solo con los picos más fuertes y los junta en una huella de la canción, como la de tu dedo. Después la compara con millones de huellas guardadas.\n\nGuardalo para la próxima vez que no sepas qué suena 💾\n\n👉 Seguinos y comentá qué aparato querés entender.\n\n#shazam #musica #tecnologia #curiosidades #explicado #keisoftware",
+    "prueba": "manual",
+    "fecha": "2026-11-27T23:35:33+00:00",
+    "media_id": "18418269739092617",
+    "link": "https://www.instagram.com/reel/DgQ30OTtljK/"
+  },
+  {
+    "video": "publicar/videos/26-por-que-el-final-de-la-carga-tarda-tanto.mp4",
+    "caption": "Cargar el último 20% tarda una eternidad. ¿Por qué? 🔋⏳\n\nImaginá la batería como un estacionamiento: vacío, los autos entran todos juntos y rápido; casi lleno, quedan pocos huecos y hay que maniobrar despacio. Si el celu forzara, se calentaría y la batería se gastaría antes: por eso frena a propósito.\n\nMandáselo a alguien que siempre tiene 1% 😅\n\n👉 Seguinos y contanos qué querés que expliquemos.\n\n#bateria #celular #carga #tecnologia #explicado #keisoftware",
+    "prueba": "manual",
+    "fecha": "2026-11-27T23:36:21+00:00",
+    "media_id": "18118993112030068",
+    "link": "https://www.instagram.com/reel/DgQ36dxvlrO/"
+  },
+  {
+    "video": "publicar/videos/27-por-que-el-microondas-corta-el-wifi.mp4",
+    "caption": "Tu microondas puede cortarte el wifi 📡🔥\n\nLos dos usan ondas de radio de casi la misma frecuencia: 2,4 gigahercios. El microondas está blindado, pero siempre se escapa un poquito y eso pisa al wifi. La solución: la red de 5 gigahercios, que el microondas no toca.\n\nProbalo: ¿se traba tu wifi cuando calentás algo? Contanos 👇\n\n👉 Seguinos y comentá qué aparato querés entender.\n\n#wifi #microondas #router #tecnologia #explicado #keisoftware",
+    "prueba": "manual",
+    "fecha": "2026-11-27T23:37:07+00:00",
+    "media_id": "18120218777005689",
+    "link": "https://www.instagram.com/reel/DgQ3__xNgLH/"
   }
 ]
