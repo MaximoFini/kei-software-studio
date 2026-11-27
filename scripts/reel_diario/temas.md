@@ -68,7 +68,7 @@ Valores de referencia (pesos redondos, revisar cada tanto; mejor horas y cantida
 | concesionaria | 150 consultas por mes, 10 a 15 ventas |
 | consultorio | 15 pacientes por día |
 
-## Estructura del guion (30 a 40 s, 70 a 110 palabras, 6 a 8 escenas)
+## Estructura del guion (≈ 30 s, 55 a 85 palabras, 6 a 8 escenas)
 
 1. **Gancho** (escena 1).
 2. **El dolor en concreto** (1 o 2 escenas): quién, qué hace a mano, cuándo le pasa. Personaje con nombre y

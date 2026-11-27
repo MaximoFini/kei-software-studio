@@ -131,6 +131,21 @@ bash scripts/render.sh KeiCierre out/cierre.mp4
    ```
    Queda todo en `out/web/hero/`. Subir esa carpeta al hosting de la landing y pegar `snippet.html`.
 
+### Reels explicativos con voz en off (azules y en pizarrón)
+
+Guion en `scripts/guiones/<id>.json` → voz con `scripts/explainer.py` → música → render. Hay dos estilos:
+**azul de marca** (QR, Bluetooth, IA, audio y los 14-22) y **pizarrón de tiza** (23-27: GPS, pantalla táctil, Shazam,
+batería, wifi). Duración estándar: **30 s** con cierre KEI. Las voces son neuronales (edge-tts, gratis) y se
+sintetizan frase por frase para que no suenen robóticas; `entregables/voces/` compara 13 voces.
+```bash
+py -m pip install --target work/pylib edge-tts                 # una sola vez (el Python de .venv no trae pip)
+PYTHONPATH=work/pylib py scripts/explainer.py voz gps          # voz + tiempos por palabra (remotion/src/gpsVoz.json)
+py scripts/explainer.py musica gps                             # música de fondo con ducking
+bash scripts/build_pizarron.sh gps                             # render a out/reels_pz/ y copia a entregables/
+bash scripts/hoja_contacto.sh out/reels_pz/gps.mp4 hoja.jpg 1.6 6 240   # hoja de contacto para revisar
+```
+Cómo se arma uno nuevo en pizarrón: GUIA.md §10 y la skill (sección K).
+
 ### Reel diario automático ("dolor del cliente")
 
 Todos los días, sin intervención: una tarea programada de Claude en la nube escribe el guion y corre
@@ -152,6 +167,7 @@ de filmar el monitor.
 
 ```
 .claude/skills/kei-video-studio/   Skill de Claude (se carga sola al abrir el repo con Claude Code)
+.github/workflows/      "Publicar reel": publica en Instagram (cola manual y reel diario)
 brand/            Manual de marca, recursos, logos, íconos de destacadas, fuentes
 remotion/         Proyecto de Remotion (React)
   src/KeiCierre.tsx       Cierre animado 4 s (placa final de todos los videos)
@@ -159,27 +175,46 @@ remotion/         Proyecto de Remotion (React)
   src/GameReel.tsx        Video 2: "Llegamos a Instagram" (motion graphics)
   src/OfficeReel.tsx      Video 3: celulares + push-in a la pantalla "IA" + cierre
   src/Landing.tsx         Videos de landing (16:9, 9:16, 4:5, 1:1): clip + subtítulos de marca + cierre
+  src/LandingReel.tsx     Reels de landings filmadas (KEI × cliente)
+  src/explainerKit.tsx    Piezas comunes de los explicativos azules (Qr/Bt/Ia/AudioExplainer)
+  src/pizarronKit.tsx     Kit del formato pizarrón: tiza, trazos, texto a mano, subtítulos, cierre con borrador
+  src/pizarronIconos.tsx  Dibujos de tiza (celu, satélite, batería, router, microondas, auto...)
+  src/GpsReel, TactilReel, ShazamReel, BateriaReel, WifiReel .tsx   Reels 23-27 en pizarrón
   src/DolorReel.tsx       Reel diario "dolor del cliente", armado 100% desde un guion JSON
-  public/                 Assets de las composiciones (fuentes, logos, SFX, videos intermedios, música)
-entregables/      Videos finales listos para publicar
+  src/*Voz.json           Tiempos por palabra de cada voz (los genera scripts/explainer.py)
+  public/                 Assets de las composiciones (fuentes, logos, SFX, voces, fondo del pizarrón)
+entregables/      Videos finales listos para publicar (voces/: muestras para comparar voces)
+publicar/         Cola y registro de lo publicado en Instagram, videos <20 MB para reels de prueba, guía del publicador
 examples/         Cierre animado de muestra
 input/            Material crudo (iPhone, etc.). No se sube al repo
-work/  out/       Intermedios y renders. No se suben al repo
+work/  out/       Intermedios y renders (work/pylib: edge-tts). No se suben al repo
 models/           Modelos de Whisper (se bajan solos). No se suben al repo
+logos_clientes/   Logos y material de clientes. No se sube al repo
 scripts/
-  build_all.sh            Vuelve a renderizar los 4 videos
-  render.sh               Render de Remotion: master H.264 (cuadros PNG, bt709), --prores, --draft
-  ingest.sh               Material de cámara: HDR→SDR, fps fijo, rotación, estabilizar, recortar
-  enhance.sh              Mejora de calidad: --perfil ia | camara, limpieza de voz, loudness -14 LUFS
-  captions.sh             Subtítulos automáticos con Whisper (.srt/.vtt), quemado con Glacial Indifference
-  fix_font_names.py       Genera brand/fonts/ffmpeg/ (Glacial con nombre interno, para FFmpeg)
-  web_export.sh           Export para landing: H.264 + AV1, 1080/720, poster, snippet <video>, loop
-  vmaf.sh                 Mide la calidad de un export contra el master
-  logo_swap.py            Reemplaza un logo fijo por el de KEI, cuadro a cuadro
-  extend_music.py         Extiende la música para que siga durante el cierre
-  whoosh.py               Genera el SFX de transición (propio, sin derechos)
-  reel_diario.py          Reel diario: guion JSON → reel validado → rama lista para publicar
-  publish_reel.py         Publica en Instagram (cola manual y reels diarios); lo corre el GitHub Action
+  Render y edición
+    render.sh             Render de Remotion: master H.264 (cuadros PNG, bt709), --prores, --draft
+    build_all.sh          Vuelve a renderizar los videos 1-9
+    build_pizarron.sh     Renderiza los reels en pizarrón (23-27) y los copia a entregables/
+    ingest.sh             Material de cámara: HDR→SDR, fps fijo, rotación, estabilizar, recortar
+    enhance.sh            Mejora de calidad: --perfil ia | camara, limpieza de voz, loudness -14 LUFS
+    captions.sh           Subtítulos automáticos con Whisper (.srt/.vtt), quemado con Glacial Indifference
+    web_export.sh, vmaf.sh   Export para landing (H.264 + AV1, poster, snippet) y medición de calidad
+    logo_swap.py          Reemplaza un logo fijo por el de KEI, cuadro a cuadro
+    extend_music.py, whoosh.py   Música que sigue durante el cierre y SFX de transición propio
+    fix_font_names.py     Genera brand/fonts/ffmpeg/ (Glacial con nombre interno, para FFmpeg)
+    hoja_contacto.sh      Hoja de contacto de un video para revisarlo de un vistazo
+  Explicativos con voz
+    explainer.py          Voz (edge-tts, frase por frase), tiempos por palabra y música de fondo
+    guiones/              Un JSON por reel: voz, velocidad, escenas, música
+    probar_voces.py, prosodia.py   Comparan voces (inteligibilidad con Whisper y variación de tono)
+    qr_assets.py, ia_assets.py     Assets de los explicativos de QR e IA
+    pizarron_assets.py    Fondo, grano y sonidos del formato pizarrón
+  Reels de landings y ventas
+    landing_reels.py, landing_reels.json, reel_ventas.sh
+  Reel diario e Instagram
+    reel_diario.py, reel_diario/   Reel diario: guion JSON → reel validado → rama lista para publicar
+    publish_reel.py       Publica en Instagram (cola manual y reels diarios); lo corre el GitHub Action
+    guardar_token.ps1     Guarda el token de Instagram en .env y en el secret de GitHub
 GUIA.md           Cómo se hizo cada video y qué tocar para hacer uno nuevo
 ```
 

@@ -136,7 +136,7 @@ salvo el cierre. Script: `scripts/reel_ventas.sh` → `entregables/04-tu-web-ven
 
 ---
 
-## 5 · Reels de landings filmadas (KEI × cliente)
+## 5b · Reels de landings filmadas (KEI × cliente)
 
 **Técnica:** monitor filmado con el iPhone en un cuarto oscuro → cuerpo acelerado sin pausas → `LandingReel`.
 Regla: **sin oraciones en el medio**, sólo el lockup de logos. Sin música (se agrega en el editor de Instagram).
@@ -254,3 +254,23 @@ cuadro 0 y la burbuja de audio deshaciéndose en números; bucle abierto: por qu
 - "16.000 por segundo" es la frecuencia de muestreo de los audios de WhatsApp (Opus de banda ancha).
 - Música: "Chillhop — Remain" (Ornave, Pixabay, sin Content ID), desde 0,2 s.
 - Render: `bash scripts/build_all.sh 9`.
+
+
+## 10 · Reels en formato pizarrón (23 a 27)
+
+Formato nuevo para cortar con el motion design azul de los explicativos 6-9 y 14-22: todo se escribe y se dibuja con tiza
+sobre un pizarrón verde (referencia: un reel de "Comenta MCP" visto en Instagram). 30 s justos con el cierre KEI, 30 fps,
+guion de ≈ 70 palabras. Kit en `remotion/src/pizarronKit.tsx` + `pizarronIconos.tsx`; cada reel sólo arma sus escenas.
+
+| # | Reel | Gancho | Voz | Música |
+|---|---|---|---|---|
+| 23 | ¿Cómo sabe el GPS dónde estás? (`GpsReel`) | Sin Einstein el GPS fallaría kilómetros (relojes de los satélites) | es-MX-Jorge | Lo-Fi Chillhop (AtlasAudio) |
+| 24 | ¿Cómo sabe la pantalla dónde tocaste? (`TactilReel`) | Una salchicha puede usar tu celular y un guante no (capacitancia) | es-US-Paloma | Chillhop Remain (Ornave) |
+| 25 | ¿Cómo reconoce Shazam una canción? (`ShazamReel`) | La reconoce en 5 s aunque haya ruido (espectrograma, picos, huella) | en-US-Emma (multilingüe) | Vlog Hip-Hop (ProducesPlatinum) |
+| 26 | ¿Por qué el final de la carga tarda tanto? (`BateriaReel`) | El último 20 % tarda una eternidad (estacionamiento) | es-US-Alonso | Long Day (PurrpleCat) |
+| 27 | ¿Por qué el microondas corta el wifi? (`WifiReel`) | Tu microondas puede cortarte el wifi (2,4 GHz) | es-AR-Elena | Lo-Fi Chillhop (AtlasAudio) |
+
+- **Voz**: `scripts/explainer.py voz <id>` ahora sintetiza frase por frase (ritmo ±, preguntas con tono más alto, cierre de escena más lento) y aplica EQ + compresión + sala mínima. Las voces de estos reels tienen más variación de tono (3,2-4,2 st) que las anteriores (2,7-2,9 st) según `scripts/prosodia.py`.
+- **Sonido**: sólo voz, música y micro-sonidos mínimos (un "pop" suave en títulos y signos, un "whoosh" muy bajo entre escenas y al entrar el cierre). Se probó el raspado de la tiza y se sacó: irritaba.
+- **Cierre**: el borrador barre el pizarrón de izquierda a derecha y deja la placa KEI.
+- **Render**: `bash scripts/build_pizarron.sh` (los 5) o con ids; copia a `entregables/23-…27-*.mp4`. No se agregaron a la cola de publicación.

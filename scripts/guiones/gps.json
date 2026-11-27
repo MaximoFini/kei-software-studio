@@ -1,0 +1,42 @@
+{
+ "id": "gps",
+ "titulo": "¿Cómo sabe el GPS dónde estás?",
+ "voz": "es-MX-JorgeNeural",
+ "rate": "+10%",
+ "pausa": 0.14,
+ "gap": 0.1,
+ "fps": 30,
+ "escenas": [
+  [
+   "hook",
+   "Sin Einstein, tu GPS se equivocaría por kilómetros. ¿Por qué?"
+  ],
+  [
+   "sats",
+   "Arriba hay unos treinta satélites, y todos repiten la hora exacta."
+  ],
+  [
+   "senal",
+   "Tu celular escucha esa señal. Y mide cuánto tardó en llegar: más demora, más lejos."
+  ],
+  [
+   "cuatro",
+   "Con cuatro satélites cruza las distancias, y marca dónde estás."
+  ],
+  [
+   "einstein",
+   "Pero esos relojes corren más rápido. Sin corregirlo, fallaría diez kilómetros por día."
+  ],
+  [
+   "cta",
+   "Seguinos, y comentá qué aparato querés entender."
+  ]
+ ],
+ "musica": {
+  "titulo": "Lo-Fi Chillhop - AtlasAudio (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-lo-fi-chillhop-617588/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/10/09/audio_b4c9ac3a5f.mp3?filename=atlasaudio-lo-fi-chillhop-617588.mp3",
+  "offset": 0.2,
+  "lufs": -25
+ }
+}

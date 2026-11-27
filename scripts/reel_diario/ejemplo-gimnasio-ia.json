@@ -9,7 +9,7 @@
  "escenas": [
   {
    "id": "gancho",
-   "texto": "¿Y si supieras qué socio se va a ir antes de que se vaya?",
+   "texto": "¿Y si supieras qué socio se va a ir antes de irse?",
    "visual": {
     "tipo": "gancho",
     "icono": "usuario",
@@ -20,7 +20,7 @@
   },
   {
    "id": "callado",
-   "texto": "La mayoría no avisa: deja de venir de a poco y un día no renueva.",
+   "texto": "La mayoría no avisa: deja de venir de a poco y no renueva.",
    "visual": {
     "tipo": "persona",
     "animo": "estresado",
@@ -46,7 +46,7 @@
   },
   {
    "id": "cuenta",
-   "texto": "Ocho socios por mes, con cuota de treinta y cinco mil: doscientos ochenta mil pesos que se van.",
+   "texto": "Ocho socios por mes, a treinta y cinco mil: doscientos ochenta mil pesos menos.",
    "visual": {
     "tipo": "contador",
     "hasta": 280,
@@ -59,7 +59,7 @@
   },
   {
    "id": "detecta",
-   "texto": "Con IA, el sistema mira la asistencia de cada socio: venía tres veces por semana y hace diez días que no aparece.",
+   "texto": "Con IA, el sistema mira la asistencia: venía tres veces por semana, y hace diez días que no aparece.",
    "visual": {
     "tipo": "asistencia",
     "etiqueta": "Asistencia de Lucas",
@@ -76,7 +76,7 @@
   },
   {
    "id": "mensaje",
-   "texto": "Ese mismo día le llega un mensaje para que vuelva.",
+   "texto": "Ese día le llega un mensaje para que vuelva.",
    "visual": {
     "tipo": "notificaciones",
     "etiqueta": "09:30",
@@ -115,7 +115,7 @@
   },
   {
    "id": "cta",
-   "texto": "Seguinos para que tu negocio trabaje para vos, y no al revés.",
+   "texto": "Seguinos para que tu negocio trabaje para vos.",
    "visual": {
     "tipo": "cta"
    }

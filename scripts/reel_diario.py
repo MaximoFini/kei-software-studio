@@ -127,8 +127,8 @@ def validar(g):
             err.append(f"{donde}: etiqueta de 30 caracteres o menos")
     if esc and (esc[-1].get("visual") or {}).get("tipo") != "cta":
         err.append("la última escena tiene que ser 'cta'")
-    if not 70 <= palabras_total <= 110:
-        err.append(f"el guion tiene {palabras_total} palabras: entre 70 y 110 (reel de ≈ 30-40 s)")
+    if not 55 <= palabras_total <= 85:
+        err.append(f"el guion tiene {palabras_total} palabras: entre 55 y 85 (reel de ≈ 30 s)")
     return err
 
 

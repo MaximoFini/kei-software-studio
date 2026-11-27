@@ -1,0 +1,42 @@
+{
+ "id": "wifi",
+ "titulo": "¿Por qué el microondas corta el wifi?",
+ "voz": "es-AR-ElenaNeural",
+ "rate": "+6%",
+ "pausa": 0.14,
+ "gap": 0.1,
+ "fps": 30,
+ "escenas": [
+  [
+   "hook",
+   "Tu microondas puede cortarte el wifi. Y no es magia."
+  ],
+  [
+   "ondas",
+   "Los dos usan ondas de radio, casi con la misma frecuencia: dos coma cuatro gigahercios."
+  ],
+  [
+   "fuga",
+   "El microondas está blindado, pero siempre se escapa un poquito, y eso pisa al wifi."
+  ],
+  [
+   "ruido",
+   "Es como hablar con alguien gritando al lado: se pierden mensajes, y se traba."
+  ],
+  [
+   "solucion",
+   "La solución: la red de cinco gigahercios, que el microondas no toca."
+  ],
+  [
+   "cta",
+   "Seguinos, y comentá qué aparato querés entender."
+  ]
+ ],
+ "musica": {
+  "titulo": "Lo-Fi Chillhop - AtlasAudio (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-lo-fi-chillhop-617588/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/10/09/audio_b4c9ac3a5f.mp3?filename=atlasaudio-lo-fi-chillhop-617588.mp3",
+  "offset": 0.2,
+  "lufs": -25
+ }
+}

@@ -27,3 +27,13 @@ remotion/public/audio_musica.wav
 remotion/public/dolor_voz.wav
 remotion/public/dolor_musica.wav
 remotion/src/dolorVoz.json
+
+# Música de los reels en formato pizarrón (de terceros: Pixabay)
+remotion/public/gps_musica.wav
+remotion/public/tactil_musica.wav
+remotion/public/shazam_musica.wav
+remotion/public/bateria_musica.wav
+remotion/public/wifi_musica.wav
+
+# Logos y material de clientes (y archivos sueltos): no van al repo público
+logos_clientes/

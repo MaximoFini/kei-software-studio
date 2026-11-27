@@ -21,7 +21,7 @@ Validarlo con `python scripts/reel_diario.py validar <guion.json>`.
 }
 ```
 
-Reglas que controla el validador: 6 a 9 escenas, 70 a 110 palabras en total (reel de ≈ 30-40 s), cada escena de 3 a
+Reglas que controla el validador: 6 a 9 escenas, 55 a 85 palabras en total (reel de ≈ 30 s), cada escena de 3 a
 40 palabras, `id` únicos en camelCase y la última escena de tipo `cta`. Los subtítulos salen solos de la voz.
 
 ## Visuales

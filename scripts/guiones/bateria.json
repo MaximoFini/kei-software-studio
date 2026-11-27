@@ -1,0 +1,42 @@
+{
+ "id": "bateria",
+ "titulo": "¿Por qué el final de la carga tarda tanto?",
+ "voz": "es-US-AlonsoNeural",
+ "rate": "+6%",
+ "pausa": 0.14,
+ "gap": 0.1,
+ "fps": 30,
+ "escenas": [
+  [
+   "hook",
+   "Cargar el último veinte por ciento tarda una eternidad. ¿Por qué?"
+  ],
+  [
+   "estac",
+   "Imaginá la batería como un estacionamiento, y la carga como autos que entran."
+  ],
+  [
+   "vacio",
+   "Con el lugar vacío, entran todos juntos y rápido."
+  ],
+  [
+   "lleno",
+   "Pero casi lleno, quedan pocos huecos, y hay que maniobrar despacio."
+  ],
+  [
+   "celu",
+   "Si el celular forzara, se calienta y la batería se gasta antes. Por eso frena a propósito."
+  ],
+  [
+   "cta",
+   "Seguinos, y contanos qué querés que expliquemos."
+  ]
+ ],
+ "musica": {
+  "titulo": "Long Day - PurrpleCat (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-long-day-518602/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/04/24/audio_c8a99a93d5.mp3?filename=purrplecat-long-day-518602.mp3",
+  "offset": 20.2,
+  "lufs": -25
+ }
+}

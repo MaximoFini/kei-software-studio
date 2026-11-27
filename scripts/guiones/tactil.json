@@ -1,0 +1,42 @@
+{
+ "id": "tactil",
+ "titulo": "¿Cómo sabe tu pantalla dónde tocaste?",
+ "voz": "es-US-PalomaNeural",
+ "rate": "+6%",
+ "pausa": 0.14,
+ "gap": 0.1,
+ "fps": 30,
+ "escenas": [
+  [
+   "hook",
+   "Una salchicha puede usar tu celular, pero un guante no. ¿Por qué?"
+  ],
+  [
+   "grilla",
+   "Bajo el vidrio hay una grilla de cables, con una cargita eléctrica."
+  ],
+  [
+   "dedo",
+   "Tu cuerpo conduce electricidad: al acercar el dedo, le absorbe un poquito de carga."
+  ],
+  [
+   "punto",
+   "El celular detecta dónde cambió la carga, y ahí está tu toque, miles de veces por segundo."
+  ],
+  [
+   "pago",
+   "La salchicha también conduce. El guante aísla, y la pantalla no siente nada."
+  ],
+  [
+   "cta",
+   "Seguinos, y contanos qué querés que expliquemos."
+  ]
+ ],
+ "musica": {
+  "titulo": "Chillhop — Remain - Ornave (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-chillhop-remain-594997/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/08/31/audio_77d8cbede6.mp3?filename=ornave-chillhop-remain-594997.mp3",
+  "offset": 0.2,
+  "lufs": -25
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "id": "shazam",
+ "titulo": "¿Cómo reconoce Shazam una canción?",
+ "voz": "en-US-EmmaMultilingualNeural",
+ "rate": "+10%",
+ "pausa": 0.14,
+ "gap": 0.1,
+ "fps": 30,
+ "escenas": [
+  [
+   "hook",
+   "Shazam reconoce una canción en cinco segundos, aunque haya ruido. ¿Cómo?"
+  ],
+  [
+   "espectro",
+   "Primero dibuja el sonido: qué notas suenan, y qué tan fuerte, en cada instante."
+  ],
+  [
+   "picos",
+   "Se queda con los picos más fuertes, porque el ruido casi no los borra."
+  ],
+  [
+   "huella",
+   "Junta esos puntos en parejas, y arma una huella de la canción."
+  ],
+  [
+   "compara",
+   "Después la compara con millones de huellas, y si coincide, listo."
+  ],
+  [
+   "cta",
+   "Seguinos, y comentá qué aparato querés entender."
+  ]
+ ],
+ "musica": {
+  "titulo": "Vlog Hip-Hop - ProducesPlatinum (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-vlog-hip-hop-483574/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/02/12/audio_ef715196dc.mp3?filename=producesplatinum-vlog-hip-hop-483574.mp3",
+  "offset": 2.45,
+  "lufs": -25
+ }
+}

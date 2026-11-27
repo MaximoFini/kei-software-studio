@@ -92,9 +92,17 @@ texto en español y esperá las definiciones antes de renderizar.
 
 ### J. Explicativos animados con voz en off
 - Referencias: `QrExplainer.tsx`, `BtExplainer.tsx`, `IaExplainer.tsx` y `AudioExplainer.tsx` (GUIA.md §6 a §9; el 8 usa fotos reales de Pixabay procesadas con OpenCV). Piezas comunes en `remotion/src/explainerKit.tsx` (`crearExplainer(voz, titulo)` da `w`, `Escena` y `Base`); cada reel sólo escribe sus escenas.
-- Guion en `scripts/guiones/<id>.json` (voz, velocidad, escenas, música) → `uv run --python 3.11 --with edge-tts python scripts/explainer.py voz <id>` (edge-tts, sin instalar nada en `.venv`) y `python scripts/explainer.py musica <id>`. Duración objetivo ~50 s con cierre.
+- Guion en `scripts/guiones/<id>.json` (voz, velocidad, escenas, música) → `uv run --python 3.11 --with edge-tts python scripts/explainer.py voz <id>` (edge-tts, sin instalar nada en `.venv`) y `python scripts/explainer.py musica <id>`. Duración estándar: **30 s con cierre** (≈ 65-75 palabras de voz; antes eran 40-50 s).
 - Gancho: dato sorprendente en la primera frase, con imagen fuerte desde el cuadro 0, y un bucle abierto que se cierra al final.
 - La animación se dispara por palabra (`w("escena","palabra")`); subtítulos de 3–4 palabras con la palabra activa en Azul UI, en y≈1470 (fuera de la UI de Instagram). Personajes planos en SVG con la paleta de marca. Voz a -14 LUFS; música de Pixabay sin Content ID (distinta en cada reel) a ~18 dB debajo de la voz con ducking; barra de progreso arriba.
+
+### K. Reels en formato pizarrón (tiza sobre pizarrón verde)
+- Kit: `remotion/src/pizarronKit.tsx` (fondo, grano de tiza, `Trazo`/`Dib` que se dibujan solos con la tiza siguiéndolos, `Texto` a mano, `Titular`, subtítulos, cierre con borrador) y `pizarronIconos.tsx` (celu, satélite, batería, router, microondas, auto, dedo, guante, Einstein, `CierreSeguir`...). Assets generados por `scripts/pizarron_assets.py` (fondo, grano y sonidos de tiza/borrador). Fuentes: Caveat Brush (títulos) y Kalam (texto), OFL.
+- Una composición por reel (`GpsReel.tsx`, `TactilReel.tsx`, `ShazamReel.tsx`, `BateriaReel.tsx`, `WifiReel.tsx`): escenas con los tiempos de la voz (`w("escena","palabra")`), 1080x1920 a **30 fps**, 30 s con el cierre KEI. Guion en `scripts/guiones/<id>.json` con `"fps": 30`.
+- Voz: `PYTHONPATH=work/pylib py scripts/explainer.py voz <id>` (edge-tts instalado con `py -m pip install --target work/pylib edge-tts`; el Python de `.venv` no trae pip). Sintetiza **frase por frase** con ritmo y tono variables y posproducción (EQ, compresión, sala mínima): suena menos robótica que una sola pasada a +14-20%. `scripts/probar_voces.py` y `scripts/prosodia.py` comparan voces (inteligibilidad con Whisper y variación de tono). Voces: probar una distinta por reel (es-MX-Jorge, es-US-Paloma/Alonso, es-AR-Elena, en-US-EmmaMultilingual leen bien el español).
+- Render: `bash scripts/build_pizarron.sh [ids]`; hoja de contacto para revisar: `bash scripts/hoja_contacto.sh video.mp4 hoja.jpg 1.6 6 240`.
+- Sonido: sin raspado de tiza (irrita). Micro-sonidos suaves y minimalistas con `<Sonido t f v>` (pop en títulos/signos, whoosh bajo entre escenas); volumen ≤ 0,3.
+- Reglas de contenido: tema de tecnología cotidiana con explicación simple, gancho con pregunta en la primera frase, bucle que se cierra al final y CTA a comentar qué aparato explicar. Un dibujo por concepto (no texto sobre fondo verde).
 
 ### G. Planos generativos
 - Guion, storyboard y prompts por plano para Kling/Veo/Sora pidiendo sólo la escena (sin texto ni logo); textos, logo y cierre se agregan en Remotion.
