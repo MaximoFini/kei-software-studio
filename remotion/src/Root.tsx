@@ -11,6 +11,7 @@ import { BtExplainer, BT_TOTAL } from "./BtExplainer";
 import { IaExplainer, IA_TOTAL } from "./IaExplainer";
 import { AudioExplainer, AUDIO_TOTAL } from "./AudioExplainer";
 import { GpsReel, GPS_TOTAL } from "./GpsReel";
+import { FormatosPrueba } from "./formatos";
 import { TactilReel, TACTIL_TOTAL } from "./TactilReel";
 import { ShazamReel, SHAZAM_TOTAL } from "./ShazamReel";
 import { BateriaReel, BATERIA_TOTAL } from "./BateriaReel";
@@ -81,6 +82,7 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="IaExplainer" component={IaExplainer} durationInFrames={IA_TOTAL} fps={60} width={1080} height={1920} />
     <Composition id="AudioExplainer" component={AudioExplainer} durationInFrames={AUDIO_TOTAL} fps={60} width={1080} height={1920} />
     {/* Reels en formato pizarrón (30 fps; guiones en scripts/guiones/, kit en pizarronKit.tsx) */}
+    {FormatosPrueba()}
     <Composition id="GpsReel" component={GpsReel} durationInFrames={GPS_TOTAL} fps={30} width={1080} height={1920} />
     <Composition id="TactilReel" component={TactilReel} durationInFrames={TACTIL_TOTAL} fps={30} width={1080} height={1920} />
     <Composition id="ShazamReel" component={ShazamReel} durationInFrames={SHAZAM_TOTAL} fps={30} width={1080} height={1920} />

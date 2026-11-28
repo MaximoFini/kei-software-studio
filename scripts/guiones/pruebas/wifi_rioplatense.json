@@ -1,0 +1,13 @@
+{
+ "id": "wifi_ar",
+ "titulo": "¿Por qué el microondas corta el wifi? (prueba rioplatense)",
+ "voz": "es-AR-TomasNeural",
+ "rate": "+4%",
+ "escenas": [
+  ["hook", "Che, ¿te pasó que el wifi se corta cuando usás el microondas? Ojo, no es casualidad."],
+  ["ondas", "Los dos laburan con ondas casi iguales: dos coma cuatro gigahercios."],
+  ["fuga", "El microondas está blindado, pero se escapa un poquito, y eso le pisa al wifi."],
+  ["ruido", "Es como charlar con alguien que te grita al lado."],
+  ["solucion", "Fijate: pasate a la red de cinco gigas y listo."]
+ ]
+}

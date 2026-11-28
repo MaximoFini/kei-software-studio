@@ -1,0 +1,13 @@
+{
+ "id": "gps_ar",
+ "titulo": "¿Cómo sabe el GPS dónde estás? (prueba rioplatense)",
+ "voz": "es-AR-ElenaNeural",
+ "rate": "+4%",
+ "escenas": [
+  ["hook", "Mirá, tu celular no sabe dónde estás por arte de magia."],
+  ["sats", "Escucha a unos satélites que repiten la hora, o sea, mandan un reloj."],
+  ["senal", "Y fijate: mide cuánto tardó en llegar esa señal. Más demora, más lejos."],
+  ["cuatro", "Con cuatro satélites hace la cuenta y listo, te ubica."],
+  ["einstein", "Ojo, que los relojes corren distinto allá arriba. Sin corregir eso, te errás por kilómetros."]
+ ]
+}
