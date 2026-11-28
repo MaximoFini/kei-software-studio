@@ -1,0 +1,42 @@
+{
+ "id": "nfc",
+ "titulo": "¿Cómo pagás solo acercando el celu?",
+ "voz": "es-AR-ElenaNeural",
+ "rate": "+4%",
+ "pausa": 0.14,
+ "gap": 0.1,
+ "fps": 30,
+ "escenas": [
+  [
+   "hook",
+   "Pagás con solo acercar el celu, sin conectarte a nada. ¿Cómo?"
+  ],
+  [
+   "campo",
+   "El lector crea un campo magnético invisible a su alrededor."
+  ],
+  [
+   "energia",
+   "Tu tarjeta no tiene batería: se alimenta de ese campo."
+  ],
+  [
+   "responde",
+   "Y con esa energía responde con un código, a menos de cuatro centímetros."
+  ],
+  [
+   "token",
+   "Ese código no es tu número real: es un sustituto que sirve solo para esa compra."
+  ],
+  [
+   "cta",
+   "Seguinos, y comentá si ya pagás todo acercando el celu."
+  ]
+ ],
+ "musica": {
+  "titulo": "Chillhop — Remain - Ornave (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-chillhop-remain-594997/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/08/31/audio_77d8cbede6.mp3?filename=ornave-chillhop-remain-594997.mp3",
+  "offset": 0.2,
+  "lufs": -25
+ }
+}

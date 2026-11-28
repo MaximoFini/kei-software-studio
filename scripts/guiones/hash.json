@@ -1,0 +1,42 @@
+{
+ "id": "hash",
+ "titulo": "¿Cómo guarda tu contraseña un sitio sin saberla?",
+ "voz": "es-AR-TomasNeural",
+ "rate": "+4%",
+ "pausa": 0.14,
+ "gap": 0.1,
+ "fps": 30,
+ "escenas": [
+  [
+   "hook",
+   "Tu contraseña no está guardada en ningún lado. ¿Cómo te reconocen entonces?"
+  ],
+  [
+   "hash",
+   "La pasan por una cuenta matemática que solo funciona en un sentido: un hash."
+  ],
+  [
+   "imposible",
+   "Es fácil ir de la clave al resultado, pero imposible volver."
+  ],
+  [
+   "guarda",
+   "El sitio guarda solo ese resultado, con un toque de sal para que no se repita."
+  ],
+  [
+   "login",
+   "Cuando entrás, repite la cuenta y compara. Si coinciden, pasaste."
+  ],
+  [
+   "cta",
+   "Seguinos, y comentá qué tan larga es tu contraseña."
+  ]
+ ],
+ "musica": {
+  "titulo": "Lo-Fi Chillhop - AtlasAudio (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-lo-fi-chillhop-617588/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/10/09/audio_b4c9ac3a5f.mp3?filename=atlasaudio-lo-fi-chillhop-617588.mp3",
+  "offset": 0.2,
+  "lufs": -25
+ }
+}

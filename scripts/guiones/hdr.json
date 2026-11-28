@@ -1,0 +1,42 @@
+{
+ "id": "hdr",
+ "titulo": "¿Por qué tu foto es en realidad varias fotos?",
+ "voz": "es-AR-TomasNeural",
+ "rate": "+4%",
+ "pausa": 0.14,
+ "gap": 0.1,
+ "fps": 30,
+ "escenas": [
+  [
+   "hook",
+   "Esa foto no es una foto: son varias. ¿Cómo?"
+  ],
+  [
+   "rafaga",
+   "Cuando tocás el botón, tu celu saca varias tomas en un instante."
+  ],
+  [
+   "exp",
+   "Una oscura, para las luces. Otra clara, para las sombras."
+  ],
+  [
+   "une",
+   "Después las une, tomando lo mejor de cada una."
+  ],
+  [
+   "magia",
+   "Eso es fotografía computacional, y por eso el cielo no sale quemado."
+  ],
+  [
+   "cta",
+   "Seguinos, y comentá cuál fue tu mejor foto con el celu."
+  ]
+ ],
+ "musica": {
+  "titulo": "Vlog Hip-Hop - ProducesPlatinum (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-vlog-hip-hop-483574/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/02/12/audio_ef715196dc.mp3?filename=producesplatinum-vlog-hip-hop-483574.mp3",
+  "offset": 2.45,
+  "lufs": -25
+ }
+}

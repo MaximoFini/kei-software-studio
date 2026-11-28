@@ -1,0 +1,42 @@
+{
+ "id": "autocorrector",
+ "titulo": "¿Cómo adivina tu celu lo que vas a escribir?",
+ "voz": "es-AR-ElenaNeural",
+ "rate": "+4%",
+ "pausa": 0.14,
+ "gap": 0.1,
+ "fps": 30,
+ "escenas": [
+  [
+   "hook",
+   "Tu celu sabe qué vas a escribir antes que vos. ¿Cómo?"
+  ],
+  [
+   "teclas",
+   "Cada vez que tocás una tecla, no mira solo esa letra: mira también las vecinas."
+  ],
+  [
+   "prob",
+   "Después le pone una probabilidad a cada palabra, según lo que escribiste antes."
+  ],
+  [
+   "aprende",
+   "Y aprende de vos: tus muletillas, tus nombres, tus chistes."
+  ],
+  [
+   "error",
+   "Por eso, a veces, te corrige mal. Está apostando, no adivinando."
+  ],
+  [
+   "cta",
+   "Seguinos, y comentá cuál es la palabra que tu celu siempre te corrige mal."
+  ]
+ ],
+ "musica": {
+  "titulo": "Chillhop — Remain - Ornave (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-chillhop-remain-594997/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/08/31/audio_77d8cbede6.mp3?filename=ornave-chillhop-remain-594997.mp3",
+  "offset": 0.2,
+  "lufs": -25
+ }
+}

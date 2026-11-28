@@ -1,0 +1,42 @@
+{
+ "id": "anc",
+ "titulo": "¿Cómo borran el ruido unos auriculares?",
+ "voz": "es-AR-ElenaNeural",
+ "rate": "+4%",
+ "pausa": 0.14,
+ "gap": 0.1,
+ "fps": 30,
+ "escenas": [
+  [
+   "hook",
+   "Estos auriculares borran el ruido con más ruido. ¿Cómo?"
+  ],
+  [
+   "mic",
+   "Un micrófono, afuera, escucha el ruido de la calle."
+  ],
+  [
+   "opuesta",
+   "Y el parlante genera la onda exactamente al revés."
+  ],
+  [
+   "suma",
+   "Cuando se suman, una sube y la otra baja, y se cancelan."
+  ],
+  [
+   "silencio",
+   "Resultado: silencio. Funciona mejor con ruidos constantes, como un motor."
+  ],
+  [
+   "cta",
+   "Seguinos, y comentá si usás cancelación de ruido."
+  ]
+ ],
+ "musica": {
+  "titulo": "Long Day - PurrpleCat (Pixabay)",
+  "pagina": "https://pixabay.com/music/beats-long-day-518602/",
+  "url": "https://cdn.pixabay.com/download/audio/2026/04/24/audio_c8a99a93d5.mp3?filename=purrplecat-long-day-518602.mp3",
+  "offset": 20.2,
+  "lufs": -25
+ }
+}

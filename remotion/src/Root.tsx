@@ -16,6 +16,11 @@ import { TactilReel, TACTIL_TOTAL } from "./TactilReel";
 import { ShazamReel, SHAZAM_TOTAL } from "./ShazamReel";
 import { BateriaReel, BATERIA_TOTAL } from "./BateriaReel";
 import { WifiReel, WIFI_TOTAL } from "./WifiReel";
+import { AutocorrectorReel, AUTOCORRECTOR_TOTAL } from "./AutocorrectorReel";
+import { HashReel, HASH_TOTAL } from "./HashReel";
+import { AncReel, ANC_TOTAL } from "./AncReel";
+import { HdrReel, HDR_TOTAL } from "./HdrReel";
+import { NfcReel, NFC_TOTAL } from "./NfcReel";
 import { DolorReel, calculateDolorMetadata, dolorDefaults } from "./DolorReel";
 
 // Formatos para landing: la duración y los fps salen del video (calculateMetadata)
@@ -83,6 +88,11 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="AudioExplainer" component={AudioExplainer} durationInFrames={AUDIO_TOTAL} fps={60} width={1080} height={1920} />
     {/* Reels en formato pizarrón (30 fps; guiones en scripts/guiones/, kit en pizarronKit.tsx) */}
     {FormatosPrueba()}
+    <Composition id="AutocorrectorReel" component={AutocorrectorReel} durationInFrames={AUTOCORRECTOR_TOTAL} fps={30} width={1080} height={1920} />
+    <Composition id="HashReel" component={HashReel} durationInFrames={HASH_TOTAL} fps={30} width={1080} height={1920} />
+    <Composition id="AncReel" component={AncReel} durationInFrames={ANC_TOTAL} fps={30} width={1080} height={1920} />
+    <Composition id="HdrReel" component={HdrReel} durationInFrames={HDR_TOTAL} fps={30} width={1080} height={1920} />
+    <Composition id="NfcReel" component={NfcReel} durationInFrames={NFC_TOTAL} fps={30} width={1080} height={1920} />
     <Composition id="GpsReel" component={GpsReel} durationInFrames={GPS_TOTAL} fps={30} width={1080} height={1920} />
     <Composition id="TactilReel" component={TactilReel} durationInFrames={TACTIL_TOTAL} fps={30} width={1080} height={1920} />
     <Composition id="ShazamReel" component={ShazamReel} durationInFrames={SHAZAM_TOTAL} fps={30} width={1080} height={1920} />

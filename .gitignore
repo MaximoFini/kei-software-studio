@@ -37,3 +37,8 @@ remotion/public/wifi_musica.wav
 
 # Logos y material de clientes (y archivos sueltos): no van al repo público
 logos_clientes/
+remotion/public/autocorrector_musica.wav
+remotion/public/hash_musica.wav
+remotion/public/anc_musica.wav
+remotion/public/hdr_musica.wav
+remotion/public/nfc_musica.wav

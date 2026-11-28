@@ -4,5 +4,31 @@
     "prueba": "manual",
     "ia": false
   },
-  "cola": []
+  "cola": [
+    {
+      "video": "publicar/videos/28-como-adivina-tu-celu-lo-que-escribis.mp4",
+      "caption": "Tu celu sabe qué vas a escribir antes que vos ⌨️😏\n\nCada vez que tocás una tecla no mira solo esa letra: mira también las vecinas. Después le pone una probabilidad a cada palabra según lo que escribiste antes, y aprende de vos: tus muletillas, tus nombres, tus chistes. Por eso a veces te corrige mal: está apostando, no adivinando.\n\nMandáselo a alguien al que el autocorrector le arruina los mensajes 😅\n\n👉 Seguinos y comentá cuál es la palabra que tu celu siempre te corrige mal.\n\n#autocorrector #celular #tecnologia #curiosidades #explicado #keisoftware",
+      "prueba": "manual"
+    },
+    {
+      "video": "publicar/videos/29-como-guarda-tu-contrasena-un-sitio.mp4",
+      "caption": "Tu contraseña no está guardada en ningún lado 🔐\n\nLos sitios la pasan por una cuenta matemática que solo funciona en un sentido (un hash), y guardan solo el resultado, con un toque de sal para que no se repita. Cuando entrás, repiten la cuenta y comparan: si coinciden, pasaste. Es fácil ir de la clave al resultado, pero imposible volver.\n\nGuardalo para cuando te pregunten por qué hay que usar claves largas 💾\n\n👉 Seguinos y comentá qué tan larga es tu contraseña principal.\n\n#contraseñas #seguridad #hash #tecnologia #explicado #keisoftware",
+      "prueba": "manual"
+    },
+    {
+      "video": "publicar/videos/30-como-borran-el-ruido-los-auriculares.mp4",
+      "caption": "Estos auriculares borran el ruido con más ruido 🎧🔇\n\nUn micrófono escucha el ruido de afuera y el parlante genera la onda exactamente al revés. Cuando se suman, una sube y la otra baja, y se cancelan. Funciona mejor con ruidos constantes, como un motor.\n\nMandáselo a alguien que viaja siempre con auriculares ✈️\n\n👉 Seguinos y comentá si usás cancelación de ruido.\n\n#auriculares #cancelaciondeRuido #tecnologia #ciencia #explicado #keisoftware",
+      "prueba": "manual"
+    },
+    {
+      "video": "publicar/videos/31-por-que-tu-foto-son-varias-fotos.mp4",
+      "caption": "Esa foto no es una foto: son varias 📸✨\n\nCuando tocás el botón, tu celu saca varias tomas en un instante: una oscura para salvar las luces y otra clara para salvar las sombras. Después las une tomando lo mejor de cada una. Eso es fotografía computacional, y por eso el cielo no sale quemado.\n\nGuardalo para la próxima vez que saques una foto a contraluz 💾\n\n👉 Seguinos y comentá cuál fue tu mejor foto con el celu.\n\n#fotografia #celular #hdr #tecnologia #explicado #keisoftware",
+      "prueba": "manual"
+    },
+    {
+      "video": "publicar/videos/32-como-pagas-acercando-el-celu.mp4",
+      "caption": "Pagás con solo acercar el celu, sin conectarte a nada 💳📲\n\nEl lector crea un campo magnético invisible y tu tarjeta, que no tiene batería, se alimenta de ese campo. Con esa energía responde con un código a menos de cuatro centímetros, y ese código no es tu número real: es un sustituto que sirve solo para esa compra. Eso es NFC.\n\nMandáselo a alguien que todavía no se anima a pagar con el celu 😅\n\n👉 Seguinos y comentá si ya pagás todo acercando el celu.\n\n#nfc #pagos #celular #tecnologia #explicado #keisoftware",
+      "prueba": "manual"
+    }
+  ]
 }
